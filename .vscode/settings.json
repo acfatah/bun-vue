@@ -1,0 +1,8 @@
+{
+  // Custom Tailwind CSS v4 functions and directives
+  // https://tailwindcss.com/docs/functions-and-directives
+  // https://grok.com/share/bGVnYWN5_1cf7d218-282e-46e5-acc6-efb07d12d35e
+  "css.customData": [
+    ".vscode/tailwind.json"
+  ]
+}
