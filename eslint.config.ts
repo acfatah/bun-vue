@@ -17,12 +17,15 @@ export default antfu(
           newlinesBetween: 'ignore',
         },
       ],
+      'vue/object-property-newline': ['error', {
+        allowAllPropertiesOnSameLine: false,
+      }],
     },
   },
 
   {
     name: 'app/files-to-ignore',
-    ignores: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**', 'logs'],
+    ignores: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**', 'logs', 'tsconfig.*'],
   },
 
   {
