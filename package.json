@@ -1,8 +1,8 @@
 {
   "name": "shadcn-vue",
-  "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "dev": "bunx --bun vite",
     "build": "bunx --bun vue-tsc -b && bunx --bun vite build",
