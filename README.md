@@ -1,5 +1,15 @@
-# Vue 3 + TypeScript + Vite
+# `shadcn-vue` Boilerplate
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+<p class="flex gap-1">
+  <a href="https://github.com/acfatah/shadcn-vue/commits/main">
+    <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/t/acfatah/shadcn-vue?style=flat-square"
+  ></a>
+  <img alt="GitHub last commit (by committer)" src="https://img.shields.io/github/last-commit/acfatah/shadcn-vue?display_timestamp=committer&style=flat-square">
+  <img alt="GitHub forks" src="https://img.shields.io/github/forks/acfatah/shadcn-vue?style=flat-square">
+</p>
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+Boilerplate to start building `shadcn-ui` Vue front-end Single Page Application
+(SPA) in minutes with `TypeScript` and `Bun`.
+
+> [!IMPORTANT]
+> WORK IN PROGRESS
