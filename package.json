@@ -7,9 +7,9 @@
     "dev": "bunx --bun vite",
     "build": "bunx --bun vue-tsc -b && bunx --bun vite build",
     "preview": "bunx --bun vite preview",
-    "lint": "bunx --bun eslint .",
+    "lint": "bunx --bun eslint",
     "lint:staged": "bunx --bun eslint --pass-on-no-patterns --no-warn-ignored $(git diff --cached --name-only --diff-filter=d)",
-    "lint:fix": "bunx --bun eslint --fix .",
+    "lint:fix": "bunx --bun eslint --fix",
     "lint:fix-staged": "bunx --bun eslint --fix --pass-on-no-patterns --no-warn-ignored $(git diff --cached --name-only --diff-filter=d)",
     "lint:inspect": "bunx --bun eslint --inspect-config",
     "precommit": "bun lint:staged"
