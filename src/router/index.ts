@@ -1,8 +1,10 @@
+import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { createRouter, createWebHistory } from 'vue-router'
 
 // import BlankLayout from '@/layouts/BlankLayout.vue'
 
 const DEFAULT_PAGE_TITLE = 'Vite + Vue + TS'
+const { start: startLoading, done: doneLoading } = useNProgress()
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,7 +41,12 @@ router.beforeEach((to, _from, next) => {
   const pageTitle = to.meta.pageTitle
 
   document.title = pageTitle ? pageTitle as string : DEFAULT_PAGE_TITLE
+  startLoading()
   next()
+})
+
+router.afterEach(() => {
+  doneLoading()
 })
 
 export default router
