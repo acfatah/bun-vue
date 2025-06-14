@@ -1,9 +1,9 @@
 import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { createRouter, createWebHistory } from 'vue-router'
 
-// import BlankLayout from '@/layouts/BlankLayout.vue'
+import { v4Routes } from '../apps/v4/routes'
 
-const DEFAULT_PAGE_TITLE = 'Vite + Vue + TS'
+const DEFAULT_PAGE_TITLE = 'Shadcn for Vue - shadcn/vue'
 const { start: startLoading, done: doneLoading } = useNProgress()
 
 const router = createRouter({
@@ -26,13 +26,12 @@ const router = createRouter({
   },
 
   routes: [
+    // V4 routes
+    ...v4Routes,
+
     {
       path: '/',
-      name: 'home',
-      component: () => import('../views/home/HomeView.vue'),
-      // meta: {
-      //   layout: BlankLayout,
-      // },
+      redirect: '/v4',
     },
 
     {
