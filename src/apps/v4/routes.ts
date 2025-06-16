@@ -10,4 +10,13 @@ export const v4Routes: RouteRecordRaw[] = [
       layout: V4Layout,
     },
   },
+
+  {
+    path: '/v4/overview',
+    name: 'v4-overview',
+    component: () => import('./views/OverviewView.vue'),
+    meta: {
+      layout: V4Layout,
+    },
+  },
 ]
