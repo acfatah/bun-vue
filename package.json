@@ -44,8 +44,8 @@
     "vue-sonner": "^2.0.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "~4.13.1",
-    "@types/node": "^22.15.31",
+    "@antfu/eslint-config": "~4.13.3",
+    "@types/node": "^22.15.32",
     "@vitejs/plugin-vue": "^5.2.4",
     "@vue/tsconfig": "^0.7.0",
     "eslint": "^9.29.0",
