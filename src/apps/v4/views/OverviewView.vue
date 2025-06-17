@@ -7,6 +7,11 @@ import AlertDialogDemo from '../registry/examples/AlertDialogDemo.vue'
 import AspectRatioDemo from '../registry/examples/AspectRatioDemo.vue'
 import AvatarDemo from '../registry/examples/AvatarDemo.vue'
 import BadgeDemo from '../registry/examples/BadgeDemo.vue'
+import BreadcrumbCollapsed from '../registry/examples/BreadcrumbCollapsed.vue'
+import BreadcrumbDemo from '../registry/examples/BreadcrumbDemo.vue'
+import BreadcrumbLinkComponent from '../registry/examples/BreadcrumbLinkComponent.vue'
+import BreadcrumbResponsive from '../registry/examples/BreadcrumbResponsive.vue'
+import BreadcrumbWithSeparator from '../registry/examples/BreadcrumbWithSeparator.vue'
 </script>
 
 <template>
@@ -40,6 +45,23 @@ import BadgeDemo from '../registry/examples/BadgeDemo.vue'
       <ComponentWrapper name="Badge">
         <div class="grid w-full max-w-xl gap-4">
           <BadgeDemo />
+        </div>
+      </ComponentWrapper>
+      <ComponentWrapper name="Breadcrumb">
+        <div class="grid w-full max-w-xl gap-4">
+          <BreadcrumbDemo />
+        </div>
+        <div class="grid w-full max-w-xl gap-4">
+          <BreadcrumbWithSeparator />
+        </div>
+        <div class="grid w-full gap-4">
+          <BreadcrumbCollapsed />
+        </div>
+        <div class="grid w-full max-w-xl gap-4">
+          <BreadcrumbLinkComponent />
+        </div>
+        <div class="grid w-full max-w-xl gap-4">
+          <BreadcrumbResponsive />
         </div>
       </ComponentWrapper>
     </div>
