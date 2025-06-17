@@ -6,6 +6,7 @@ import AlertDemo from '../registry/examples/AlertDemo.vue'
 import AlertDialogDemo from '../registry/examples/AlertDialogDemo.vue'
 import AspectRatioDemo from '../registry/examples/AspectRatioDemo.vue'
 import AvatarDemo from '../registry/examples/AvatarDemo.vue'
+import BadgeDemo from '../registry/examples/BadgeDemo.vue'
 </script>
 
 <template>
@@ -34,6 +35,11 @@ import AvatarDemo from '../registry/examples/AvatarDemo.vue'
       <ComponentWrapper name="Avatar">
         <div class="grid w-full max-w-xl gap-4">
           <AvatarDemo />
+        </div>
+      </ComponentWrapper>
+      <ComponentWrapper name="Badge">
+        <div class="grid w-full max-w-xl gap-4">
+          <BadgeDemo />
         </div>
       </ComponentWrapper>
     </div>
