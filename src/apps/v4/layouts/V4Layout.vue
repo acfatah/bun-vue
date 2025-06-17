@@ -7,10 +7,12 @@ import SiteHeader from '../components/SiteHeader.vue'
 onMounted(() => {
   const body = document.body
   const styles = cn(
-    'group/body overscroll-none antialiased',
-    'font-sans text-foreground',
-    '[--footer-height:calc(var(--spacing)*14)]',
-    '[--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]',
+    `
+      group/body overscroll-none font-sans text-foreground antialiased
+      [--footer-height:calc(var(--spacing)*14)]
+      [--header-height:calc(var(--spacing)*14)]
+      xl:[--footer-height:calc(var(--spacing)*24)]
+    `,
   )
 
   body.classList.add(...styles.split(' '))

@@ -29,7 +29,7 @@ function updateAddressBar() {
   >
     <div class="border-b px-4 py-3">
       <div class="text-sm font-medium">
-        <span class=" cursor-default" @click="copyToClipboard(url); updateAddressBar()">
+        <span class="cursor-default" @click="copyToClipboard(url); updateAddressBar()">
           {{ name }}
         </span>
       </div>

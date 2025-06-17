@@ -8,17 +8,46 @@ import { Button } from '@/components/ui/button'
   <main class="flex flex-1 flex-col justify-center">
     <section class="border-grid">
       <div class="container-wrapper">
-        <div class="container flex flex-col items-center gap-2 py-8 text-center md:py-16 lg:py-20 xl:gap-4">
+        <div
+          class="
+            container flex flex-col items-center gap-2 py-8 text-center
+            md:py-16
+            lg:py-20
+            xl:gap-4
+          "
+        >
           <Badge variant="secondary">
             New shadcn/ui v4<Icon icon="lucide:arrow-right" class="size-6" />
           </Badge>
-          <h1 class="text-primary leading-tighter max-w-2xl text-4xl font-semibold tracking-tight text-balance lg:leading-[1.1] lg:font-semibold xl:text-5xl xl:tracking-tighter">
+          <h1
+            class="
+              leading-tighter max-w-2xl text-4xl font-semibold tracking-tight text-balance
+              text-primary
+              lg:leading-[1.1] lg:font-semibold
+              xl:text-5xl xl:tracking-tighter
+            "
+          >
             Shadcn-Vue UI Components
           </h1>
-          <p class="text-foreground max-w-3xl text-base text-balance sm:text-lg">
-            Elevate Your Vue 3 Projects with <br class="inline xl:hidden">Shadcn/UI Design System.
+          <p
+            class="
+              max-w-3xl text-base text-balance text-foreground
+              sm:text-lg
+            "
+          >
+            Elevate Your Vue 3 Projects with <br
+              class="
+                inline
+                xl:hidden
+              "
+            >Shadcn/UI Design System.
           </p>
-          <div class="flex w-full items-center justify-center gap-2 pt-2 **:data-[slot=button]:shadow-none">
+          <div
+            class="
+              flex w-full items-center justify-center gap-2 pt-2
+              **:data-[slot=button]:shadow-none
+            "
+          >
             <Button size="sm" as="a" href="https://shadcn-vue.com/themes" target="_blank" rel="noopener noreferrer">
               Browse Themes
             </Button>

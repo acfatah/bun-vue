@@ -34,7 +34,7 @@ onMounted(async () => {
     @click="click"
   >
     <Icon icon="cib:github" class="size-4" />
-    <span class="text-muted-foreground w-min text-xs tabular-nums">
+    <span class="w-min text-xs text-muted-foreground tabular-nums">
       {{ stargazers >= 1000 ? `${(stargazers / 1000).toFixed(1)}k` : stargazers.toLocaleString() }}
     </span>
   </Button>
