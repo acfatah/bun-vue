@@ -5,6 +5,7 @@ import AccordionDemo from '../registry/examples/AccordionDemo.vue'
 import AlertDemo from '../registry/examples/AlertDemo.vue'
 import AlertDialogDemo from '../registry/examples/AlertDialogDemo.vue'
 import AspectRatioDemo from '../registry/examples/AspectRatioDemo.vue'
+import AvatarDemo from '../registry/examples/AvatarDemo.vue'
 </script>
 
 <template>
@@ -28,6 +29,11 @@ import AspectRatioDemo from '../registry/examples/AspectRatioDemo.vue'
       <ComponentWrapper name="Aspect Ratio">
         <div class="grid w-full max-w-xl gap-4">
           <AspectRatioDemo />
+        </div>
+      </ComponentWrapper>
+      <ComponentWrapper name="Avatar">
+        <div class="grid w-full max-w-xl gap-4">
+          <AvatarDemo />
         </div>
       </ComponentWrapper>
     </div>
