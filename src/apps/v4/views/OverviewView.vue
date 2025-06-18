@@ -12,6 +12,18 @@ import BreadcrumbDemo from '../registry/examples/BreadcrumbDemo.vue'
 import BreadcrumbLinkComponent from '../registry/examples/BreadcrumbLinkComponent.vue'
 import BreadcrumbResponsive from '../registry/examples/BreadcrumbResponsive.vue'
 import BreadcrumbWithSeparator from '../registry/examples/BreadcrumbWithSeparator.vue'
+import ButtonDestructive from '../registry/examples/ButtonDestructive.vue'
+import ButtonGhost from '../registry/examples/ButtonGhost.vue'
+import ButtonIcon from '../registry/examples/ButtonIcon.vue'
+import ButtonLink from '../registry/examples/ButtonLink.vue'
+import ButtonLoading from '../registry/examples/ButtonLoading.vue'
+import ButtonOutline from '../registry/examples/ButtonOutline.vue'
+import ButtonPrimary from '../registry/examples/ButtonPrimary.vue'
+import ButtonSecondary from '../registry/examples/ButtonSecondary.vue'
+import ButtonsLarge from '../registry/examples/ButtonsLarge.vue'
+import ButtonsSmall from '../registry/examples/ButtonsSmall.vue'
+import ButtonWithIcon from '../registry/examples/ButtonWithIcon.vue'
+import ButtonWithIconRight from '../registry/examples/ButtonWithIconRight.vue'
 </script>
 
 <template>
@@ -22,31 +34,37 @@ import BreadcrumbWithSeparator from '../registry/examples/BreadcrumbWithSeparato
           <AccordionDemo />
         </div>
       </ComponentWrapper>
+
       <ComponentWrapper name="Alert">
         <div class="grid w-full max-w-xl gap-4">
           <AlertDemo />
         </div>
       </ComponentWrapper>
+
       <ComponentWrapper name="Alert Dialog">
         <div class="grid w-full max-w-xl gap-4">
           <AlertDialogDemo />
         </div>
       </ComponentWrapper>
+
       <ComponentWrapper name="Aspect Ratio">
         <div class="grid w-full max-w-xl gap-4">
           <AspectRatioDemo />
         </div>
       </ComponentWrapper>
+
       <ComponentWrapper name="Avatar">
         <div class="grid w-full max-w-xl gap-4">
           <AvatarDemo />
         </div>
       </ComponentWrapper>
+
       <ComponentWrapper name="Badge">
         <div class="grid w-full max-w-xl gap-4">
           <BadgeDemo />
         </div>
       </ComponentWrapper>
+
       <ComponentWrapper name="Breadcrumb">
         <div class="grid w-full max-w-xl gap-4">
           <BreadcrumbDemo />
@@ -63,6 +81,30 @@ import BreadcrumbWithSeparator from '../registry/examples/BreadcrumbWithSeparato
         <div class="grid w-full max-w-xl gap-4">
           <BreadcrumbResponsive />
         </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Button">
+        <div class="flex flex-col gap-6">
+          <div
+            class="
+              flex flex-wrap items-center gap-2
+              md:flex-row
+            "
+          >
+            <ButtonPrimary />
+            <ButtonSecondary />
+            <ButtonDestructive />
+            <ButtonOutline />
+            <ButtonGhost />
+            <ButtonLink />
+            <ButtonIcon />
+            <ButtonWithIcon />
+            <ButtonWithIconRight />
+            <ButtonLoading />
+          </div>
+        </div>
+        <ButtonsSmall />
+        <ButtonsLarge />
       </ComponentWrapper>
     </div>
   </main>
