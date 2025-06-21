@@ -77,7 +77,24 @@ const state = ref<State>({
   toasts: [],
 })
 
+function createToastContainerOnce() {
+  let toastContainer = document.getElementById('toaster-container')
+
+  if (!toastContainer) {
+    toastContainer = document.createElement('div')
+    toastContainer.id = 'toaster-container'
+    document.body.appendChild(toastContainer)
+
+    render(
+      h(Teleport, { to: 'body' }, [h(Toaster)]),
+      toastContainer,
+    )
+  }
+}
+
 function dispatch(action: Action) {
+  createToastContainerOnce()
+
   switch (action.type) {
     case actionTypes.ADD_TOAST:
       state.value.toasts = [action.toast, ...state.value.toasts].slice(0, TOAST_LIMIT)
@@ -123,19 +140,6 @@ function dispatch(action: Action) {
 }
 
 function useToast() {
-  let toastContainer = document.getElementById('toaster-container')
-
-  if (!toastContainer) {
-    toastContainer = document.createElement('div')
-    toastContainer.id = 'toaster-container'
-    document.body.appendChild(toastContainer)
-
-    render(
-      h(Teleport, { to: 'body' }, [h(Toaster)]),
-      toastContainer,
-    )
-  }
-
   return {
     toasts: computed(() => state.value.toasts),
     toast,
