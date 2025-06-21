@@ -26,12 +26,12 @@ const forwardedProps = useForwardProps(delegatedProps)
     v-bind="forwardedProps"
     :class="cn(
       `
+        relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm
+        outline-hidden select-none
         data-[variant=destructive]:text-destructive-foreground
         data-[variant=destructive]:focus:text-destructive-foreground
         data-[variant=destructive]:*:[svg]:!text-destructive-foreground
         data-[variant=destructive]:focus:bg-destructive/10
-        relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm
-        outline-hidden select-none
         focus:bg-accent focus:text-accent-foreground
         data-[disabled]:pointer-events-none data-[disabled]:opacity-50
         data-[inset]:pl-8
