@@ -26,6 +26,9 @@ import ButtonWithIcon from '../registry/examples/ButtonWithIcon.vue'
 import ButtonWithIconRight from '../registry/examples/ButtonWithIconRight.vue'
 import CalendarDemo from '../registry/examples/CalendarDemo.vue'
 import CalendarDemo1 from '../registry/examples/CalendarDemo1.vue'
+import CardDemo from '../registry/examples/CardDemo.vue'
+import CardsDemo from '../registry/examples/CardsDemo.vue'
+import CardWithForm from '../registry/examples/CardWithForm.vue'
 import SelectDemo from '../registry/examples/SelectDemo.vue'
 import SelectForm from '../registry/examples/SelectForm.vue'
 import SelectScrollable from '../registry/examples/SelectScrollable.vue'
@@ -142,6 +145,14 @@ import SelectScrollable from '../registry/examples/SelectScrollable.vue'
           <div class="grid w-full gap-4 rounded border p-4">
             <SelectForm />
           </div>
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Card">
+        <div class="flex w-full flex-col gap-6 p-0">
+          <CardDemo />
+          <CardWithForm />
+          <CardsDemo />
         </div>
       </ComponentWrapper>
     </div>
