@@ -25,6 +25,7 @@ import ButtonsSmall from '../registry/examples/ButtonsSmall.vue'
 import ButtonWithIcon from '../registry/examples/ButtonWithIcon.vue'
 import ButtonWithIconRight from '../registry/examples/ButtonWithIconRight.vue'
 import SelectDemo from '../registry/examples/SelectDemo.vue'
+import SelectForm from '../registry/examples/SelectForm.vue'
 import SelectScrollable from '../registry/examples/SelectScrollable.vue'
 </script>
 
@@ -110,9 +111,15 @@ import SelectScrollable from '../registry/examples/SelectScrollable.vue'
       </ComponentWrapper>
 
       <ComponentWrapper name="Select">
-        <div class="grid w-full max-w-xl gap-4">
-          <SelectDemo />
-          <SelectScrollable />
+        <div class="flex w-full max-w-xl flex-col gap-6">
+          <div class="grid w-full gap-4">
+            <SelectDemo />
+            <SelectScrollable />
+          </div>
+
+          <div class="grid w-full gap-4 rounded border p-4">
+            <SelectForm />
+          </div>
         </div>
       </ComponentWrapper>
     </div>
