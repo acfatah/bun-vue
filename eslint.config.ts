@@ -16,7 +16,7 @@ export default antfu(
     rules: {
       ...eslintPluginBetterTailwindcss.configs['recommended-warn'].rules,
       ...eslintPluginBetterTailwindcss.configs['recommended-error'].rules,
-      'better-tailwindcss/multiline': ['warn', { printWidth: 100 }],
+      'better-tailwindcss/enforce-consistent-line-wrapping': ['warn', { printWidth: 100 }],
       'better-tailwindcss/no-restricted-classes': 'off',
       'better-tailwindcss/no-unregistered-classes': 'off',
 
