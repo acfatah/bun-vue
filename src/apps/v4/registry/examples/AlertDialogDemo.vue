@@ -16,7 +16,7 @@ import { Button } from '@/components/ui/button'
 <template>
   <AlertDialog>
     <AlertDialogTrigger as-child>
-      <Button variant="outline">
+      <Button variant="outline" class="sm:max-w-min">
         Show Dialog
       </Button>
     </AlertDialogTrigger>
