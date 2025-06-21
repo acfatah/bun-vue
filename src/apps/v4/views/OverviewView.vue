@@ -32,8 +32,18 @@ import SelectScrollable from '../registry/examples/SelectScrollable.vue'
 </script>
 
 <template>
-  <main class="flex flex-1 flex-col justify-center">
-    <div class="@container grid flex-1 gap-4 p-4">
+  <main
+    class="
+      container-wrapper px-6
+      3xl:fixed:px-0
+    "
+  >
+    <div
+      class="
+        flex flex-col gap-4
+        3xl:fixed:container
+      "
+    >
       <ComponentWrapper name="Accordion">
         <div class="grid w-full max-w-xl gap-4">
           <AccordionDemo />
