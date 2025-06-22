@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { HtmlHTMLAttributes } from 'vue'
+import type { HTMLAttributes } from 'vue'
 import { cn } from '@/lib/utils'
 
 const props = defineProps<{
-  class?: HtmlHTMLAttributes['class']
+  class?: HTMLAttributes['class']
 }>()
 </script>
 
