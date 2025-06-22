@@ -2,7 +2,7 @@
 import type { GenericObject, SubmissionHandler } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 import { h } from 'vue'
-import * as z from 'zod'
+import { z } from 'zod'
 
 import { Button } from '@/components/ui/button'
 import {
