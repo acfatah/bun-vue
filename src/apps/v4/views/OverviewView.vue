@@ -46,6 +46,7 @@ import DatePickerWithForm from '../registry/examples/DatePickerWithForm.vue'
 import DialogDemo1 from '../registry/examples/DialogDemo1.vue'
 import RangeCalendarDemo1 from '../registry/examples/RangeCalendarDemo1.vue'
 import RangeCalendarTwoMonths from '../registry/examples/RangeCalendarTwoMonths.vue'
+import ResizableDemo from '../registry/examples/ResizableDemo.vue'
 import SelectDemo from '../registry/examples/SelectDemo.vue'
 import SelectForm from '../registry/examples/SelectForm.vue'
 import SelectScrollable from '../registry/examples/SelectScrollable.vue'
@@ -240,6 +241,12 @@ import SelectScrollable from '../registry/examples/SelectScrollable.vue'
         <div class="grid w-full max-w-xl gap-4">
           <RangeCalendarDemo1 />
           <RangeCalendarTwoMonths />
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Resizable">
+        <div class="grid w-full max-w-xl gap-4">
+          <ResizableDemo />
         </div>
       </ComponentWrapper>
 
