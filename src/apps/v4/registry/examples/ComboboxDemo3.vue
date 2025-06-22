@@ -63,7 +63,11 @@ const selectedGroup = computed(
 </script>
 
 <template>
-  <Combobox v-model="selectedTimezone" by="label">
+  <Combobox
+    v-slot="{ open }"
+    v-model="selectedTimezone"
+    by="label"
+  >
     <ComboboxAnchor as-child>
       <ComboboxTrigger as-child>
         <Button
@@ -84,7 +88,11 @@ const selectedGroup = computed(
             Select timezone
           </template>
 
-          <Icon icon="lucide:chevron-down" class="ml-2 opacity-50" />
+          <Icon
+            icon="lucide:chevron-down"
+            class="ml-2 opacity-50 transition-transform duration-200"
+            :class="[open && 'rotate-180']"
+          />
         </Button>
       </ComboboxTrigger>
     </ComboboxAnchor>

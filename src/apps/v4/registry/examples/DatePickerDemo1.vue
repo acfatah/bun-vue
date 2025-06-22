@@ -21,7 +21,7 @@ const value = ref<DateValue>()
 </script>
 
 <template>
-  <Popover>
+  <Popover v-slot="{ open }">
     <PopoverTrigger as-child>
       <Button
         variant="outline"
@@ -30,11 +30,12 @@ const value = ref<DateValue>()
             w-full justify-between text-left font-normal
             md:w-[280px]
           `,
+          open && '[&[data-state=open]>svg]:rotate-180',
           !value && 'text-muted-foreground',
         )"
       >
         {{ value ? df.format(value.toDate(getLocalTimeZone())) : 'Select date' }}
-        <Icon icon="lucide:chevron-down" />
+        <Icon icon="lucide:chevron-down" class="opacity-50 transition-transform duration-200" />
       </Button>
     </PopoverTrigger>
     <PopoverContent class="w-auto p-0">
