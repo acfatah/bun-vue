@@ -32,6 +32,10 @@ import CardWithForm from '../registry/examples/CardWithForm.vue'
 import CarouselDemo from '../registry/examples/CarouselDemo.vue'
 import CheckboxWithForm from '../registry/examples/CheckboxWithForm.vue'
 import CollapsibleDemo from '../registry/examples/CollapsibleDemo.vue'
+import ComboboxDemo1 from '../registry/examples/ComboboxDemo1.vue'
+import ComboboxDemo2 from '../registry/examples/ComboboxDemo2.vue'
+import ComboboxDemo3 from '../registry/examples/ComboboxDemo3.vue'
+import ComboboxDemo4 from '../registry/examples/ComboboxDemo4.vue'
 import SelectDemo from '../registry/examples/SelectDemo.vue'
 import SelectForm from '../registry/examples/SelectForm.vue'
 import SelectScrollable from '../registry/examples/SelectScrollable.vue'
@@ -174,6 +178,31 @@ import SelectScrollable from '../registry/examples/SelectScrollable.vue'
       <ComponentWrapper name="Collapsible">
         <div class="grid w-full max-w-xl gap-4">
           <CollapsibleDemo />
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Combobox">
+        <div
+          class="
+            flex w-full max-w-xl flex-col gap-4
+            md:flex-row
+          "
+        >
+          <div class="grid w-full gap-4">
+            <ComboboxDemo1 />
+          </div>
+
+          <div class="grid w-full gap-4">
+            <ComboboxDemo2 />
+          </div>
+
+          <div class="grid w-full gap-4">
+            <ComboboxDemo3 />
+          </div>
+
+          <div class="grid w-full gap-4">
+            <ComboboxDemo4 />
+          </div>
         </div>
       </ComponentWrapper>
     </div>
