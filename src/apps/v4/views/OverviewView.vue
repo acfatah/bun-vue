@@ -50,6 +50,9 @@ import DialogWithInlineInputs from '../registry/examples/DialogWithInlineInputs.
 import DialogWithScrollableContent from '../registry/examples/DialogWithScrollableContent.vue'
 import DialogWithScrollableOverlay from '../registry/examples/DialogWithScrollableOverlay.vue'
 import DialogWithStickyFooter from '../registry/examples/DialogWithStickyFooter.vue'
+import DrawerDemo from '../registry/examples/DrawerDemo.vue'
+import DrawerResponsiveForm from '../registry/examples/DrawerResponsiveForm.vue'
+import DrawerWithScrollableContent from '../registry/examples/DrawerWithScrollableContent.vue'
 import RangeCalendarDemo1 from '../registry/examples/RangeCalendarDemo1.vue'
 import RangeCalendarTwoMonths from '../registry/examples/RangeCalendarTwoMonths.vue'
 import ResizableDemo from '../registry/examples/ResizableDemo.vue'
@@ -240,6 +243,19 @@ import SelectScrollable from '../registry/examples/SelectScrollable.vue'
           <DialogWithStickyFooter />
           <DialogWithContextMenuTrigger />
           <DialogWithCustomCloseButton />
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Drawer">
+        <div
+          class="
+            flex w-full flex-col gap-4
+            md:flex-row md:flex-wrap
+          "
+        >
+          <DrawerDemo />
+          <DrawerResponsiveForm />
+          <DrawerWithScrollableContent />
         </div>
       </ComponentWrapper>
 
