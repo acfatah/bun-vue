@@ -43,7 +43,13 @@ import DatePickerDemo1 from '../registry/examples/DatePickerDemo1.vue'
 import DatePickerDemo2 from '../registry/examples/DatePickerDemo2.vue'
 import DatePickerDemo3 from '../registry/examples/DatePickerDemo3.vue'
 import DatePickerWithForm from '../registry/examples/DatePickerWithForm.vue'
-import DialogDemo1 from '../registry/examples/DialogDemo1.vue'
+import DialogWithContextMenuTrigger from '../registry/examples/DialogWithContextMenuTrigger.vue'
+import DialogWithCustomCloseButton from '../registry/examples/DialogWithCustomCloseButton.vue'
+import DialogWithForm from '../registry/examples/DialogWithForm.vue'
+import DialogWithInlineInputs from '../registry/examples/DialogWithInlineInputs.vue'
+import DialogWithScrollableContent from '../registry/examples/DialogWithScrollableContent.vue'
+import DialogWithScrollableOverlay from '../registry/examples/DialogWithScrollableOverlay.vue'
+import DialogWithStickyFooter from '../registry/examples/DialogWithStickyFooter.vue'
 import RangeCalendarDemo1 from '../registry/examples/RangeCalendarDemo1.vue'
 import RangeCalendarTwoMonths from '../registry/examples/RangeCalendarTwoMonths.vue'
 import ResizableDemo from '../registry/examples/ResizableDemo.vue'
@@ -232,8 +238,19 @@ import SelectScrollable from '../registry/examples/SelectScrollable.vue'
       </ComponentWrapper>
 
       <ComponentWrapper name="Dialog">
-        <div class="grid w-full max-w-xl gap-4">
-          <DialogDemo1 />
+        <div
+          class="
+            flex w-full flex-col gap-4
+            md:flex-row md:flex-wrap
+          "
+        >
+          <DialogWithForm />
+          <DialogWithInlineInputs />
+          <DialogWithScrollableContent />
+          <DialogWithScrollableOverlay />
+          <DialogWithStickyFooter />
+          <DialogWithContextMenuTrigger />
+          <DialogWithCustomCloseButton />
         </div>
       </ComponentWrapper>
 
