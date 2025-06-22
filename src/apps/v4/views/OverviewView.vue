@@ -38,6 +38,7 @@ import ComboboxDemo3 from '../registry/examples/ComboboxDemo3.vue'
 import ComboboxDemo4 from '../registry/examples/ComboboxDemo4.vue'
 import CommandDemo from '../registry/examples/CommandDemo.vue'
 import CommandWithDialog from '../registry/examples/CommandWithDialog.vue'
+import ContextMenuDemo from '../registry/examples/ContextMenuDemo.vue'
 import DialogDemo1 from '../registry/examples/DialogDemo1.vue'
 import SelectDemo from '../registry/examples/SelectDemo.vue'
 import SelectForm from '../registry/examples/SelectForm.vue'
@@ -213,6 +214,12 @@ import SelectScrollable from '../registry/examples/SelectScrollable.vue'
         <div class="flex w-full flex-col gap-6 p-0">
           <CommandDemo />
           <CommandWithDialog />
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="ContextMenu">
+        <div class="grid w-full max-w-xl gap-4">
+          <ContextMenuDemo />
         </div>
       </ComponentWrapper>
 
