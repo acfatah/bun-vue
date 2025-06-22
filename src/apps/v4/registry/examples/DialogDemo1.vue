@@ -17,7 +17,7 @@ import { Label } from '@/components/ui/label'
 <template>
   <Dialog>
     <DialogTrigger as-child>
-      <Button variant="outline">
+      <Button variant="outline" class="md:w-min">
         Edit Profile
       </Button>
     </DialogTrigger>
