@@ -21,7 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { useToast } from '@/components/ui/toast'
+import { toast } from '@/components/ui/toast'
 
 type SubmissionRecord = z.infer<typeof schema>
 const schema = z.object({
@@ -36,14 +36,13 @@ const formSchema = toTypedSchema(schema)
 
 const onSubmit: SubmissionHandler<GenericObject> = function (values) {
   const formValues = values as SubmissionRecord
-  const { toast } = useToast()
 
   toast({
     title: 'You submitted the following values:',
     description: h(
       'pre',
-      { class: 'mt-2 w-full rounded-md bg-slate-950 dark:bg-slate-800 p-4' },
-      h('code', { class: 'text-white' }, JSON.stringify(formValues, null, 2)),
+      { class: 'mt-2 w-full rounded-md bg-primary text-primary-foreground p-4' },
+      h('code', null, JSON.stringify(formValues, null, 2)),
     ),
   })
 }
