@@ -1,13 +1,5 @@
 <script setup lang="ts">
-import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from 'lucide-vue-next'
-
+import { Icon } from '@iconify/vue'
 import {
   Command,
   CommandEmpty,
@@ -27,32 +19,32 @@ import {
       <CommandEmpty>No results found.</CommandEmpty>
       <CommandGroup heading="Suggestions">
         <CommandItem value="calendar">
-          <Calendar />
+          <Icon icon="lucide:calendar" />
           <span>Calendar</span>
         </CommandItem>
         <CommandItem value="search">
-          <Smile />
+          <Icon icon="lucide:smile" />
           <span>Search Emoji</span>
         </CommandItem>
         <CommandItem disabled value="calculator">
-          <Calculator />
+          <Icon icon="lucide:calculator" />
           <span>Calculator</span>
         </CommandItem>
       </CommandGroup>
       <CommandSeparator />
       <CommandGroup heading="Settings">
         <CommandItem value="profile">
-          <User />
+          <Icon icon="lucide:user" />
           <span>Profile</span>
           <CommandShortcut>⌘P</CommandShortcut>
         </CommandItem>
         <CommandItem value="billing">
-          <CreditCard />
+          <Icon icon="lucide:credit-card" />
           <span>Billing</span>
           <CommandShortcut>⌘B</CommandShortcut>
         </CommandItem>
         <CommandItem value="settings">
-          <Settings />
+          <Icon icon="lucide:settings" />
           <span>Settings</span>
           <CommandShortcut>⌘S</CommandShortcut>
         </CommandItem>
