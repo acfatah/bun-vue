@@ -59,7 +59,7 @@ const formatter = useDateFormatter('en')
     v-slot="{ date, grid, weekDays }"
     v-model:placeholder="placeholder"
     v-bind="forwarded"
-    :class="cn('w-min rounded-md border p-3', props.class)"
+    :class="cn('w-min rounded-md border p-3 select-none', props.class)"
   >
     <CalendarHeader>
       <CalendarHeading class="flex w-full items-center justify-between gap-2">
