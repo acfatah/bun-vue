@@ -188,25 +188,14 @@ import SelectScrollable from '../registry/examples/SelectScrollable.vue'
       <ComponentWrapper name="Combobox">
         <div
           class="
-            flex w-full max-w-xl flex-col gap-4
-            md:flex-row
+            flex w-full flex-col gap-4
+            md:flex-row md:flex-wrap
           "
         >
-          <div class="grid w-full gap-4">
-            <ComboboxDemo1 />
-          </div>
-
-          <div class="grid w-full gap-4">
-            <ComboboxDemo2 />
-          </div>
-
-          <div class="grid w-full gap-4">
-            <ComboboxDemo3 />
-          </div>
-
-          <div class="grid w-full gap-4">
-            <ComboboxDemo4 />
-          </div>
+          <ComboboxDemo1 />
+          <ComboboxDemo2 />
+          <ComboboxDemo3 />
+          <ComboboxDemo4 />
         </div>
       </ComponentWrapper>
 
