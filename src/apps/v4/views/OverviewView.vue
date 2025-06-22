@@ -53,6 +53,13 @@ import DialogWithStickyFooter from '../registry/examples/DialogWithStickyFooter.
 import DrawerDemo from '../registry/examples/DrawerDemo.vue'
 import DrawerResponsiveForm from '../registry/examples/DrawerResponsiveForm.vue'
 import DrawerWithScrollableContent from '../registry/examples/DrawerWithScrollableContent.vue'
+import DropdownDemo from '../registry/examples/DropdownDemo.vue'
+import DropdownMenu from '../registry/examples/DropdownMenu.vue'
+import DropdownMenuAvatarOnly from '../registry/examples/DropdownMenuAvatarOnly.vue'
+import DropdownMenuIconButton from '../registry/examples/DropdownMenuIconButton.vue'
+import DropdownMenuWithAvatar from '../registry/examples/DropdownMenuWithAvatar.vue'
+import DropdownWithCheckboxes from '../registry/examples/DropdownWithCheckboxes.vue'
+import DropdownWithRadioGroup from '../registry/examples/DropdownWithRadioGroup.vue'
 import RangeCalendarDemo1 from '../registry/examples/RangeCalendarDemo1.vue'
 import RangeCalendarTwoMonths from '../registry/examples/RangeCalendarTwoMonths.vue'
 import ResizableDemo from '../registry/examples/ResizableDemo.vue'
@@ -256,6 +263,18 @@ import SelectScrollable from '../registry/examples/SelectScrollable.vue'
           <DrawerDemo />
           <DrawerResponsiveForm />
           <DrawerWithScrollableContent />
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Dropdown Menu">
+        <div className="flex flex-wrap items-start gap-4">
+          <DropdownDemo />
+          <DropdownMenu />
+          <DropdownWithCheckboxes />
+          <DropdownWithRadioGroup />
+          <DropdownMenuWithAvatar />
+          <DropdownMenuAvatarOnly />
+          <DropdownMenuIconButton />
         </div>
       </ComponentWrapper>
 
