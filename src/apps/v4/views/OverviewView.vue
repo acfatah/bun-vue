@@ -39,6 +39,10 @@ import ComboboxDemo4 from '../registry/examples/ComboboxDemo4.vue'
 import CommandDemo from '../registry/examples/CommandDemo.vue'
 import CommandWithDialog from '../registry/examples/CommandWithDialog.vue'
 import ContextMenuDemo from '../registry/examples/ContextMenuDemo.vue'
+import DatePickerDemo1 from '../registry/examples/DatePickerDemo1.vue'
+import DatePickerDemo2 from '../registry/examples/DatePickerDemo2.vue'
+import DatePickerDemo3 from '../registry/examples/DatePickerDemo3.vue'
+import DatePickerWithForm from '../registry/examples/DatePickerWithForm.vue'
 import DialogDemo1 from '../registry/examples/DialogDemo1.vue'
 import SelectDemo from '../registry/examples/SelectDemo.vue'
 import SelectForm from '../registry/examples/SelectForm.vue'
@@ -220,6 +224,20 @@ import SelectScrollable from '../registry/examples/SelectScrollable.vue'
       <ComponentWrapper name="ContextMenu">
         <div class="grid w-full max-w-xl gap-4">
           <ContextMenuDemo />
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="DatePicker">
+        <div class="flex w-full max-w-xl flex-col gap-6">
+          <div class="grid w-full gap-4">
+            <DatePickerDemo1 />
+            <DatePickerDemo2 />
+            <DatePickerDemo3 />
+          </div>
+
+          <div class="grid w-full gap-4 rounded border p-4">
+            <DatePickerWithForm />
+          </div>
         </div>
       </ComponentWrapper>
 
