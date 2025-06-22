@@ -31,6 +31,7 @@ import CardsDemo from '../registry/examples/CardsDemo.vue'
 import CardWithForm from '../registry/examples/CardWithForm.vue'
 import CarouselDemo from '../registry/examples/CarouselDemo.vue'
 import CheckboxWithForm from '../registry/examples/CheckboxWithForm.vue'
+import CollapsibleDemo from '../registry/examples/CollapsibleDemo.vue'
 import SelectDemo from '../registry/examples/SelectDemo.vue'
 import SelectForm from '../registry/examples/SelectForm.vue'
 import SelectScrollable from '../registry/examples/SelectScrollable.vue'
@@ -167,6 +168,12 @@ import SelectScrollable from '../registry/examples/SelectScrollable.vue'
       <ComponentWrapper name="Checkbox">
         <div class="grid w-full max-w-xl gap-4">
           <CheckboxWithForm />
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Collapsible">
+        <div class="grid w-full max-w-xl gap-4">
+          <CollapsibleDemo />
         </div>
       </ComponentWrapper>
     </div>
