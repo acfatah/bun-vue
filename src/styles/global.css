@@ -164,13 +164,32 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+
+    /* Custom Scrollbar */
+    scrollbar-width: auto;
+    scrollbar-color: var(--border) transparent;
   }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 8px;
+  }
+
   ::selection {
     @apply bg-selection text-selection-foreground;
   }
+
   html {
     @apply scroll-smooth;
   }
+
   body {
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
