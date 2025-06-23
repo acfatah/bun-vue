@@ -80,6 +80,7 @@ import SelectDemo from '../registry/examples/SelectDemo.vue'
 import SelectForm from '../registry/examples/SelectForm.vue'
 import SelectScrollable from '../registry/examples/SelectScrollable.vue'
 import SeparatorDemo from '../registry/examples/SeparatorDemo.vue'
+import SheetDemo from '../registry/examples/SheetDemo.vue'
 </script>
 
 <template>
@@ -411,6 +412,12 @@ import SeparatorDemo from '../registry/examples/SeparatorDemo.vue'
       <ComponentWrapper name="Separator">
         <div class="grid w-full max-w-xl gap-4">
           <SeparatorDemo />
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Sheet">
+        <div class="grid w-full max-w-xl gap-4">
+          <SheetDemo />
         </div>
       </ComponentWrapper>
     </div>
