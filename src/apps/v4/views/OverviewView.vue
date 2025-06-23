@@ -65,6 +65,8 @@ import HoverCardDemo from '../registry/examples/HoverCardDemo.vue'
 import InputDemo from '../registry/examples/InputDemo.vue'
 import LabelDemo from '../registry/examples/LabelDemo.vue'
 import MenubarDemo from '../registry/examples/MenubarDemo.vue'
+import NavigationMenuDemo1 from '../registry/examples/NavigationMenu/NavigationMenuDemo1.vue'
+import NavigationMenuDemo2 from '../registry/examples/NavigationMenu/NavigationMenuDemo2.vue'
 import RangeCalendarDemo1 from '../registry/examples/RangeCalendarDemo1.vue'
 import RangeCalendarTwoMonths from '../registry/examples/RangeCalendarTwoMonths.vue'
 import ResizableDemo from '../registry/examples/ResizableDemo.vue'
@@ -315,6 +317,25 @@ import SelectScrollable from '../registry/examples/SelectScrollable.vue'
       <ComponentWrapper name="Menubar">
         <div class="grid w-full max-w-xl gap-4">
           <MenubarDemo />
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Navigation Menu">
+        <span
+          class="
+            flex text-xs
+            sm:hidden
+          "
+        >Hidden on small viewport</span>
+
+        <div
+          class="
+            z-10 hidden w-full gap-6
+            sm:flex sm:flex-col
+          "
+        >
+          <NavigationMenuDemo1 />
+          <NavigationMenuDemo2 />
         </div>
       </ComponentWrapper>
 
