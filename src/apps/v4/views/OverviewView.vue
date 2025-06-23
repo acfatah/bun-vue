@@ -71,6 +71,7 @@ import PaginationDemo from '../registry/examples/PaginationDemo.vue'
 import PinInputDemo from '../registry/examples/PinInputDemo.vue'
 import PopoverDemo from '../registry/examples/PopoverDemo.vue'
 import ProgressDemo from '../registry/examples/ProgressDemo.vue'
+import RadioGroupDemo from '../registry/examples/RadioGroupDemo.vue'
 import RangeCalendarDemo1 from '../registry/examples/RangeCalendarDemo1.vue'
 import RangeCalendarTwoMonths from '../registry/examples/RangeCalendarTwoMonths.vue'
 import ResizableDemo from '../registry/examples/ResizableDemo.vue'
@@ -364,6 +365,12 @@ import SelectScrollable from '../registry/examples/SelectScrollable.vue'
       <ComponentWrapper name="Progress">
         <div class="grid w-full max-w-xl gap-4">
           <ProgressDemo />
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Radio Group">
+        <div class="grid w-full max-w-xl gap-4">
+          <RadioGroupDemo />
         </div>
       </ComponentWrapper>
 
