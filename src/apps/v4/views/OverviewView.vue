@@ -67,6 +67,7 @@ import LabelDemo from '../registry/examples/LabelDemo.vue'
 import MenubarDemo from '../registry/examples/MenubarDemo.vue'
 import NavigationMenuDemo1 from '../registry/examples/NavigationMenu/NavigationMenuDemo1.vue'
 import NavigationMenuDemo2 from '../registry/examples/NavigationMenu/NavigationMenuDemo2.vue'
+import PaginationDemo from '../registry/examples/PaginationDemo.vue'
 import RangeCalendarDemo1 from '../registry/examples/RangeCalendarDemo1.vue'
 import RangeCalendarTwoMonths from '../registry/examples/RangeCalendarTwoMonths.vue'
 import ResizableDemo from '../registry/examples/ResizableDemo.vue'
@@ -336,6 +337,12 @@ import SelectScrollable from '../registry/examples/SelectScrollable.vue'
         >
           <NavigationMenuDemo1 />
           <NavigationMenuDemo2 />
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Pagination">
+        <div class="grid max-w-xl gap-4">
+          <PaginationDemo />
         </div>
       </ComponentWrapper>
 
