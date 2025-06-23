@@ -61,6 +61,7 @@ import DropdownMenuWithAvatar from '../registry/examples/DropdownMenuWithAvatar.
 import DropdownWithCheckboxes from '../registry/examples/DropdownWithCheckboxes.vue'
 import DropdownWithRadioGroup from '../registry/examples/DropdownWithRadioGroup.vue'
 import FormDemo from '../registry/examples/FormDemo.vue'
+import HoverCardDemo from '../registry/examples/HoverCardDemo.vue'
 import RangeCalendarDemo1 from '../registry/examples/RangeCalendarDemo1.vue'
 import RangeCalendarTwoMonths from '../registry/examples/RangeCalendarTwoMonths.vue'
 import ResizableDemo from '../registry/examples/ResizableDemo.vue'
@@ -282,6 +283,17 @@ import SelectScrollable from '../registry/examples/SelectScrollable.vue'
       <ComponentWrapper name="Form">
         <div class="grid w-full max-w-xl gap-4">
           <FormDemo />
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Hover Card">
+        <div
+          class="
+            grid w-full max-w-xl place-items-center gap-4
+            md:rounded md:border
+          "
+        >
+          <HoverCardDemo />
         </div>
       </ComponentWrapper>
 
