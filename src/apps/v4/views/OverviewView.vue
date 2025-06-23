@@ -75,6 +75,7 @@ import RadioGroupDemo from '../registry/examples/RadioGroupDemo.vue'
 import RangeCalendarDemo1 from '../registry/examples/RangeCalendarDemo1.vue'
 import RangeCalendarTwoMonths from '../registry/examples/RangeCalendarTwoMonths.vue'
 import ResizableDemo from '../registry/examples/ResizableDemo.vue'
+import ScrollAreaDemo from '../registry/examples/ScrollAreaDemo.vue'
 import SelectDemo from '../registry/examples/SelectDemo.vue'
 import SelectForm from '../registry/examples/SelectForm.vue'
 import SelectScrollable from '../registry/examples/SelectScrollable.vue'
@@ -384,6 +385,12 @@ import SelectScrollable from '../registry/examples/SelectScrollable.vue'
       <ComponentWrapper name="Resizable">
         <div class="grid w-full max-w-xl gap-4">
           <ResizableDemo />
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Scroll Area">
+        <div class="grid w-full max-w-xl gap-4">
+          <ScrollAreaDemo />
         </div>
       </ComponentWrapper>
 
