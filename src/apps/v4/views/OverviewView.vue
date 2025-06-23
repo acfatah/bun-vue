@@ -79,6 +79,7 @@ import ScrollAreaDemo from '../registry/examples/ScrollAreaDemo.vue'
 import SelectDemo from '../registry/examples/SelectDemo.vue'
 import SelectForm from '../registry/examples/SelectForm.vue'
 import SelectScrollable from '../registry/examples/SelectScrollable.vue'
+import SeparatorDemo from '../registry/examples/SeparatorDemo.vue'
 </script>
 
 <template>
@@ -404,6 +405,12 @@ import SelectScrollable from '../registry/examples/SelectScrollable.vue'
           <div class="grid w-full gap-4 rounded border p-4">
             <SelectForm />
           </div>
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Separator">
+        <div class="grid w-full max-w-xl gap-4">
+          <SeparatorDemo />
         </div>
       </ComponentWrapper>
     </div>
