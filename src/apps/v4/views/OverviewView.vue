@@ -82,6 +82,7 @@ import SelectScrollable from '../registry/examples/SelectScrollable.vue'
 import SeparatorDemo from '../registry/examples/SeparatorDemo.vue'
 import SheetDemo from '../registry/examples/SheetDemo.vue'
 import SkeletonDemo from '../registry/examples/SkeletonDemo.vue'
+import SliderDemo from '../registry/examples/SliderDemo.vue'
 </script>
 
 <template>
@@ -424,6 +425,12 @@ import SkeletonDemo from '../registry/examples/SkeletonDemo.vue'
 
       <ComponentWrapper name="Skeleton">
         <SkeletonDemo />
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Slider">
+        <div class="grid w-full max-w-xl gap-4">
+          <SliderDemo />
+        </div>
       </ComponentWrapper>
     </div>
   </main>
