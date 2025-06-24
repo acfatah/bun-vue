@@ -89,6 +89,7 @@ import TableDemo from '../registry/examples/TableDemo.vue'
 import TabsDemo from '../registry/examples/TabsDemo.vue'
 import TextareaDemo from '../registry/examples/TextareaDemo.vue'
 import ToggleDemo from '../registry/examples/ToggleDemo.vue'
+import ToggleGroupDemo from '../registry/examples/ToggleGroupDemo.vue'
 </script>
 
 <template>
@@ -472,6 +473,12 @@ import ToggleDemo from '../registry/examples/ToggleDemo.vue'
       <ComponentWrapper name="Toggle">
         <div class="grid w-full max-w-xl gap-4">
           <ToggleDemo />
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="ToggleGroup">
+        <div class="grid w-full max-w-xl gap-4">
+          <ToggleGroupDemo />
         </div>
       </ComponentWrapper>
     </div>
