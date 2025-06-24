@@ -87,6 +87,7 @@ import SonnerDemo from '../registry/examples/SonnerDemo.vue'
 import SwitchDemo from '../registry/examples/SwitchDemo.vue'
 import TableDemo from '../registry/examples/TableDemo.vue'
 import TabsDemo from '../registry/examples/TabsDemo.vue'
+import TextareaDemo from '../registry/examples/TextareaDemo.vue'
 </script>
 
 <template>
@@ -458,6 +459,12 @@ import TabsDemo from '../registry/examples/TabsDemo.vue'
       <ComponentWrapper name="Tabs">
         <div class="grid w-full max-w-xl gap-4">
           <TabsDemo />
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Textarea">
+        <div class="grid w-full max-w-xl gap-4">
+          <TextareaDemo />
         </div>
       </ComponentWrapper>
     </div>
