@@ -88,6 +88,7 @@ import SwitchDemo from '../registry/examples/SwitchDemo.vue'
 import TableDemo from '../registry/examples/TableDemo.vue'
 import TabsDemo from '../registry/examples/TabsDemo.vue'
 import TextareaDemo from '../registry/examples/TextareaDemo.vue'
+import ToggleDemo from '../registry/examples/ToggleDemo.vue'
 </script>
 
 <template>
@@ -465,6 +466,12 @@ import TextareaDemo from '../registry/examples/TextareaDemo.vue'
       <ComponentWrapper name="Textarea">
         <div class="grid w-full max-w-xl gap-4">
           <TextareaDemo />
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Toggle">
+        <div class="grid w-full max-w-xl gap-4">
+          <ToggleDemo />
         </div>
       </ComponentWrapper>
     </div>
