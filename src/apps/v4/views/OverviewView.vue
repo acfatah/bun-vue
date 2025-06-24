@@ -83,6 +83,7 @@ import SeparatorDemo from '../registry/examples/SeparatorDemo.vue'
 import SheetDemo from '../registry/examples/SheetDemo.vue'
 import SkeletonDemo from '../registry/examples/SkeletonDemo.vue'
 import SliderDemo from '../registry/examples/SliderDemo.vue'
+import SonnerDemo from '../registry/examples/SonnerDemo.vue'
 </script>
 
 <template>
@@ -430,6 +431,12 @@ import SliderDemo from '../registry/examples/SliderDemo.vue'
       <ComponentWrapper name="Slider">
         <div class="grid w-full max-w-xl gap-4">
           <SliderDemo />
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Sonner">
+        <div class="grid w-full max-w-xl gap-4">
+          <SonnerDemo />
         </div>
       </ComponentWrapper>
     </div>
