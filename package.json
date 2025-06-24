@@ -42,17 +42,17 @@
     "vee-validate": "^4.15.1",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1",
-    "vue-sonner": "^2.0.0"
+    "vue-sonner": "^2.0.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.15.0",
+    "@antfu/eslint-config": "^4.16.1",
     "@types/common-tags": "^1.8.4",
     "@types/node": "^22.15.32",
     "@vitejs/plugin-vue": "^5.2.4",
     "@vue/tsconfig": "^0.7.0",
     "common-tags": "^1.8.2",
     "eslint": "^9.29.0",
-    "eslint-plugin-better-tailwindcss": "^3.4.0",
+    "eslint-plugin-better-tailwindcss": "^3.4.1",
     "eslint-plugin-format": "^1.0.1",
     "typescript": "~5.8.3",
     "vite": "^6.3.5",
