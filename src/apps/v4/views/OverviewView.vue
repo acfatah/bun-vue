@@ -85,6 +85,7 @@ import SkeletonDemo from '../registry/examples/SkeletonDemo.vue'
 import SliderDemo from '../registry/examples/SliderDemo.vue'
 import SonnerDemo from '../registry/examples/SonnerDemo.vue'
 import SwitchDemo from '../registry/examples/SwitchDemo.vue'
+import TableDemo from '../registry/examples/TableDemo.vue'
 </script>
 
 <template>
@@ -444,6 +445,12 @@ import SwitchDemo from '../registry/examples/SwitchDemo.vue'
       <ComponentWrapper name="Switch">
         <div class="grid w-full max-w-xl gap-4">
           <SwitchDemo />
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Table">
+        <div class="grid w-full max-w-xl gap-4">
+          <TableDemo />
         </div>
       </ComponentWrapper>
     </div>
