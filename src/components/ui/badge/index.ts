@@ -37,6 +37,27 @@ export const badgeVariants = cva(
             text-foreground
             [a&]:hover:bg-accent [a&]:hover:text-accent-foreground
           `,
+
+        success:
+          `
+            border-success-foreground/40 bg-success text-success-foreground
+            [a&]:hover:bg-success/90
+          `,
+        warning:
+          `
+            border-warning-foreground/40 bg-warning text-warning-foreground
+            [a&]:hover:bg-warning/90
+          `,
+        info:
+          `
+            border-info-foreground/40 bg-info text-info-foreground
+            [a&]:hover:bg-info/90
+          `,
+        error:
+          `
+            border-error-foreground/40 bg-error text-error-foreground
+            [a&]:hover:bg-error/90
+          `,
       },
     },
 
