@@ -1,0 +1,57 @@
+@theme inline {
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+
+  --color-error: var(--error);
+  --color-error-foreground: var(--error-foreground);
+}
+
+@utility border-success {
+  border-color: var(--success-border);
+}
+
+@utility border-info {
+  border-color: var(--info-border);
+}
+
+@utility border-warning {
+  border-color: var(--warning-border);
+}
+
+@utility border-error {
+  border-color: var(--error-border);
+}
+
+:root {
+  --success: hsl(143, 85%, 96%);
+  --success-foreground: hsl(140, 100%, 27%);
+
+  --info: hsl(208, 100%, 97%);
+  --info-foreground: hsl(210, 92%, 45%);
+
+  --warning: hsl(49, 100%, 97%);
+  --warning-foreground: hsl(31, 92%, 45%);
+
+  --error: hsl(359, 100%, 97%);
+  --error-foreground: hsl(360, 100%, 45%);
+}
+
+.dark {
+  --success: hsl(150, 100%, 6%);
+  --success-foreground: hsl(150, 86%, 65%);
+
+  --info: hsl(215, 100%, 6%);
+  --info-foreground: hsl(216, 87%, 65%);
+
+  --warning: hsl(64, 100%, 6%);
+  --warning-foreground: hsl(46, 87%, 65%);
+
+  --error: hsl(358, 76%, 10%);
+  --error-foreground: hsl(358, 100%, 81%);
+}
