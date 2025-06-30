@@ -11,6 +11,7 @@ const isDark = useDark()
   <Toaster
     class="toaster group"
     v-bind="props"
+    :rich-colors="true"
     :theme="isDark ? 'dark' : 'light'"
     :toast-options="{
       classes: {
