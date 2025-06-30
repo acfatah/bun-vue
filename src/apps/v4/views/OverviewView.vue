@@ -39,6 +39,7 @@ import ComboboxDemo4 from '../registry/examples/ComboboxDemo4.vue'
 import CommandDemo from '../registry/examples/CommandDemo.vue'
 import CommandWithDialog from '../registry/examples/CommandWithDialog.vue'
 import ContextMenuDemo from '../registry/examples/ContextMenuDemo.vue'
+import DataTableDemo from '../registry/examples/DataTableDemo.vue'
 import DatePickerDemo1 from '../registry/examples/DatePickerDemo1.vue'
 import DatePickerDemo2 from '../registry/examples/DatePickerDemo2.vue'
 import DatePickerDemo3 from '../registry/examples/DatePickerDemo3.vue'
@@ -245,6 +246,10 @@ import TooltipDemo from '../registry/examples/TooltipDemo.vue'
         <div class="grid w-full max-w-xl gap-4">
           <ContextMenuDemo />
         </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Data Table">
+        <DataTableDemo />
       </ComponentWrapper>
 
       <ComponentWrapper name="DatePicker">
