@@ -40,7 +40,10 @@ export const columns = [
   // Status column
   columnHelper.accessor('status', {
     header: () => 'Status',
-    cell: ({ row }) => h(Badge, { class: 'capitalize', variant: statusMap[row.getValue('status') as keyof typeof statusMap] }, row.getValue('status')),
+    cell: ({ row }) => h(Badge, {
+      class: 'capitalize',
+      variant: statusMap[row.getValue('status') as keyof typeof statusMap],
+    }, () => row.getValue('status')),
   }),
 
   // Email column
