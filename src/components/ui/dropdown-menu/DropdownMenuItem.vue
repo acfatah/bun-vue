@@ -34,10 +34,10 @@ const forwardedProps = useForwardProps(delegatedProps)
         data-[variant=destructive]:text-destructive-foreground
         data-[variant=destructive]:focus:bg-destructive/10
         data-[variant=destructive]:focus:text-destructive-foreground
-        data-[variant=destructive]:*:[svg]:!text-destructive-foreground
         dark:data-[variant=destructive]:focus:bg-destructive/40
         [&_svg]:pointer-events-none [&_svg]:shrink-0
         [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground
+        data-[variant=destructive]:*:[svg]:!text-destructive-foreground
       `,
       props.class,
     )"

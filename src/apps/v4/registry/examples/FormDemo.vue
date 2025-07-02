@@ -138,7 +138,6 @@ const df = new DateFormatter('en-US', {
     <div
       class="
         flex w-full flex-col space-y-6
-        lg:3/4
         md:w-3/4
       "
     >

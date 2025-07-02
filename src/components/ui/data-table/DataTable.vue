@@ -87,9 +87,10 @@ const table = useVueTable({
       `
         [&_table_td:nth-child(1)]:sticky [&_table_td:nth-child(1)]:left-0
         [&_table_td:nth-child(1)]:bg-background
-        sm:[&_table_td:nth-child(1)]:bg-transparent sm:[&_table_th:nth-child(1)]:bg-transparent
+        sm:[&_table_td:nth-child(1)]:bg-transparent
         [&_table_th:nth-child(1)]:sticky [&_table_th:nth-child(1)]:left-0
         [&_table_th:nth-child(1)]:bg-background
+        sm:[&_table_th:nth-child(1)]:bg-transparent
       `,
       props.class)"
   >

@@ -30,12 +30,6 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
         group-data-[viewport=false]/navigation-menu:text-popover-foreground
         group-data-[viewport=false]/navigation-menu:shadow
         group-data-[viewport=false]/navigation-menu:duration-200
-        group-data-[viewport=false]/navigation-menu:data-[state=closed]:animate-out
-        group-data-[viewport=false]/navigation-menu:data-[state=closed]:fade-out-0
-        group-data-[viewport=false]/navigation-menu:data-[state=closed]:zoom-out-95
-        group-data-[viewport=false]/navigation-menu:data-[state=open]:animate-in
-        group-data-[viewport=false]/navigation-menu:data-[state=open]:fade-in-0
-        group-data-[viewport=false]/navigation-menu:data-[state=open]:zoom-in-95
         data-[motion=from-end]:slide-in-from-right-52
         data-[motion=from-start]:slide-in-from-left-52
         data-[motion=to-end]:slide-out-to-right-52
@@ -44,6 +38,12 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
         data-[motion^=to-]:animate-out data-[motion^=to-]:fade-out
         **:data-[slot=navigation-menu-link]:focus:ring-0
         **:data-[slot=navigation-menu-link]:focus:outline-none
+        group-data-[viewport=false]/navigation-menu:data-[state=closed]:animate-out
+        group-data-[viewport=false]/navigation-menu:data-[state=closed]:fade-out-0
+        group-data-[viewport=false]/navigation-menu:data-[state=closed]:zoom-out-95
+        group-data-[viewport=false]/navigation-menu:data-[state=open]:animate-in
+        group-data-[viewport=false]/navigation-menu:data-[state=open]:fade-in-0
+        group-data-[viewport=false]/navigation-menu:data-[state=open]:zoom-in-95
         md:absolute md:w-auto
       `,
       props.class,
