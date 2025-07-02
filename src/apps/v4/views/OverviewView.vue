@@ -36,7 +36,6 @@ import ComboboxDemo1 from '../registry/examples/ComboboxDemo1.vue'
 import ComboboxDemo2 from '../registry/examples/ComboboxDemo2.vue'
 import ComboboxDemo3 from '../registry/examples/ComboboxDemo3.vue'
 import ComboboxDemo4 from '../registry/examples/ComboboxDemo4.vue'
-import CommandDemo from '../registry/examples/CommandDemo.vue'
 import CommandWithDialog from '../registry/examples/CommandWithDialog.vue'
 import ContextMenuDemo from '../registry/examples/ContextMenuDemo.vue'
 import DataTableDemo from '../registry/examples/DataTableDemo.vue'
@@ -237,7 +236,6 @@ import TooltipDemo from '../registry/examples/TooltipDemo.vue'
 
       <ComponentWrapper name="Command">
         <div class="flex w-full flex-col gap-6 p-0">
-          <CommandDemo />
           <CommandWithDialog />
         </div>
       </ComponentWrapper>
