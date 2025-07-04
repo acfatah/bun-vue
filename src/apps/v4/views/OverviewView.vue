@@ -22,6 +22,7 @@ import ButtonPrimary from '../registry/examples/ButtonPrimary.vue'
 import ButtonSecondary from '../registry/examples/ButtonSecondary.vue'
 import ButtonsLarge from '../registry/examples/ButtonsLarge.vue'
 import ButtonsSmall from '../registry/examples/ButtonsSmall.vue'
+import ButtonsXSmall from '../registry/examples/ButtonsXSmall.vue'
 import ButtonWithIcon from '../registry/examples/ButtonWithIcon.vue'
 import ButtonWithIconRight from '../registry/examples/ButtonWithIconRight.vue'
 import CalendarDemo from '../registry/examples/CalendarDemo.vue'
@@ -181,6 +182,7 @@ import TooltipDemo from '../registry/examples/TooltipDemo.vue'
             <ButtonLoading />
           </div>
         </div>
+        <ButtonsXSmall />
         <ButtonsSmall />
         <ButtonsLarge />
       </ComponentWrapper>

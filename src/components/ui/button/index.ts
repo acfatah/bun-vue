@@ -53,6 +53,11 @@ export const buttonVariants = cva(
       },
 
       size: {
+        xs: `
+          w-fit shrink-0 gap-1 rounded-sm px-2 py-0.5 text-xs
+          has-[>svg]:px-2.5
+          [&>svg]:size-3
+        `,
         sm: `
           h-8 gap-1.5 rounded-md px-3
           has-[>svg]:px-2.5
