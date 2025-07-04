@@ -3,9 +3,10 @@
 <script setup lang="ts">
 import { stripIndent } from 'common-tags'
 import { ref } from 'vue'
-import { toast } from 'vue-sonner'
 import { Button } from '@/components/ui/button'
+import { useSonner } from '@/components/ui/sonner'
 
+const { toast } = useSonner()
 const promiseCode = '`${data.name} toast has been added`'
 
 const allTypes = [
