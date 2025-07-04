@@ -34,7 +34,7 @@ import { Button } from '@/components/ui/button'
       Link
     </Button>
 
-    <Button variant="secondary" size="icon" class="size-8">
+    <Button variant="secondary" size="icon">
       <Icon icon="lucide:chevron-right" />
     </Button>
 

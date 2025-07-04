@@ -28,7 +28,7 @@ import { Button } from '@/components/ui/button'
     <Button variant="link" size="sm">
       Link
     </Button>
-    <Button variant="secondary" size="icon" class="size-8">
+    <Button variant="secondary" size="icon">
       <Icon icon="lucide:chevron-right" />
     </Button>
     <Button variant="outline" size="sm">
