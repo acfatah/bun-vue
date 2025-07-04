@@ -50,6 +50,62 @@ const allTypes = [
       }, 'Undo'),
     }),
   },
+
+  {
+    name: 'Success',
+    action: () => toast({
+      variant: 'success',
+      title: 'Event has been created',
+      description: 'Sunday, December 03, 2023 at 9:00 AM',
+      action: h(ToastAction, {
+        class: 'mr-2',
+        altText: 'Undo',
+        onClick: () => console.log('Undo'),
+      }, 'Undo'),
+    }),
+  },
+
+  {
+    name: 'Info',
+    action: () => toast({
+      variant: 'info',
+      title: 'Be at the area 10 minutes before the event time',
+      description: 'Sunday, December 03, 2023 at 9:00 AM',
+      action: h(ToastAction, {
+        class: 'mr-2',
+        altText: 'Ok',
+        onClick: () => console.log('Ok'),
+      }, 'Ok'),
+    }),
+  },
+
+  {
+    name: 'Warning',
+    action: () => toast({
+      variant: 'warning',
+      title: 'Event start time cannot be earlier than 8am',
+      description: 'Sunday, December 03, 2023 at 9:00 AM',
+      action: h(ToastAction, {
+        class: 'mr-2',
+        altText: 'Ok',
+        onClick: () => console.log('Ok'),
+      }, 'Ok'),
+    }),
+  },
+
+  {
+    name: 'Error',
+    action: () => toast({
+      variant: 'error',
+      title: 'Event has not been created!',
+      description: 'Sunday, December 03, 2023 at 9:00 AM',
+      action: h(ToastAction, {
+        class: 'mr-2',
+        altText: 'Retry',
+        onClick: () => console.log('Retry'),
+      }, 'Retry'),
+    }),
+  },
 ]
 
 const activeType = ref(allTypes[0])
