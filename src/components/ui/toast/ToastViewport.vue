@@ -14,6 +14,7 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 <template>
   <ToastViewport
+    data-slot="toast-viewport"
     v-bind="delegatedProps"
     :class="cn(
       `

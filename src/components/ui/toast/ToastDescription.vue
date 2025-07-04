@@ -14,6 +14,7 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 <template>
   <ToastDescription
+    data-slot="toast-description"
     :class="cn(
       'text-sm opacity-90',
       props.class,
