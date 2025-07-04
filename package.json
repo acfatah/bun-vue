@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "bunx --bun vite",
-    "build": "bunx --bun vue-tsc -b && bunx --bun vite build",
+    "build": "bunx --bun vite build",
     "preview": "bunx --bun vite preview",
     "lint": "bunx --bun eslint",
     "lint:changed": "bunx --bun eslint --pass-on-no-patterns --no-warn-ignored $(git diff --name-only --diff-filter=d HEAD)",
@@ -13,6 +13,7 @@
     "lint:fix": "bunx --bun eslint --fix",
     "lint:fix-staged": "bunx --bun eslint --fix --pass-on-no-patterns --no-warn-ignored $(git diff --cached --name-only --diff-filter=d)",
     "lint:inspect": "bunx --bun eslint --inspect-config",
+    "typecheck": "bunx --bun vue-tsc --noEmit",
     "precommit": "bun lint:staged"
   },
   "dependencies": {
