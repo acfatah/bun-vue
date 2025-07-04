@@ -88,6 +88,7 @@ import SwitchDemo from '../registry/examples/SwitchDemo.vue'
 import TableDemo from '../registry/examples/TableDemo.vue'
 import TabsDemo from '../registry/examples/TabsDemo.vue'
 import TextareaDemo from '../registry/examples/TextareaDemo.vue'
+import ToastDemo from '../registry/examples/ToastDemo.vue'
 import ToggleDemo from '../registry/examples/ToggleDemo.vue'
 import ToggleGroupDemo from '../registry/examples/ToggleGroupDemo.vue'
 import TooltipDemo from '../registry/examples/TooltipDemo.vue'
@@ -471,6 +472,12 @@ import TooltipDemo from '../registry/examples/TooltipDemo.vue'
       <ComponentWrapper name="Textarea">
         <div class="grid w-full max-w-xl gap-4">
           <TextareaDemo />
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Toast">
+        <div class="grid w-full max-w-xl gap-4">
+          <ToastDemo />
         </div>
       </ComponentWrapper>
 
