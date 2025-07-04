@@ -31,7 +31,19 @@ export const toastVariants = cva(
       variant: {
         default: 'border bg-background text-foreground',
         destructive:
-          'destructive group border-destructive bg-destructive text-destructive-foreground',
+          `
+            destructive group border-destructive/50 bg-red-100 text-destructive
+            focus:border-destructive focus:ring-destructive focus:outline-destructive
+            dark:bg-red-900 dark:text-destructive
+            [&_[data-slot=toast-action]]:border-destructive
+            [&_[data-slot=toast-action]]:text-destructive
+            [&_[data-slot=toast-action]]:hover:bg-destructive/20
+            [&_[data-slot=toast-action]]:hover:text-destructive
+            [&_[data-slot=toast-action]]:focus:ring-destructive
+            [&_[data-slot=toast-close]]:text-destructive/50
+            [&_[data-slot=toast-close]]:hover:text-destructive
+            [&_[data-slot=toast-close]]:focus:ring-destructive
+          `,
       },
     },
     defaultVariants: {
