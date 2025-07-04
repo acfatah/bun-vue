@@ -18,7 +18,7 @@ export const toastVariants = cva(
     group pointer-events-auto relative flex w-full items-center justify-between space-x-2
     overflow-hidden rounded-md border p-4 pr-6 shadow-lg transition-all
     data-[state=closed]:animate-out data-[state=closed]:fade-out-80
-    data-[state=closed]:slide-out-to-right-full
+    data-[state=closed]:slide-out-to-right-[125%]
     data-[state=open]:animate-in data-[state=open]:slide-in-from-top-full
     data-[swipe=cancel]:translate-x-0
     data-[swipe=end]:translate-x-(--reka-toast-swipe-end-x) data-[swipe=end]:animate-out
