@@ -147,10 +147,19 @@ function useToast() {
   }
 }
 
-type Toast = Omit<ToasterToast, 'id'>
+type ToastOption = Omit<ToasterToast, 'id'>
+interface ToastReturn {
+  id: string
+  dismiss: () => void
+  update: (props: ToasterToast) => void
+}
 
-function toast(props: Toast) {
+function toast(props: ToastOption): ToastReturn
+function toast(title: string, description?: string): ToastReturn
+
+function toast(option: ToastOption | string, description?: string) {
   const id = genId()
+  const props = typeof option === 'string' ? { title: option, description } : option
 
   const update = (props: ToasterToast) =>
     dispatch({
