@@ -29,29 +29,29 @@
 }
 
 :root {
-  --success: hsl(143, 85%, 96%);
-  --success-foreground: hsl(140, 100%, 27%);
+  --success: oklch(97.9% 0.022 160.2);
+  --success-foreground: oklch(55.2% 0.166 146.6);
 
-  --info: hsl(208, 100%, 97%);
-  --info-foreground: hsl(210, 92%, 45%);
+  --info: oklch(97.5% 0.013 244.3);
+  --info-foreground: oklch(56.3% 0.181 255);
 
-  --warning: hsl(49, 100%, 97%);
-  --warning-foreground: hsl(31, 92%, 45%);
+  --warning: oklch(99% 0.016 95.2);
+  --warning-foreground: oklch(66.8% 0.16 56.7);
 
-  --error: hsl(359, 100%, 97%);
-  --error-foreground: hsl(360, 100%, 45%);
+  --error: oklch(96.7% 0.016 17.4);
+  --error-foreground: oklch(58% 24 29);
 }
 
 .dark {
-  --success: hsl(150, 100%, 6%);
-  --success-foreground: hsl(150, 86%, 65%);
+  --success: oklch(21.1% 0.05 157.4);
+  --success-foreground: oklch(86.4% 0.17 157.8);
 
-  --info: hsl(215, 100%, 6%);
-  --info-foreground: hsl(216, 87%, 65%);
+  --info: oklch(15.7% 0.045 250.7);
+  --info-foreground: oklch(67.4% 0.153 258.3);
 
-  --warning: hsl(64, 100%, 6%);
-  --warning-foreground: hsl(46, 87%, 65%);
+  --warning: oklch(22.9% 0.051 113.2);
+  --warning-foreground: oklch(86.3% 0.141 92.3);
 
-  --error: hsl(358, 76%, 10%);
-  --error-foreground: hsl(358, 100%, 81%);
+  --error: oklch(19.9% 0.064 23.6);
+  --error-foreground: oklch(79.8% 0.116 18);
 }
