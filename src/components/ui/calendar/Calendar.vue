@@ -29,7 +29,9 @@ import {
 } from '@/components/ui/select'
 import { cn } from '@/lib/utils'
 
-const props = withDefaults(defineProps<CalendarRootProps & { class?: HTMLAttributes['class'] }>(), {
+const props = withDefaults(defineProps<CalendarRootProps & {
+  class?: HTMLAttributes['class']
+}>(), {
   modelValue: undefined,
   placeholder() {
     return today(getLocalTimeZone())

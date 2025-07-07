@@ -18,7 +18,10 @@ import {
   CalendarPrevButton,
 } from '.'
 
-const props = defineProps<CalendarRootProps & { class?: HTMLAttributes['class'] }>()
+const props = defineProps<CalendarRootProps & {
+  class?: HTMLAttributes['class']
+}>()
+
 const emits = defineEmits<CalendarRootEmits>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
