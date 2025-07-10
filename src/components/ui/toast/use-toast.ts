@@ -29,6 +29,7 @@ let count = 0
 
 function genId() {
   count = (count + 1) % Number.MAX_VALUE
+
   return count.toString()
 }
 

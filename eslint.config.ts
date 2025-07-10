@@ -29,6 +29,15 @@ export default antfu(
         },
       ],
 
+      'style/padding-line-between-statements': [
+        'error',
+        {
+          blankLine: 'always',
+          prev: '*',
+          next: 'return',
+        },
+      ],
+
       'vue/object-property-newline': ['error', {
         allowAllPropertiesOnSameLine: true,
       }],

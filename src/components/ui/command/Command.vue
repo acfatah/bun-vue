@@ -36,6 +36,7 @@ const filterState = reactive({
 function filterItems() {
   if (!filterState.search) {
     filterState.filtered.count = allItems.value.size
+
     // Do nothing, each item will know to show itself because search is empty
     return
   }
