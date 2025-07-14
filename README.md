@@ -13,3 +13,24 @@ Boilerplate to start building `shadcn-ui` Vue front-end Single Page Application
 
 > [!IMPORTANT]
 > WORK IN PROGRESS
+
+## Post-install Scripts
+
+By default, `bun` will block all post-install scripts. Currently there are two scripts required which are:
+
+- `@tailwindcss/oxide` used by Tailwind
+- `maplibre-gl` used by Unovis
+
+To list them, run
+
+```bash
+bun pm unstrusted
+```
+
+To execute them, run
+
+```bash
+bun pm trust --all
+```
+
+or specify the package name one by one.
