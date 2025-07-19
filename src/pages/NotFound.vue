@@ -24,7 +24,7 @@ function goBack() {
           The requested page could not be found.
         </p>
       </div>
-      <Button variant="link" class="ml-auto pr-0" @click="goBack">
+      <Button variant="link" class="ml-auto h-min rounded-xs p-0" @click="goBack">
         Go Back
       </Button>
     </div>
