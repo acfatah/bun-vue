@@ -3,7 +3,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 // import BlankLayout from '@/layouts/BlankLayout.vue'
 
-const DEFAULT_PAGE_TITLE = 'Vite + Vue + TS'
+if (!import.meta.env.VITE_PAGE_TITLE) {
+  console.warn('VITE_PAGE_TITLE is not defined!')
+}
+
+const DEFAULT_PAGE_TITLE = import.meta.env.VITE_PAGE_TITLE || ''
 const { start: startLoading, done: doneLoading } = useNProgress()
 
 const router = createRouter({
