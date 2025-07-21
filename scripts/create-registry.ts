@@ -6,17 +6,10 @@ import process from 'node:process'
 import { parseSync } from 'oxc-parser'
 import { join, resolve } from 'pathe'
 import { compileScript, parse } from 'vue/compiler-sfc'
+import type { Registry, RegistryFiles } from '../src/registry/schema'
 
-interface RegistryItem {
-  name: string
-  type: string
-  files: {
-    path: string
-    type: string
-  }[]
-  registryDependencies: string[]
-  dependencies: string[]
-}
+type ArrayItem<T> = T extends Array<infer X> ? X : never
+type RegistryItem = ArrayItem<Registry>
 
 const ROOT_PATH = path.join(process.cwd(), '.')
 
@@ -34,7 +27,7 @@ const DEPENDENCIES = new Map<string, string[]>([
 ])
 
 const REGISTRY_DEPENDENCY = '@/'
-// const CATEGORIES = ['authentication', 'sidebar', 'login', 'dashboard']
+const CATEGORIES = ['authentication', 'sidebar', 'login', 'dashboard']
 
 async function readFile(filepath: string, _options = {}) {
   const file = await Bun.file(filepath)
@@ -56,9 +49,10 @@ async function readDirectory(
   return readdir(path, options)
 }
 
-// function getCategory(text: string) {
-//   return CATEGORIES.find(category => category === text.replace(/\d+/g, '').toLowerCase()) || undefined
-// }
+function getCategory(text: string) {
+  // Remove all numbers from the string and convert it to lower case
+  return CATEGORIES.find(category => category === text.replace(/\d+/g, '').toLowerCase()) || undefined
+}
 
 async function writeFile(path: string, payload: any) {
   Bun.write(path, payload)
@@ -123,7 +117,7 @@ async function buildUIRegistry(componentPath: string, componentName: string) {
     withFileTypes: true,
   })
 
-  const files: { path: string, type: string }[] = []
+  const files: RegistryFiles[] = []
   const dependencies = new Set<string>()
   const registryDependencies = new Set<string>()
   const type = 'registry:ui'
@@ -161,7 +155,7 @@ async function buildUIRegistry(componentPath: string, componentName: string) {
 
 async function crawlUI(rootPath: string) {
   const dir = await readDirectory(rootPath, { recursive: true, withFileTypes: true })
-  const uiRegistry: RegistryItem[] = []
+  const uiRegistry: Registry = []
 
   for (const dirent of dir) {
     if (!dirent.isDirectory())
@@ -175,44 +169,137 @@ async function crawlUI(rootPath: string) {
   return uiRegistry
 }
 
-export async function buildRegistry() {
-  const registry: RegistryItem[] = []
+async function buildBlockRegistry(blockPath: string, blockName: string) {
+  const dir = await readDirectory(blockPath, { withFileTypes: true, recursive: true })
 
-  const uiPath = resolve('src', 'components', 'ui')
-  // const examplePath = resolve('src', 'components', 'examples')
-  // const blockPath = resolve('src', 'components', 'blocks')
-  // const hookPath = resolve('src', 'components', 'hook')
+  const files: RegistryFiles[] = []
+  const dependencies = new Set<string>()
+  const registryDependencies = new Set<string>()
 
-  // const [ui, example, block] = await Promise.all([
-  const [ui] = await Promise.all([
-    crawlUI(uiPath),
-    // crawlExample(examplePath),
-    // crawlBlock(blockPath),
-    // crawlHook(hookPath),
-  ])
+  for (const dirent of dir) {
+    if (!dirent.isFile())
+      continue
 
-  // registry.push(...ui, ...example, ...block)
-  registry.push(...ui)
+    const isPage = dirent.name === 'Page.vue'
+    const type = isPage ? 'registry:page' : 'registry:component'
+
+    const compPath = isPage ? dirent.name : `components/${dirent.name}`
+    const filepath = join(blockPath, compPath)
+    const relativePath = join('blocks', blockName, compPath)
+    const source = await readFile(filepath, { encoding: 'utf8' })
+    const target = isPage ? `pages/dashboard/index.vue` : ''
+
+    files.push({ content: source, path: relativePath, type, target })
+
+    const deps = await getFileDependencies(filepath, source)
+    if (!deps)
+      continue
+
+    deps.dependencies.forEach(dep => dependencies.add(dep))
+    deps.registryDependencies.forEach(dep => registryDependencies.add(dep))
+  }
+
+  return {
+    type: 'registry:block',
+    files,
+    name: blockName,
+    registryDependencies: Array.from(registryDependencies),
+    dependencies: Array.from(dependencies),
+    category: getCategory(blockName),
+  } satisfies RegistryItem
+}
+
+async function crawlBlock(rootPath: string) {
+  const type = `registry:block` as const
+  const dir = await readDirectory(rootPath, { withFileTypes: true })
+  const registry: Registry = []
+
+  for (const dirent of dir) {
+    if (!dirent.isFile()) {
+      const result = await buildBlockRegistry(
+        `${rootPath}/${dirent.name}`,
+        dirent.name,
+      )
+
+      if (result.files.length) {
+        registry.push(result)
+      }
+
+      continue
+    }
+
+    if (!dirent.name.endsWith('.vue') || !dirent.isFile())
+      continue
+
+    const [name] = dirent.name.split('.vue')
+
+    const filepath = join(rootPath, dirent.name)
+    const source = await readFile(filepath, { encoding: 'utf8' })
+    const relativePath = join('blocks', dirent.name)
+
+    const target = 'pages/dashboard/index.vue'
+
+    const file = {
+      name: dirent.name,
+      content: source,
+      path: relativePath,
+      target,
+      type,
+    }
+    const { dependencies, registryDependencies } = await getFileDependencies(filepath, source)
+
+    registry.push({
+      name,
+      type,
+      files: [file],
+      registryDependencies: Array.from(registryDependencies),
+      dependencies: Array.from(dependencies),
+      category: getCategory(name),
+    })
+  }
 
   return registry
 }
 
-try {
-  const items = await buildRegistry()
+export async function buildRegistry() {
+  const registry: Registry = []
+  const registryPath = resolve('src', 'components')
 
-  const schema = {
-    $schema: 'https://shadcn-vue.com/schema/registry.json',
-    name: 'shadcn-vue-ex',
-    homepage: 'https://acme.com',
-    items,
+  const uiPath = resolve(registryPath, 'ui')
+  const blockPath = resolve(registryPath, 'blocks')
+  // const hookPath = resolve(registryPath, 'hook')
+
+  const [ui, block] = await Promise.all([
+    crawlUI(uiPath),
+    crawlBlock(blockPath),
+    // crawlHook(hookPath),
+  ])
+
+  registry.push(...ui, ...block)
+
+  return registry
+}
+
+async function main() {
+  try {
+    const items = await buildRegistry()
+
+    const registrySchema = {
+      $schema: 'https://shadcn-vue.com/schema/registry.json',
+      name: 'shadcn-vue-ex',
+      homepage: 'https://acme.com',
+      items,
+    }
+
+    await writeFile(
+      path.join(ROOT_PATH, 'registry.json'),
+      JSON.stringify(registrySchema, null, 2),
+    )
   }
+  catch (error) {
+    console.error(error)
+    process.exit(1)
+  }
+}
 
-  await writeFile(
-    path.join(ROOT_PATH, 'registry.json'),
-    JSON.stringify(schema, null, 2),
-  )
-}
-catch (error) {
-  console.error(error)
-  process.exit(1)
-}
+main()
