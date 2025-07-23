@@ -15,8 +15,8 @@
     "lint:inspect": "bunx --bun eslint --inspect-config",
     "typecheck": "bunx --bun vue-tsc --noEmit",
     "precommit": "bun lint:staged",
-    "ui:create-registry": "bun scripts/create-registry.ts",
-    "ui:build-registry": "bunx --bun shadcn-vue build"
+    "registry:create": "bun scripts/create-registry.ts",
+    "registry:build": "bun registry:create && bunx --bun shadcn-vue build"
   },
   "dependencies": {
     "@iconify/vue": "^5.0.0",
