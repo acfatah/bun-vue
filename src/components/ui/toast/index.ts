@@ -45,7 +45,7 @@ export const toastVariants = cva(
             [&_[data-slot=toast-close]]:focus:ring-destructive
           `,
 
-        // the following requires `styles/notification-colors.css`
+        // the following requires `styles/severity.css`
         success:
           `
             border-success-foreground/40 bg-success/90 text-success-foreground

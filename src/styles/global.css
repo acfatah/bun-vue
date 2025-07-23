@@ -3,7 +3,7 @@
 
 @import './fonts.css';
 @import './themes.css';
-@import './notification-colors.css';
+@import './severity.css';
 
 @custom-variant dark (&:is(.dark *));
 @custom-variant fixed (&:is(.layout-fixed *));
