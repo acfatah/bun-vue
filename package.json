@@ -50,6 +50,8 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.17.0",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@types/bun": "^1.2.19",
     "@types/common-tags": "^1.8.4",
     "@types/node": "^22.16.4",
@@ -66,7 +68,13 @@
     "vite-svg-loader": "^5.1.0",
     "vue-tsc": "^2.2.12"
   },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
   "simple-git-hooks": {
-    "pre-commit": "bun precommit"
+    "pre-commit": "bun precommit",
+    "commit-msg": "bun commitlint --edit ${1}"
   }
 }
