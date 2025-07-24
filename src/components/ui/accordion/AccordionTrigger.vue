@@ -33,7 +33,7 @@ const delegatedProps = reactiveOmit(props, 'class')
       <slot />
       <slot name="icon">
         <Icon
-          icon="lucide-chevron-down"
+          icon="lucide:chevron-down"
           :class="cn(
             `
               pointer-events-none size-4 shrink-0 translate-y-0.5 text-muted-foreground
