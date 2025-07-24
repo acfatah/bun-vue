@@ -15,8 +15,7 @@
     "lint:inspect": "bunx --bun eslint --inspect-config",
     "typecheck": "bunx --bun vue-tsc --noEmit",
     "precommit": "bun lint:staged",
-    "registry:create": "bun scripts/create-registry.ts",
-    "registry:build": "bun registry:create && bunx --bun shadcn-vue build"
+    "registry:build": "bun scripts/create-registry.ts"
   },
   "dependencies": {
     "@iconify/vue": "^5.0.0",
@@ -58,6 +57,7 @@
     "@vitejs/plugin-vue": "^5.2.4",
     "@vue/tsconfig": "^0.7.0",
     "common-tags": "^1.8.2",
+    "consola": "^3.4.2",
     "eslint": "^9.31.0",
     "eslint-plugin-better-tailwindcss": "^3.6.3",
     "eslint-plugin-format": "^1.0.1",

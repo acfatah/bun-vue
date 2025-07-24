@@ -1,4 +1,5 @@
 import Bun from 'bun'
+import { consola } from 'consola'
 import { existsSync } from 'node:fs'
 import { readdir } from 'node:fs/promises'
 import path from 'node:path'
@@ -30,9 +31,9 @@ const REGISTRY_DEPENDENCY = '@/'
 const CATEGORIES = ['authentication', 'sidebar', 'login', 'dashboard']
 
 async function readFile(filepath: string, _options = {}) {
-  const file = await Bun.file(filepath)
+  const file = Bun.file(filepath)
 
-  return file.text()
+  return await file.text()
 }
 
 async function readDirectory(
@@ -40,7 +41,7 @@ async function readDirectory(
   options: { recursive?: boolean, withFileTypes?: boolean, encoding?: string } = {},
 ) {
   if (!existsSync(path)) {
-    console.error(`The directory ${path} does not exist.`)
+    consola.warn(`The directory ${path} does not exist. Skipping...`)
 
     return []
   }
@@ -282,6 +283,7 @@ export async function buildRegistry() {
 
 async function main() {
   try {
+    consola.start('Creating registry.json file...')
     const items = await buildRegistry()
 
     const registrySchema = {
@@ -295,9 +297,20 @@ async function main() {
       path.join(ROOT_PATH, 'registry.json'),
       JSON.stringify(registrySchema, null, 2),
     )
+    consola.success('Registry created successfully.')
   }
   catch (error) {
-    console.error(error)
+    consola.error(error)
+    process.exit(1)
+  }
+
+  try {
+    consola.start('Building registry...')
+    await Bun.$`bunx --bun shadcn-vue build`
+    consola.success('Registry built successfully.')
+  }
+  catch (error) {
+    consola.error(error)
     process.exit(1)
   }
 }
