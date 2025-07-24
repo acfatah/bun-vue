@@ -129,7 +129,7 @@ async function parseComment(filename: string) {
 
   // The third line until the end is the description
   const description = lines.slice(3).reduce(
-    (acc, line) => `${acc + line.trim().replace('* ', '')}`,
+    (acc, line) => `${acc + line.replace('* ', '')}`,
     '',
   ).trim()
 
