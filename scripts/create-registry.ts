@@ -113,6 +113,29 @@ async function getFileDependencies(filename: string, sourceCode: string) {
   return { registryDependencies, dependencies }
 }
 
+async function parseComment(filename: string) {
+  const file = Bun.file(filename)
+  const code = await file.text()
+  const result = parseSync(filename, code)
+
+  // Read the first line block comment in the index.ts file only
+  if (!result.comments.length || result.comments[0]?.type !== 'Block' || result.comments[0]?.start !== 0)
+    return ['', '']
+
+  const lines = result.comments[0]?.value.split('\n')
+
+  // The first line is the title
+  const title = lines[1].trim().replace('* ', '')
+
+  // The third line until the end is the description
+  const description = lines.slice(3).reduce(
+    (acc, line) => `${acc + line.trim().replace('* ', '')}`,
+    '',
+  ).trim()
+
+  return [title, description]
+}
+
 async function buildUIRegistry(componentPath: string, componentName: string) {
   const dir = await readDirectory(componentPath, {
     withFileTypes: true,
@@ -122,6 +145,8 @@ async function buildUIRegistry(componentPath: string, componentName: string) {
   const dependencies = new Set<string>()
   const registryDependencies = new Set<string>()
   const type = 'registry:ui'
+  let title = ''
+  let description = ''
 
   for (const dirent of dir) {
     if (!dirent.isFile())
@@ -133,10 +158,14 @@ async function buildUIRegistry(componentPath: string, componentName: string) {
 
     files.push({ path: relativePath, type })
 
-    // only grab deps from the vue files
-    if (dirent.name === 'index.ts')
-      continue
+    // parse title and description from block comment in index.ts
+    if (dirent.name === 'index.ts') {
+      [title, description] = await parseComment(filepath)
 
+      continue
+    }
+
+    // only grab deps from the vue files
     const deps = await getFileDependencies(filepath, source)
     if (!deps)
       continue
@@ -148,6 +177,8 @@ async function buildUIRegistry(componentPath: string, componentName: string) {
   return {
     name: componentName,
     type,
+    title,
+    description,
     files,
     registryDependencies: Array.from(registryDependencies),
     dependencies: Array.from(dependencies),
@@ -180,6 +211,8 @@ async function buildBlockRegistry(blockPath: string, blockName: string) {
   for (const dirent of dir) {
     if (!dirent.isFile())
       continue
+
+    console.log(dirent)
 
     const isPage = dirent.name === 'Page.vue'
     const type = isPage ? 'registry:page' : 'registry:component'

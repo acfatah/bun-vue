@@ -62,6 +62,7 @@ export const registryItemCssSchema = z.record(
 export const registryItemSchema = z.object({
   name: z.string(),
   type: registryItemTypeSchema,
+  title: z.string().optional(),
   description: z.string().optional(),
   dependencies: z.array(z.string()).optional(),
   devDependencies: z.array(z.string()).optional(),
