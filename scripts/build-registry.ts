@@ -84,8 +84,12 @@ async function getFileDependencies(filename: string, sourceCode: string) {
 
     if (source.startsWith(REGISTRY_DEPENDENCY) && !source.endsWith('.vue')) {
       const component = source.split('/').slice(-1)[0]
-      if (component !== 'utils')
-        registryDependencies.add(component)
+
+      if (component !== 'utils') {
+        const registryUrl = `${process.env.BASE_URL}/r/${component}.json`
+
+        registryDependencies.add(registryUrl)
+      }
     }
   }
 
@@ -212,8 +216,6 @@ async function buildBlockRegistry(blockPath: string, blockName: string) {
     if (!dirent.isFile())
       continue
 
-    console.log(dirent)
-
     const isPage = dirent.name === 'Page.vue'
     const type = isPage ? 'registry:page' : 'registry:component'
 
@@ -315,6 +317,10 @@ export async function buildRegistry() {
 }
 
 async function main() {
+  if (!process.env.BASE_URL) {
+    throw new Error('BASE_URL is required to generate registry url')
+  }
+
   try {
     consola.start('Creating registry.json file...')
     const items = await buildRegistry()
