@@ -32,7 +32,8 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { cn, valueUpdater } from '@/lib/utils'
+import { valueUpdater } from '@/lib/tanstack'
+import { cn } from '@/lib/utils'
 
 const props = withDefaults(defineProps<{
   columns: ColumnDef<any, any>[]
