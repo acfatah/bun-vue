@@ -50,7 +50,7 @@ const navItems = [
           "
         >
           <a href="/">
-            <img src="/demo/icon/shadcn-vue.svg" alt="Shadcn Vue" class="size-5">
+            <img src="/assets/icon/shadcn-vue.svg" alt="Shadcn Vue" class="size-5">
             <span class="sr-only">shadcn/ui</span>
           </a>
         </Button>
