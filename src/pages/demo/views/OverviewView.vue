@@ -64,6 +64,7 @@ import DropdownWithRadioGroup from '../registry/examples/DropdownWithRadioGroup.
 import FormDemo from '../registry/examples/FormDemo.vue'
 import HoverCardDemo from '../registry/examples/HoverCardDemo.vue'
 import InputDemo from '../registry/examples/InputDemo.vue'
+import KbdDemo from '../registry/examples/KbdDemo.vue'
 import LabelDemo from '../registry/examples/LabelDemo.vue'
 import MenubarDemo from '../registry/examples/MenubarDemo.vue'
 import NavigationMenuDemo1 from '../registry/examples/NavigationMenu/NavigationMenuDemo1.vue'
@@ -329,6 +330,12 @@ import TooltipDemo from '../registry/examples/TooltipDemo.vue'
       <ComponentWrapper name="Input">
         <div class="grid w-full max-w-xl gap-4">
           <InputDemo />
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Kbd">
+        <div class="grid w-full max-w-xl gap-4">
+          <KbdDemo />
         </div>
       </ComponentWrapper>
 
