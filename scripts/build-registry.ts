@@ -7,10 +7,7 @@ import process from 'node:process'
 import { parseSync } from 'oxc-parser'
 import { join, resolve } from 'pathe'
 import { compileScript, parse } from 'vue/compiler-sfc'
-import type { Registry, RegistryFiles } from '../src/registry/schema'
-
-type ArrayItem<T> = T extends Array<infer X> ? X : never
-type RegistryItem = ArrayItem<Registry>
+import type { RegistryItem } from '../src/registry/schema'
 
 const ROOT_PATH = path.join(process.cwd(), '.')
 
@@ -25,6 +22,8 @@ const DEPENDENCIES = new Map<string, string[]>([
   ['embla-carousel-vue', []],
   ['vee-validate', ['@vee-validate/zod', 'zod']],
   ['@iconify/vue', []],
+  ['clsx', []],
+  ['tailwind-merge', []],
 ])
 
 const REGISTRY_DEPENDENCY = '@/'
@@ -71,7 +70,7 @@ async function getFileDependencies(filename: string, sourceCode: string) {
   const registryDependencies = new Set<string>()
   const dependencies = new Set<string>()
 
-  const populateDeps = (source: string) => {
+  const populateDeps = (source) => {
     const peerDeps = DEPENDENCIES.get(source)
     // const taggedDeps = DEPENDENCIES_WITH_TAGS.get(source)
     if (peerDeps !== undefined) {
@@ -82,28 +81,15 @@ async function getFileDependencies(filename: string, sourceCode: string) {
       peerDeps.forEach(dep => dependencies.add(dep))
     }
 
-    if (source.startsWith(REGISTRY_DEPENDENCY) && !source.endsWith('.vue')) {
+    if (source?.startsWith(REGISTRY_DEPENDENCY) && !source.endsWith('.vue')) {
       const component = source.split('/').slice(-1)[0]
+      const registryUrl = `${process.env.BASE_URL}/r/${component}.json`
 
-      if (component !== 'utils') {
-        const registryUrl = `${process.env.BASE_URL}/r/${component}.json`
-
-        registryDependencies.add(registryUrl)
-      }
+      registryDependencies.add(registryUrl)
     }
   }
 
-  if (filename.endsWith('.ts')) {
-    const ast = parseSync(filename, sourceCode, {
-      sourceType: 'module',
-    })
-
-    const sources = ast.program.body.filter((i: any) => i.type === 'ImportDeclaration').map((i: any) => i.source)
-    sources.forEach((source: any) => {
-      populateDeps(source.value)
-    })
-  }
-  else {
+  if (filename.endsWith('.vue')) {
     const parsed = parse(sourceCode, { filename })
     if (parsed.descriptor.script?.content || parsed.descriptor.scriptSetup?.content) {
       const compiled = compileScript(parsed.descriptor, { id: 'id' })
@@ -112,6 +98,18 @@ async function getFileDependencies(filename: string, sourceCode: string) {
         populateDeps(value.source)
       })
     }
+  }
+
+  if (filename.endsWith('.ts')) {
+    const ast = parseSync(filename, sourceCode, {
+      sourceType: 'module',
+    })
+
+    const modules = ast.module.staticImports
+
+    modules.forEach((module: any) => {
+      populateDeps(module.moduleRequest.value)
+    })
   }
 
   return { registryDependencies, dependencies }
@@ -145,7 +143,7 @@ async function buildUIRegistry(componentPath: string, componentName: string) {
     withFileTypes: true,
   })
 
-  const files: RegistryFiles[] = []
+  const files: RegistryItem['files'] = []
   const dependencies = new Set<string>()
   const registryDependencies = new Set<string>()
   const type = 'registry:ui'
@@ -191,7 +189,7 @@ async function buildUIRegistry(componentPath: string, componentName: string) {
 
 async function crawlUI(rootPath: string) {
   const dir = await readDirectory(rootPath, { recursive: true, withFileTypes: true })
-  const uiRegistry: Registry = []
+  const uiRegistry: RegistryItem[] = []
 
   for (const dirent of dir) {
     if (!dirent.isDirectory())
@@ -208,7 +206,7 @@ async function crawlUI(rootPath: string) {
 async function buildBlockRegistry(blockPath: string, blockName: string) {
   const dir = await readDirectory(blockPath, { withFileTypes: true, recursive: true })
 
-  const files: RegistryFiles[] = []
+  const files: RegistryItem['files'] = []
   const dependencies = new Set<string>()
   const registryDependencies = new Set<string>()
 
@@ -241,14 +239,14 @@ async function buildBlockRegistry(blockPath: string, blockName: string) {
     name: blockName,
     registryDependencies: Array.from(registryDependencies),
     dependencies: Array.from(dependencies),
-    category: getCategory(blockName),
+    categories: getCategory(blockName) ? [getCategory(blockName) as string] : undefined,
   } satisfies RegistryItem
 }
 
 async function crawlBlock(rootPath: string) {
   const type = `registry:block` as const
   const dir = await readDirectory(rootPath, { withFileTypes: true })
-  const registry: Registry = []
+  const registry: RegistryItem[] = []
 
   for (const dirent of dir) {
     if (!dirent.isFile()) {
@@ -290,7 +288,45 @@ async function crawlBlock(rootPath: string) {
       files: [file],
       registryDependencies: Array.from(registryDependencies),
       dependencies: Array.from(dependencies),
-      category: getCategory(name),
+      categories: getCategory(name) ? [getCategory(name) as string] : undefined,
+    })
+  }
+
+  return registry
+}
+
+async function crawlLib(rootPath: string) {
+  const type = `registry:lib` as const
+  const dir = await readDirectory(rootPath, { withFileTypes: true })
+  const registry: RegistryItem[] = []
+
+  for (const dirent of dir) {
+    if (!dirent.name.endsWith('.ts') || !dirent.isFile())
+      continue
+
+    const [name] = dirent.name.split('.ts')
+    const filepath = join(rootPath, dirent.name)
+    const source = await readFile(filepath, { encoding: 'utf8' })
+    const relativePath = join('src', 'lib', dirent.name)
+
+    const file = {
+      name,
+      content: source,
+      path: relativePath,
+      type,
+    }
+
+    const { dependencies, registryDependencies } = await getFileDependencies(filepath, source)
+    const [title, description] = await parseComment(filepath)
+
+    registry.push({
+      name: `lib-${name}`,
+      type,
+      title,
+      description,
+      files: [file],
+      registryDependencies: Array.from(registryDependencies),
+      dependencies: Array.from(dependencies),
     })
   }
 
@@ -298,20 +334,22 @@ async function crawlBlock(rootPath: string) {
 }
 
 export async function buildRegistry() {
-  const registry: Registry = []
+  const registry: RegistryItem[] = []
   const registryPath = resolve('src', 'components')
 
   const uiPath = resolve(registryPath, 'ui')
   const blockPath = resolve(registryPath, 'blocks')
+  const libPath = resolve('src', 'lib')
   // const hookPath = resolve(registryPath, 'hook')
 
-  const [ui, block] = await Promise.all([
+  const [ui, block, lib] = await Promise.all([
     crawlUI(uiPath),
     crawlBlock(blockPath),
-    // crawlHook(hookPath),
+    crawlLib(libPath),
+    // crawlHook(hookPath), // In Vue, it is known as composables
   ])
 
-  registry.push(...ui, ...block)
+  registry.push(...ui, ...block, ...lib)
 
   return registry
 }
@@ -328,7 +366,7 @@ async function main() {
     const registrySchema = {
       $schema: 'https://shadcn-vue.com/schema/registry.json',
       name: 'shadcn-vue-ex',
-      homepage: 'https://acme.com',
+      homepage: process.env.BASE_URL,
       items,
     }
 
