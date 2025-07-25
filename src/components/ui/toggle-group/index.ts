@@ -1,3 +1,9 @@
+/**
+ * Toggle Group
+ *
+ * A set of two-state buttons that can be toggled on or off.
+ */
+
 import type { Ref } from 'vue'
 import { createContext } from 'reka-ui'
 import type { ToggleVariants } from '@/components/ui/toggle'

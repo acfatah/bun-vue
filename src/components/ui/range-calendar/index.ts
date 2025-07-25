@@ -1,3 +1,9 @@
+/**
+ * Range Calendar
+ *
+ * A calendar component that allows users to select a range of dates.
+ */
+
 export { default as RangeCalendar } from './RangeCalendar.vue'
 export { default as RangeCalendarCell } from './RangeCalendarCell.vue'
 export { default as RangeCalendarCellTrigger } from './RangeCalendarCellTrigger.vue'

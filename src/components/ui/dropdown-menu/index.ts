@@ -1,3 +1,10 @@
+/**
+ * Dropdown Menu
+ *
+ * Displays a menu to the user — such as a set of actions or functions — triggered
+ * by a button.
+ */
+
 export { default as DropdownMenu } from './DropdownMenu.vue'
 export { default as DropdownMenuCheckboxItem } from './DropdownMenuCheckboxItem.vue'
 export { default as DropdownMenuContent } from './DropdownMenuContent.vue'

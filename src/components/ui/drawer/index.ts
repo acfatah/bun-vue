@@ -1,3 +1,9 @@
+/**
+ * Drawer
+ *
+ * A drawer component for vue. Built on top of Vaul Vue.
+ */
+
 export { default as Drawer } from './Drawer.vue'
 export { default as DrawerClose } from './DrawerClose.vue'
 export { default as DrawerContent } from './DrawerContent.vue'

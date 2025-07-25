@@ -1,3 +1,10 @@
+/**
+ * Menubar
+ *
+ * A visually persistent menu common in desktop applications that provides quick
+ * access to a consistent set of commands.
+ */
+
 export { default as Menubar } from './Menubar.vue'
 export { default as MenubarCheckboxItem } from './MenubarCheckboxItem.vue'
 export { default as MenubarContent } from './MenubarContent.vue'

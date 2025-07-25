@@ -1,3 +1,10 @@
+/**
+ * Alert Dialog
+ *
+ * A modal dialog that interrupts the user with important content and expects a
+ * response.
+ */
+
 export { default as AlertDialog } from './AlertDialog.vue'
 export { default as AlertDialogAction } from './AlertDialogAction.vue'
 export { default as AlertDialogCancel } from './AlertDialogCancel.vue'

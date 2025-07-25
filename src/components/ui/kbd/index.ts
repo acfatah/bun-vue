@@ -1,3 +1,9 @@
+/**
+ * Kbd
+ *
+ * A component to represent keyboard input.
+ */
+
 import { cva } from 'class-variance-authority'
 
 export { default as Kbd } from './Kbd.vue'

@@ -1,3 +1,9 @@
+/**
+ * Select
+ *
+ * Displays a list of options for the user to pick from—triggered by a button.
+ */
+
 export { default as Select } from './Select.vue'
 export { default as SelectContent } from './SelectContent.vue'
 export { default as SelectGroup } from './SelectGroup.vue'

@@ -1,3 +1,9 @@
+/**
+ * Combobox
+ *
+ * Autocomplete input and command palette with a list of suggestions.
+ */
+
 export { default as Combobox } from './Combobox.vue'
 export { default as ComboboxAnchor } from './ComboboxAnchor.vue'
 export { default as ComboboxEmpty } from './ComboboxEmpty.vue'

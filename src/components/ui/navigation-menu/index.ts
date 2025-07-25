@@ -1,3 +1,9 @@
+/**
+ * Navigation Menu
+ *
+ * A collection of links for navigating websites.
+ */
+
 import { cva } from 'class-variance-authority'
 
 export { default as NavigationMenu } from './NavigationMenu.vue'

@@ -1,3 +1,9 @@
+/**
+ * Toast
+ *
+ * A succinct message that is displayed temporarily.
+ */
+
 import type { VariantProps } from 'class-variance-authority'
 import type { ToastRootProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'

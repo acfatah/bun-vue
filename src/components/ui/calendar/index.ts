@@ -1,3 +1,9 @@
+/**
+ * Calender
+ *
+ * A date field component that allows users to enter and edit date.
+ */
+
 export { default as Calendar1 } from './Calendar1.vue'
 export { default as Calendar } from './Calendar.vue'
 export { default as CalendarCell } from './CalendarCell.vue'

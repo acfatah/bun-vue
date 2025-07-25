@@ -1,3 +1,10 @@
+/**
+ * Tooltip
+ *
+ * A popup that displays information related to an element when the element receives
+ * keyboard focus or the mouse hovers over it.
+ */
+
 export { default as Hint } from './Hint.vue'
 export { default as Tooltip } from './Tooltip.vue'
 export { default as TooltipArrow } from './TooltipArrow.vue'

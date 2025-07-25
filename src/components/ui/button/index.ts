@@ -1,3 +1,9 @@
+/**
+ * Button
+ *
+ * Displays a button or a component that looks like a button.
+ */
+
 import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
 

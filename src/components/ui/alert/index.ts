@@ -1,3 +1,9 @@
+/**
+ * Alert
+ *
+ * Displays a callout for user attention.
+ */
+
 import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
 

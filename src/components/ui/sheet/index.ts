@@ -1,3 +1,10 @@
+/**
+ * Sheet
+ *
+ * Extends the Dialog component to display content that complements the main
+ * content of the screen.
+ */
+
 import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
 

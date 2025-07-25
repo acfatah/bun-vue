@@ -1,3 +1,9 @@
+/**
+ * Avatar
+ *
+ * An image element with a fallback for representing the user.
+ */
+
 import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
 

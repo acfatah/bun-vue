@@ -1,3 +1,10 @@
+/**
+ * Dialog
+ *
+ * A window overlaid on either the primary window or another dialog window,
+ * rendering the content underneath inert.
+ */
+
 export { default as Dialog } from './Dialog.vue'
 export { default as DialogClose } from './DialogClose.vue'
 export { default as DialogContent } from './DialogContent.vue'

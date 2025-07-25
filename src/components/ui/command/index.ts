@@ -1,3 +1,9 @@
+/**
+ * Command
+ *
+ * Fast, composable, unstyled command menu.
+ */
+
 import type { Ref } from 'vue'
 import { createContext } from 'reka-ui'
 

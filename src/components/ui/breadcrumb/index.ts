@@ -1,3 +1,9 @@
+/**
+ * Breadcrumb
+ *
+ * Displays the path to the current resource using a hierarchy of links.
+ */
+
 export { default as Breadcrumb } from './Breadcrumb.vue'
 export { default as BreadcrumbEllipsis } from './BreadcrumbEllipsis.vue'
 export { default as BreadcrumbItem } from './BreadcrumbItem.vue'
