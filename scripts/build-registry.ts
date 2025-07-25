@@ -320,7 +320,7 @@ async function crawlLib(rootPath: string) {
     const [title, description] = await parseComment(filepath)
 
     registry.push({
-      name: `lib-${name}`,
+      name,
       type,
       title,
       description,
