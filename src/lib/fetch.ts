@@ -1,7 +1,7 @@
 /**
  * Extends the default `@vueuse/core` useFetch implementation.
  *
- * - Adds the base URL loaded from `VITE_API_ENDPOINT`.
+ * - Adds the base URL loaded from `VITE_API_URL`.
  * - Adds the `Authorization` header if local storage `token` is defined.
  *
  * Read more:
@@ -10,11 +10,11 @@
  */
 import { createFetch, useStorage } from '@vueuse/core'
 
-const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT
+const API_URL = import.meta.env.VITE_API_URL
 const tokenStorage = useStorage('token', null)
 
 export const useFetch = createFetch({
-  baseUrl: API_ENDPOINT,
+  baseUrl: API_URL,
   options: {
     onFetchError(ctx) {
       // console.error(ctx.error)
@@ -24,8 +24,8 @@ export const useFetch = createFetch({
 
     // https://vueuse.org/core/useFetch/#intercepting-a-request
     async beforeFetch({ options }) {
-      if (!API_ENDPOINT)
-        throw new Error('VITE_API_ENDPOINT is not defined')
+      if (!API_URL)
+        throw new Error('VITE_API_URL is not defined')
 
       options.credentials = 'include'
 
