@@ -83,7 +83,7 @@ async function getFileDependencies(filename: string, sourceCode: string) {
 
     if (source?.startsWith(REGISTRY_DEPENDENCY) && !source.endsWith('.vue')) {
       const component = source.split('/').slice(-1)[0]
-      const registryUrl = `${process.env.BASE_URL}/r/${component}.json`
+      const registryUrl = `${process.env.VITE_REGISTRY_URL}/r/${component}.json`
 
       registryDependencies.add(registryUrl)
     }
@@ -366,7 +366,7 @@ async function main() {
     const registrySchema = {
       $schema: 'https://shadcn-vue.com/schema/registry.json',
       name: 'shadcn-vue-ex',
-      homepage: process.env.BASE_URL,
+      homepage: process.env.VITE_REGISTRY_URL,
       items,
     }
 
