@@ -69,6 +69,7 @@ import LabelDemo from '../registry/examples/LabelDemo.vue'
 import MenubarDemo from '../registry/examples/MenubarDemo.vue'
 import NavigationMenuDemo1 from '../registry/examples/NavigationMenu/NavigationMenuDemo1.vue'
 import NavigationMenuDemo2 from '../registry/examples/NavigationMenu/NavigationMenuDemo2.vue'
+import NumberFieldDemo from '../registry/examples/NumberFieldDemo.vue'
 import PaginationDemo from '../registry/examples/PaginationDemo.vue'
 import PinInputDemo from '../registry/examples/PinInputDemo.vue'
 import PopoverDemo from '../registry/examples/PopoverDemo.vue'
@@ -367,6 +368,12 @@ import TooltipDemo from '../registry/examples/TooltipDemo.vue'
         >
           <NavigationMenuDemo1 />
           <NavigationMenuDemo2 />
+        </div>
+      </ComponentWrapper>
+
+      <ComponentWrapper name="Number Field">
+        <div class="grid w-full max-w-xl gap-4">
+          <NumberFieldDemo />
         </div>
       </ComponentWrapper>
 
