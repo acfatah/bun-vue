@@ -1,13 +1,13 @@
 import type { RouteRecordRaw } from 'vue-router'
 import CenteredLayout from '@/layouts/CenteredLayout.vue'
-import LoginView from '@/pages/Login.vue'
+import Login from '@/pages/SignIn.vue'
 
 const routes: RouteRecordRaw[] = [
   {
-    path: '/login',
-    name: 'login',
+    path: '/sign-in',
+    name: 'sign-in',
     meta: { layout: CenteredLayout },
-    component: LoginView,
+    component: Login,
   },
 ]
 
