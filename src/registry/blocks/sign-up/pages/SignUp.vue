@@ -25,20 +25,31 @@ import { toast } from '@/components/ui/toast'
 
 const schema = z.object({
   firstName: z
-    .string(),
+    .string({ message: 'First name is required.' }),
 
   lastName: z
-    .string(),
+    .string({ message: 'Last name is required.' }),
 
   email: z
-    .string()
-    .email('Invalid email.'),
+    .string({ message: 'Email cannot be empty' })
+    .pipe(z.email('Email is invalid')),
 
   password: z
-    .string()
+    .string({ message: 'Password cannot be empty.' })
     .min(6, {
       message: 'Password must be at least 6 characters.',
     }),
+
+  confirmPassword: z
+    .string({ message: 'Confirm password cannot be empty.' }),
+}).superRefine(({ password, confirmPassword }, ctx) => {
+  if (password !== confirmPassword) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['confirmPassword'],
+      message: 'Passwords do not match.',
+    })
+  }
 })
 
 type FormValues = z.infer<typeof schema>
@@ -66,7 +77,7 @@ const onSubmit: SubmissionHandler<GenericObject> = function (values) {
     :validation-schema="formSchema"
     @submit="onSubmit"
   >
-    <Card class="w-full max-w-sm">
+    <Card class="m-auto w-full max-w-sm">
       <CardHeader>
         <CardTitle class="text-xl">
           Sign Up
@@ -113,6 +124,18 @@ const onSubmit: SubmissionHandler<GenericObject> = function (values) {
           <FormItem>
             <FormLabel class="flex items-center">
               Password
+            </FormLabel>
+            <FormControl>
+              <Input type="password" v-bind="componentField" placeholder="******" />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        </FormField>
+
+        <FormField v-slot="{ componentField }" name="confirmPassword">
+          <FormItem>
+            <FormLabel class="flex items-center">
+              Repeat Password
             </FormLabel>
             <FormControl>
               <Input type="password" v-bind="componentField" placeholder="******" />
