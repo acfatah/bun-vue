@@ -262,11 +262,11 @@ async function crawlBlock(rootPath: string) {
   for (const dirent of dir) {
     const blockPath = `${rootPath}/${dirent.name}`
 
-    // Skip directories that don't have registry-item.ts
-    if (!existsSync(`${blockPath}/registry-item.ts`))
-      continue
-
     if (!dirent.isFile()) {
+      // Skip directories that don't have registry-item.ts
+      if (!existsSync(`${blockPath}/registry-item.ts`))
+        continue
+
       const result = await buildBlockRegistry(
         blockPath,
         dirent.name,
@@ -299,8 +299,10 @@ async function crawlBlock(rootPath: string) {
     }
     const { dependencies, registryDependencies } = await getFileDependencies(filepath, source)
 
+    const kebabName = name.replace(/\B([A-Z][a-z])/g, `-$1`).toLowerCase()
+
     registry.push({
-      name,
+      name: kebabName,
       type,
       files: [file],
       registryDependencies: Array.from(registryDependencies),
