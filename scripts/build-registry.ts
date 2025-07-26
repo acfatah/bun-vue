@@ -1,5 +1,6 @@
 import Bun from 'bun'
 import { consola } from 'consola'
+import minimist from 'minimist'
 import { existsSync } from 'node:fs'
 import { readdir } from 'node:fs/promises'
 import path from 'node:path'
@@ -9,6 +10,7 @@ import { join, resolve } from 'pathe'
 import { compileScript, parse } from 'vue/compiler-sfc'
 import type { RegistryItem } from '../src/registry/schema'
 
+const argv = minimist(process.argv.slice(2))
 const ROOT_PATH = path.join(process.cwd(), '.')
 
 // [Dependency, [...PeerDependencies]]
@@ -188,6 +190,9 @@ async function buildUIRegistry(componentPath: string, componentName: string) {
 }
 
 async function crawlUI(rootPath: string) {
+  if (argv['skip-ui'])
+    return []
+
   const dir = await readDirectory(rootPath, { recursive: true, withFileTypes: true })
   const uiRegistry: RegistryItem[] = []
 
@@ -204,26 +209,30 @@ async function crawlUI(rootPath: string) {
 }
 
 async function buildBlockRegistry(blockPath: string, blockName: string) {
-  const dir = await readDirectory(blockPath, { withFileTypes: true, recursive: true })
-
   const files: RegistryItem['files'] = []
   const dependencies = new Set<string>()
   const registryDependencies = new Set<string>()
+  const registryItem: RegistryItem = (await import(`${blockPath}/registry-item.ts`)).registryItem
 
-  for (const dirent of dir) {
-    if (!dirent.isFile())
-      continue
+  if (!registryItem) {
+    console.warn(`No registry item found for ${blockPath}`)
 
-    const isPage = dirent.name === 'Page.vue'
-    const type = isPage ? 'registry:page' : 'registry:component'
+    return
+  }
 
-    const compPath = isPage ? dirent.name : `components/${dirent.name}`
-    const filepath = join(blockPath, compPath)
-    const relativePath = join('blocks', blockName, compPath)
+  for (const item of registryItem.files ?? []) {
+    const { path, type, target: targetPath } = item
+    const filepath = join(blockPath, path)
+    const relativePath = join('src', 'registry', 'blocks', blockName, path)
     const source = await readFile(filepath, { encoding: 'utf8' })
-    const target = isPage ? `pages/dashboard/index.vue` : ''
+    const target = targetPath && join('~', targetPath)
 
-    files.push({ content: source, path: relativePath, type, target })
+    if (type === 'registry:page' || type === 'registry:file') {
+      files.push({ content: source, path: relativePath, type, target: target as string })
+    }
+    else {
+      files.push({ content: source, path: relativePath, type, target: target as string | undefined })
+    }
 
     const deps = await getFileDependencies(filepath, source)
     if (!deps)
@@ -234,9 +243,9 @@ async function buildBlockRegistry(blockPath: string, blockName: string) {
   }
 
   return {
+    name: blockName,
     type: 'registry:block',
     files,
-    name: blockName,
     registryDependencies: Array.from(registryDependencies),
     dependencies: Array.from(dependencies),
     categories: getCategory(blockName) ? [getCategory(blockName) as string] : undefined,
@@ -244,39 +253,47 @@ async function buildBlockRegistry(blockPath: string, blockName: string) {
 }
 
 async function crawlBlock(rootPath: string) {
-  const type = `registry:block` as const
+  if (argv['skip-block'])
+    return []
+
   const dir = await readDirectory(rootPath, { withFileTypes: true })
   const registry: RegistryItem[] = []
 
   for (const dirent of dir) {
+    const blockPath = `${rootPath}/${dirent.name}`
+
+    // Skip directories that don't have registry-item.ts
+    if (!existsSync(`${blockPath}/registry-item.ts`))
+      continue
+
     if (!dirent.isFile()) {
       const result = await buildBlockRegistry(
-        `${rootPath}/${dirent.name}`,
+        blockPath,
         dirent.name,
       )
 
-      if (result.files.length) {
+      if (result && result.files.length) {
         registry.push(result)
       }
 
       continue
     }
 
-    if (!dirent.name.endsWith('.vue') || !dirent.isFile())
+    // Skip non-vue files
+    if (!dirent.name.endsWith('.vue'))
       continue
 
+    // Process single file block as a component
+    const type = `registry:component` as const
     const [name] = dirent.name.split('.vue')
-
     const filepath = join(rootPath, dirent.name)
     const source = await readFile(filepath, { encoding: 'utf8' })
-    const relativePath = join('blocks', dirent.name)
-
-    const target = 'pages/dashboard/index.vue'
+    const target = join('~', 'src', 'components', dirent.name)
 
     const file = {
       name: dirent.name,
       content: source,
-      path: relativePath,
+      path: filepath,
       target,
       type,
     }
@@ -296,6 +313,9 @@ async function crawlBlock(rootPath: string) {
 }
 
 async function crawlLib(rootPath: string) {
+  if (argv['skip-lib'])
+    return []
+
   const type = `registry:lib` as const
   const dir = await readDirectory(rootPath, { withFileTypes: true })
   const registry: RegistryItem[] = []
@@ -335,10 +355,8 @@ async function crawlLib(rootPath: string) {
 
 export async function buildRegistry() {
   const registry: RegistryItem[] = []
-  const registryPath = resolve('src', 'components')
-
-  const uiPath = resolve(registryPath, 'ui')
-  const blockPath = resolve(registryPath, 'blocks')
+  const uiPath = resolve('src', 'components', 'ui')
+  const blockPath = resolve('src', 'registry', 'blocks')
   const libPath = resolve('src', 'lib')
   // const hookPath = resolve(registryPath, 'hook')
 
@@ -380,6 +398,9 @@ async function main() {
     consola.error(error)
     process.exit(1)
   }
+
+  if (argv['skip-build'])
+    return
 
   try {
     consola.start('Building registry...')
