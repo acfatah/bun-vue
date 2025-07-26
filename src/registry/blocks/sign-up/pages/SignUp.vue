@@ -160,7 +160,7 @@ const onSubmit: SubmissionHandler<GenericObject> = function (values) {
 
         <div class="text-center text-sm">
           Already have an account?
-          <RouterLink to="/login" class="underline">
+          <RouterLink to="/sign-in" class="underline">
             Sign in
           </RouterLink>
         </div>
