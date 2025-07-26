@@ -13,14 +13,14 @@ export const registryItem = {
       target: 'src/layouts/CenteredLayout.vue',
     },
     {
+      path: 'pages/Login.vue',
+      type: 'registry:page',
+      target: 'src/pages/Login.vue',
+    },
+    {
       path: 'router/login.ts',
       type: 'registry:file',
       target: 'src/router/login.ts',
-    },
-    {
-      path: 'Login.vue',
-      type: 'registry:page',
-      target: 'src/pages/Login.vue',
     },
   ],
 } satisfies RegistryItem
