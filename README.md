@@ -14,6 +14,14 @@ Boilerplate to start building `shadcn-ui` Vue front-end Single Page Application
 > [!IMPORTANT]
 > WORK IN PROGRESS
 
+## Starter Templates
+
+`mkdir` your project name, `cd` to it then run,
+
+```bash
+bunx --bun tiged acfatah/shadcn-vue-ex/templates/starter && bun update
+```
+
 ## Post-install Scripts
 
 By default, `bun` will block all post-install scripts. Currently there are two scripts required which are:

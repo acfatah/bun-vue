@@ -52,14 +52,7 @@ export default antfu(
 
   {
     name: 'app/files-to-ignore',
-    ignores: [
-      '**/dist/**',
-      '**/dist-ssr/**',
-      '**/coverage/**',
-      'logs',
-      'tsconfig.*',
-      '**/tsconfig.*',
-    ],
+    ignores: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**', 'logs', 'tsconfig.*'],
   },
 
   {

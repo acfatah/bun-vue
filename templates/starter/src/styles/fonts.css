@@ -1,0 +1,8 @@
+@import 'non.geist';
+@import 'non.geist/mono';
+
+:root {
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono:
+    'Geist Mono Variable', ui-monospace, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
