@@ -1,3 +1,5 @@
+#!/usr/bin/env bun
+
 import Bun from 'bun'
 import { consola } from 'consola'
 import minimist from 'minimist'
