@@ -406,6 +406,7 @@ async function main() {
 
   try {
     consola.start('Building registry...')
+    await Bun.$`rm -rf public/r`
     await Bun.$`bunx --bun shadcn-vue build`
     consola.success('Registry built successfully.')
   }
