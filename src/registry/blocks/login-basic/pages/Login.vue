@@ -26,8 +26,8 @@ import { toast } from '@/components/ui/toast'
 
 const schema = z.object({
   email: z
-    .string()
-    .email('Invalid email.'),
+    .string({ message: 'Email cannot be empty' })
+    .pipe(z.email('Email is invalid')),
 
   password: z
     .string()
