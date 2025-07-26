@@ -89,7 +89,7 @@ const onSubmit: SubmissionHandler<GenericObject> = function (values) {
           <FormItem>
             <FormLabel class="flex items-center">
               Password
-              <RouterLink to="/reset-password" class="ml-auto text-sm underline">
+              <RouterLink to="/forgot-password" class="ml-auto text-sm underline">
                 Forgot your password?
               </RouterLink>
             </FormLabel>
@@ -104,7 +104,7 @@ const onSubmit: SubmissionHandler<GenericObject> = function (values) {
         </FormField>
       </CardContent>
 
-      <CardFooter class="grid gap-4">
+      <CardFooter class="mt-6 grid gap-4">
         <Button
           type="submit"
           class="w-full"
