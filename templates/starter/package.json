@@ -47,7 +47,11 @@
     "vite-svg-loader": "^5.1.0",
     "vue-tsc": "^2.2.12"
   },
-  "trustedDependencies": ["@tailwindcss/oxide"],
+  "trustedDependencies": [
+    "@tailwindcss/oxide",
+    "esbuild",
+    "simple-git-hooks"
+  ],
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
