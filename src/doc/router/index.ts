@@ -1,7 +1,7 @@
 import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { createRouter, createWebHistory } from 'vue-router'
 
-import { v4Routes } from '../../pages/demo/routes'
+import { v4Routes } from '../pages/demo/routes'
 
 const DEFAULT_PAGE_TITLE = 'Shadcn for Vue - shadcn/vue'
 const { start: startLoading, done: doneLoading } = useNProgress()
@@ -36,7 +36,7 @@ const router = createRouter({
 
     {
       path: '/:pathMatch(.*)*',
-      component: () => import('../../pages/NotFound.vue'),
+      component: () => import('../pages/NotFound.vue'),
     },
   ],
 })
