@@ -361,7 +361,7 @@ export async function buildRegistry() {
   const registry: RegistryItem[] = []
   const uiPath = resolve('src', 'components', 'ui')
   const blockPath = resolve('src', 'registry', 'blocks')
-  const libPath = resolve('src', 'lib')
+  const libPath = resolve('src', 'registry', 'lib')
   // const hookPath = resolve(registryPath, 'hook')
 
   const [ui, block, lib] = await Promise.all([
