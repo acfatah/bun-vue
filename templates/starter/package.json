@@ -12,7 +12,8 @@
     "lint:fix": "bunx --bun eslint --fix",
     "lint:fix-staged": "bunx --bun eslint --fix --pass-on-no-patterns --no-warn-ignored $(git diff --cached --name-only --diff-filter=d)",
     "lint:inspect": "bunx --bun eslint --inspect-config",
-    "precommit": "bun lint:staged"
+    "precommit": "bun lint:staged",
+    "ui": "bun scripts/ui"
   },
   "dependencies": {
     "@iconify/vue": "^5.0.0",
