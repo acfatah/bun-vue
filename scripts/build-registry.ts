@@ -159,7 +159,7 @@ async function buildUIRegistry(componentPath: string, componentName: string) {
       continue
 
     const filepath = join(componentPath, dirent.name)
-    const relativePath = join('src', 'components', 'ui', componentName, dirent.name)
+    const relativePath = join('src', 'registry', 'components', 'ui', componentName, dirent.name)
     const source = await readFile(filepath, { encoding: 'utf8' })
 
     files.push({ path: relativePath, type })
@@ -331,7 +331,7 @@ async function crawlLib(rootPath: string) {
     const [name] = dirent.name.split('.ts')
     const filepath = join(rootPath, dirent.name)
     const source = await readFile(filepath, { encoding: 'utf8' })
-    const relativePath = join('src', 'lib', dirent.name)
+    const relativePath = join('src', 'registry', 'lib', dirent.name)
 
     const file = {
       name,
@@ -359,7 +359,7 @@ async function crawlLib(rootPath: string) {
 
 export async function buildRegistry() {
   const registry: RegistryItem[] = []
-  const uiPath = resolve('src', 'components', 'ui')
+  const uiPath = resolve('src', 'registry', 'components', 'ui')
   const blockPath = resolve('src', 'registry', 'blocks')
   const libPath = resolve('src', 'registry', 'lib')
   // const hookPath = resolve(registryPath, 'hook')
