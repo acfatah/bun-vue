@@ -38,11 +38,16 @@ program.command('add')
     const proc = Bun.spawn(
       ['bunx', '--bun', 'shadcn-vue@latest', 'add', ...opts, ...urls],
       {
+        stdin: 'inherit',
         stdout: 'inherit',
         stderr: 'inherit',
       },
     )
-    await proc.exited || consola.success('Done!')
+
+    if (!await proc.exited) {
+      process.stdout.write('\x1B[1A\x1B[K')
+      consola.success('Done!')
+    }
   })
 
 program.parse()
