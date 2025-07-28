@@ -5,7 +5,7 @@ import minimist from 'minimist'
 import process from 'node:process'
 
 const argv = minimist(process.argv.slice(2))
-const PORT = process.env.PORT || argv.p || argv.port || 3000
+const PORT = process.env.PORT || argv.p || argv.port || 8080
 const HOST = process.env.HOST || argv.h || argv.host || 'localhost'
 
 serve({
