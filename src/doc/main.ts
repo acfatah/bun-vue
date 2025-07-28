@@ -1,5 +1,5 @@
-import './styles/global.css'
-import './styles/nprogress.css'
+import '../registry/styles/global.css'
+import '../registry/styles/nprogress.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'

@@ -1,6 +1,7 @@
 import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { createRouter, createWebHistory } from 'vue-router'
 
+import V4Layout from '../layouts/V4Layout.vue'
 import { v4Routes } from '../pages/demo/routes'
 
 const DEFAULT_PAGE_TITLE = 'Shadcn for Vue - shadcn/vue'
@@ -26,13 +27,16 @@ const router = createRouter({
   },
 
   routes: [
-    // V4 routes
-    ...v4Routes,
-
     {
       path: '/',
-      redirect: '/v4',
+      component: () => import('../pages/Index.vue'),
+      meta: {
+        layout: V4Layout,
+      },
     },
+
+    // V4 routes
+    ...v4Routes,
 
     {
       path: '/:pathMatch(.*)*',
