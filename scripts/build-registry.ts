@@ -210,6 +210,55 @@ async function crawlUI(rootPath: string) {
   return uiRegistry
 }
 
+async function buildComponent(componentName: string) {
+  if (argv['skip-component'])
+    return
+
+  const type = `registry:component` as const
+  const filepath = join('src', 'registry', 'components', componentName)
+  const source = await readFile(filepath, { encoding: 'utf8' })
+  const target = join('~', 'src', 'components', componentName)
+
+  const file = {
+    name: componentName,
+    content: source,
+    path: filepath,
+    target,
+    type,
+  }
+
+  const { dependencies, registryDependencies } = await getFileDependencies(filepath, source)
+  const kebabName = componentName.replace(/\B([A-Z][a-z])/g, `-$1`).toLowerCase()
+
+  return {
+    name: kebabName,
+    type,
+    files: [file],
+    registryDependencies: Array.from(registryDependencies),
+    dependencies: Array.from(dependencies),
+  }
+}
+
+async function crawlComponents(rootPath: string) {
+  if (argv['skip-components'])
+    return []
+
+  const dir = await readDirectory(rootPath, { withFileTypes: true })
+  const registry: RegistryItem[] = []
+
+  for (const dirent of dir) {
+    if (!dirent.isFile() || !dirent.name.endsWith('.vue'))
+      continue
+
+    const component = await buildComponent(dirent.name)
+
+    if (component)
+      registry.push(component)
+  }
+
+  return registry
+}
+
 async function buildBlockRegistry(blockPath: string, blockName: string) {
   const files: RegistryItem['files'] = []
   const dependencies = new Set<string>()
@@ -286,31 +335,10 @@ async function crawlBlock(rootPath: string) {
       continue
 
     // Process single file block as a component
-    const type = `registry:component` as const
-    const [name] = dirent.name.split('.vue')
-    const filepath = join(rootPath, dirent.name)
-    const source = await readFile(filepath, { encoding: 'utf8' })
-    const target = join('~', 'src', 'components', dirent.name)
+    const component = await buildComponent(dirent.name)
 
-    const file = {
-      name: dirent.name,
-      content: source,
-      path: filepath,
-      target,
-      type,
-    }
-    const { dependencies, registryDependencies } = await getFileDependencies(filepath, source)
-
-    const kebabName = name.replace(/\B([A-Z][a-z])/g, `-$1`).toLowerCase()
-
-    registry.push({
-      name: kebabName,
-      type,
-      files: [file],
-      registryDependencies: Array.from(registryDependencies),
-      dependencies: Array.from(dependencies),
-      categories: getCategory(name) ? [getCategory(name) as string] : undefined,
-    })
+    if (component)
+      registry.push(component)
   }
 
   return registry
@@ -360,12 +388,14 @@ async function crawlLib(rootPath: string) {
 export async function buildRegistry() {
   const registry: RegistryItem[] = []
   const uiPath = resolve('src', 'registry', 'components', 'ui')
+  const componentPath = resolve('src', 'registry', 'components')
   const blockPath = resolve('src', 'registry', 'blocks')
   const libPath = resolve('src', 'registry', 'lib')
   // const hookPath = resolve(registryPath, 'hook')
 
   const [ui, block, lib] = await Promise.all([
     crawlUI(uiPath),
+    crawlComponents(componentPath),
     crawlBlock(blockPath),
     crawlLib(libPath),
     // crawlHook(hookPath), // In Vue, it is known as composables
