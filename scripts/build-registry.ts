@@ -211,9 +211,6 @@ async function crawlUI(rootPath: string) {
 }
 
 async function buildComponent(componentName: string) {
-  if (argv['skip-component'])
-    return
-
   const type = `registry:component` as const
   const filepath = join('src', 'registry', 'components', componentName)
   const source = await readFile(filepath, { encoding: 'utf8' })
@@ -304,7 +301,7 @@ async function buildBlockRegistry(blockPath: string, blockName: string) {
 }
 
 async function crawlBlock(rootPath: string) {
-  if (argv['skip-block'])
+  if (argv['skip-blocks'])
     return []
 
   const dir = await readDirectory(rootPath, { withFileTypes: true })
@@ -386,7 +383,7 @@ async function crawlLib(rootPath: string) {
 }
 
 async function crawlComposables(rootPath: string) {
-  if (argv['skip-composable'])
+  if (argv['skip-composables'])
     return []
 
   //
