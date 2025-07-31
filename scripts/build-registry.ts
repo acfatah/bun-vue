@@ -354,15 +354,17 @@ async function crawlLib(rootPath: string) {
       continue
 
     const [name] = dirent.name.split('.ts')
-    const filepath = join(rootPath, dirent.name)
+    const kebabName = dirent.name.replace(/\B([A-Z][a-z])/g, `-$1`).toLowerCase()
+    const filepath = join(rootPath, kebabName)
     const source = await readFile(filepath, { encoding: 'utf8' })
-    const relativePath = join('src', 'registry', 'lib', dirent.name)
+    const relativePath = join('src', 'registry', 'lib', kebabName)
+    const target = join('~', relativePath)
 
     const file = {
-      name,
-      content: source,
       path: relativePath,
+      content: source,
       type,
+      target,
     }
 
     const { dependencies, registryDependencies } = await getFileDependencies(filepath, source)
