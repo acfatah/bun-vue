@@ -385,23 +385,75 @@ async function crawlLib(rootPath: string) {
   return registry
 }
 
+async function crawlComposables(rootPath: string) {
+  if (argv['skip-composable'])
+    return []
+
+  //
+  /**
+   * `hook` is known as composable in Vue with a more fine-grained reactivity system.
+   * - https://vuejs.org/guide/reusability/composables.html#what-is-a-composable
+   * - https://vuejs.org/guide/reusability/composables.html#vs-react-hooks
+   * - https://vuejs.org/guide/extras/composition-api-faq.html#comparison-with-react-hooks
+   */
+  const type = `registry:hook` as const
+
+  const dir = await readDirectory(rootPath, { withFileTypes: true })
+  const registry: RegistryItem[] = []
+
+  for (const dirent of dir) {
+    if (!dirent.name.endsWith('.ts') || !dirent.isFile())
+      continue
+
+    const [name] = dirent.name.split('.ts')
+    const kebabName = dirent.name.replace(/\B([A-Z][a-z])/g, `-$1`).toLowerCase()
+    const filepath = join(rootPath, kebabName)
+    const source = await readFile(filepath, { encoding: 'utf8' })
+    const relativePath = join('src', 'registry', 'composables', kebabName)
+    const target = join('~', relativePath)
+
+    const file = {
+      path: relativePath,
+      content: source,
+      type,
+      target,
+    }
+
+    const { dependencies, registryDependencies } = await getFileDependencies(filepath, source)
+    const [title, description] = await parseComment(filepath)
+
+    registry.push({
+      name,
+      type,
+      title,
+      description,
+      files: [file],
+      registryDependencies: Array.from(registryDependencies),
+      dependencies: Array.from(dependencies),
+    })
+  }
+
+  return registry
+}
+
 export async function buildRegistry() {
   const registry: RegistryItem[] = []
-  const uiPath = resolve('src', 'registry', 'components', 'ui')
-  const componentPath = resolve('src', 'registry', 'components')
-  const blockPath = resolve('src', 'registry', 'blocks')
-  const libPath = resolve('src', 'registry', 'lib')
-  // const hookPath = resolve(registryPath, 'hook')
+  const registryPath = join('src', 'registry')
+  const uiPath = resolve(registryPath, 'components', 'ui')
+  const componentPath = resolve(registryPath, 'components')
+  const blockPath = resolve(registryPath, 'blocks')
+  const libPath = resolve(registryPath, 'lib')
+  const composablePath = resolve(registryPath, 'composables')
 
-  const [ui, block, lib] = await Promise.all([
+  const [ui, components, blocks, lib, composables] = await Promise.all([
     crawlUI(uiPath),
     crawlComponents(componentPath),
     crawlBlock(blockPath),
     crawlLib(libPath),
-    // crawlHook(hookPath), // In Vue, it is known as composables
+    crawlComposables(composablePath),
   ])
 
-  registry.push(...ui, ...block, ...lib)
+  registry.push(...ui, ...components, ...blocks, ...lib, ...composables)
 
   return registry
 }
