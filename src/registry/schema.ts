@@ -49,6 +49,8 @@ export const registryItemCssVarsSchema = z.object({
   dark: z.record(z.string(), z.string()).optional(),
 })
 
+export type RegistryItemCssVars = z.infer<typeof registryItemCssVarsSchema>
+
 export const registryItemCssSchema = z.record(
   z.string(),
   z.lazy(() =>
@@ -61,6 +63,8 @@ export const registryItemCssSchema = z.record(
     ]),
   ),
 )
+
+export type RegistryItemCss = z.infer<typeof registryItemCssSchema>
 
 export const registryItemSchema = z.object({
   $schema: z.string().optional(),

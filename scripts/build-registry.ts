@@ -10,7 +10,11 @@ import process from 'node:process'
 import { parseSync } from 'oxc-parser'
 import { join, resolve } from 'pathe'
 import { compileScript, parse } from 'vue/compiler-sfc'
-import type { RegistryItem } from '../src/registry/schema'
+import type {
+  RegistryItem,
+  RegistryItemCss,
+  RegistryItemCssVars,
+} from '../src/registry/schema'
 
 const argv = minimist(process.argv.slice(2))
 const ROOT_PATH = path.join(process.cwd(), '.')
@@ -153,6 +157,8 @@ async function buildUIRegistry(componentPath: string, componentName: string) {
   const type = 'registry:ui'
   let title = ''
   let description = ''
+  let cssVars: RegistryItemCssVars | undefined
+  let css: RegistryItemCss | undefined
 
   for (const dirent of dir) {
     if (!dirent.isFile())
@@ -162,10 +168,39 @@ async function buildUIRegistry(componentPath: string, componentName: string) {
     const relativePath = join('src', 'registry', 'components', 'ui', componentName, dirent.name)
     const source = await readFile(filepath, { encoding: 'utf8' })
 
+    if (dirent.name === 'registry-item.ts') {
+      const { registryItem } = await import(filepath)
+
+      title = registryItem?.title || title
+      description = registryItem?.description || description
+      cssVars = registryItem?.cssVars ?? cssVars
+      css = registryItem?.css ?? css
+
+      if (registryItem?.files) {
+        files.push(
+          ...registryItem.files.map(file => ({
+            path: file.path,
+            type: file.type || 'registry:file',
+            target: file.target,
+          })),
+        )
+      }
+
+      if (registryItem?.registryDependencies) {
+        registryItem.dependencies.forEach(dep => registryDependencies.add(dep))
+      }
+
+      if (registryItem?.dependencies) {
+        registryItem.dependencies.forEach(dep => dependencies.add(dep))
+      }
+
+      continue
+    }
+
     files.push({ path: relativePath, type })
 
     // parse title and description from block comment in index.ts
-    if (dirent.name === 'index.ts') {
+    if (dirent.name === 'index.ts' && !title && !description) {
       [title, description] = await parseComment(filepath)
 
       continue
@@ -186,6 +221,8 @@ async function buildUIRegistry(componentPath: string, componentName: string) {
     title,
     description,
     files,
+    ...(cssVars && { cssVars }),
+    ...(css && { css }),
     registryDependencies: Array.from(registryDependencies),
     dependencies: Array.from(dependencies),
   } satisfies RegistryItem
