@@ -2,7 +2,7 @@ import type { RegistryItem } from '@/registry/schema'
 
 export const registryItem = {
   type: 'registry:block',
-  name: 'Forgot Password',
+  name: 'forgot-password',
   title: 'Forgot Password Form',
   description: 'Forgot password form.',
   docs: 'Remember to add CenteredLayout as meta.layout to the login route.',

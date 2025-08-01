@@ -2,7 +2,7 @@ import type { RegistryItem } from '@/registry/schema'
 
 export const registryItem = {
   type: 'registry:block',
-  name: 'Sign In',
+  name: 'sign-in',
   title: 'Sign In Form',
   description: 'Sign In form with email and password fields.',
   docs: 'Remember to add CenteredLayout as meta.layout to the login route.',
