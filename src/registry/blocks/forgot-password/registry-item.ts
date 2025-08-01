@@ -1,4 +1,4 @@
-import type { RegistryItem } from '@/registry/schema'
+import type { RegistryItem } from '@/schema'
 
 export const registryItem = {
   type: 'registry:block',
