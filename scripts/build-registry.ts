@@ -17,7 +17,8 @@ import type {
 } from '../src/registry/schema'
 
 const argv = minimist(process.argv.slice(2))
-const ROOT_PATH = path.join(process.cwd(), '.')
+const ROOT_PATH = path.join(__dirname, '..')
+const REGISTRY_PATH = path.join(ROOT_PATH, 'public', 'r')
 
 // [Dependency, [...PeerDependencies]]
 const DEPENDENCIES = new Map<string, string[]>([
@@ -91,7 +92,8 @@ async function getFileDependencies(filename: string, sourceCode: string) {
 
     if (source?.startsWith(REGISTRY_DEPENDENCY) && !source.endsWith('.vue')) {
       const component = source.split('/').slice(-1)[0]
-      const registryUrl = `${process.env.VITE_REGISTRY_URL}/r/${component}.json`
+      const kebabName = component.replace(/\B([A-Z][a-z])/g, `-$1`).toLowerCase()
+      const registryUrl = `${process.env.VITE_REGISTRY_URL}/r/${kebabName}.json`
 
       registryDependencies.add(registryUrl)
     }
@@ -319,6 +321,10 @@ async function buildBlockRegistry(blockPath: string, blockName: string) {
       files.push({ content: source, path: relativePath, type, target: target as string | undefined })
     }
 
+    // Skip non-vue files
+    if (!item.path.endsWith('.vue'))
+      continue
+
     const deps = await getFileDependencies(filepath, source)
     if (!deps)
       continue
@@ -499,9 +505,11 @@ async function main() {
     throw new Error('BASE_URL is required to generate registry url')
   }
 
+  let items: RegistryItem[]
+
   try {
     consola.start('Creating registry.json file...')
-    const items = await buildRegistry()
+    items = await buildRegistry()
 
     const registrySchema = {
       $schema: 'https://shadcn-vue.com/schema/registry.json',
@@ -514,6 +522,7 @@ async function main() {
       path.join(ROOT_PATH, 'registry.json'),
       JSON.stringify(registrySchema, null, 2),
     )
+
     consola.success('Registry created successfully.')
   }
   catch (error) {
@@ -526,7 +535,24 @@ async function main() {
 
   try {
     consola.start('Building registry...')
-    await Bun.$`rm -rf public/r`
+    await Bun.$`rm -rf ${REGISTRY_PATH}`
+
+    const registryItems = items
+      .map((item) => {
+        return {
+          ...item,
+          files: item.files?.map(_file => ({
+            path: _file.path,
+            type: item.type,
+          })),
+        }
+      })
+
+    await writeFile(
+      path.join(REGISTRY_PATH, 'index.json'),
+      JSON.stringify(registryItems, null, 2),
+    )
+
     await Bun.$`bunx --bun shadcn-vue build`
     consola.success('Registry built successfully.')
   }
