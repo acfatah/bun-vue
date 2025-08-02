@@ -395,7 +395,7 @@ async function crawlLib(rootPath: string) {
     const filepath = join(rootPath, kebabName)
     const source = await readFile(filepath, { encoding: 'utf8' })
     const relativePath = join('src', 'registry', 'lib', kebabName)
-    const target = join('~', relativePath)
+    const target = join('~', 'src', 'lib', kebabName)
 
     const file = {
       path: relativePath,
