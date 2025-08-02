@@ -446,7 +446,7 @@ async function crawlComposables(rootPath: string) {
     const filepath = join(rootPath, kebabName)
     const source = await readFile(filepath, { encoding: 'utf8' })
     const relativePath = join('src', 'registry', 'composables', kebabName)
-    const target = join('~', relativePath)
+    const target = join('~', 'src', 'composables', kebabName)
 
     const file = {
       path: relativePath,
