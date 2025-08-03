@@ -10,6 +10,7 @@ import type {
 import { parseComment, readDirectory, readFile, writeFile } from '../../utils'
 import { buildBlocksRegistry } from './build-blocks-registry'
 import { buildComponentsRegistry } from './build-components-registry'
+import { buildIndexJson } from './build-index-json'
 import { buildUIRegistry } from './build-ui-registry'
 import { getFileDependencies } from './get-file-dependecies'
 
@@ -24,8 +25,8 @@ interface BuildCommandOptions {
 }
 
 const ROOT_PATH = path.join(__dirname, '..', '..', '..', '..')
-const REGISTRY_PATH = path.join('src', 'registry')
-const REGISTRY_OUTPUT_PATH = path.join(ROOT_PATH, 'public', 'r')
+export const REGISTRY_PATH = path.join('src', 'registry')
+export const REGISTRY_OUTPUT_PATH = path.join(ROOT_PATH, 'public', 'r')
 export const UI_PATH = join(REGISTRY_PATH, 'components', 'ui')
 export const COMPONENTS_PATH = join(REGISTRY_PATH, 'components')
 export const BLOCKS_PATH = join(REGISTRY_PATH, 'blocks')
@@ -288,7 +289,9 @@ export const build = new Command()
 
     try {
       consola.start('Creating registry.json file...')
-      items = await buildRegistry()
+      items = (await buildRegistry()).sort(
+        (a, b) => a.name.localeCompare(b.name),
+      )
 
       const registrySchema = {
         $schema: 'https://shadcn-vue.com/schema/registry.json',
@@ -315,23 +318,7 @@ export const build = new Command()
     try {
       consola.start('Building registry...')
       await Bun.$`rm -rf ${REGISTRY_OUTPUT_PATH}`
-
-      const registryItems = items
-        .map((item) => {
-          return {
-            ...item,
-            files: item.files?.map(_file => ({
-              path: _file.path,
-              type: item.type,
-            })),
-          }
-        })
-
-      await writeFile(
-        path.join(REGISTRY_OUTPUT_PATH, 'index.json'),
-        JSON.stringify(registryItems, null, 2),
-      )
-
+      await buildIndexJson(items)
       await Bun.$`bunx --bun shadcn-vue build`
       consola.success('Registry built successfully.')
     }
