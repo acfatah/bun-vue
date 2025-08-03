@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { TagsInputItemDeleteProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
+import { Icon } from '@iconify/vue'
 import { reactiveOmit } from '@vueuse/core'
-import { X } from 'lucide-vue-next'
 import { TagsInputItemDelete, useForwardProps } from 'reka-ui'
 import { cn } from '@/lib/utils'
 
@@ -23,7 +23,7 @@ const forwardedProps = useForwardProps(delegatedProps)
     )"
   >
     <slot>
-      <X class="h-4 w-4" />
+      <Icon icon="lucide:x" class="size-4" />
     </slot>
   </TagsInputItemDelete>
 </template>
