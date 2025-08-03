@@ -6,7 +6,7 @@
  */
 import { onMounted, onUnmounted } from 'vue'
 
-export function useCustomBackgroundColor(bgClass = 'bg-muted') {
+export function useBgColor(bgClass = 'bg-muted') {
   onMounted(() => {
     document.body.classList.replace('bg-background', bgClass)
   })
