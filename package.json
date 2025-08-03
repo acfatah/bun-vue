@@ -31,6 +31,7 @@
     "change-case": "^5.4.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "commander": "^14.0.0",
     "embla-carousel-vue": "^8.6.0",
     "non.geist": "^1.0.4",
     "nprogress": "^0.2.0",
