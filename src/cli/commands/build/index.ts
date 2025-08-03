@@ -3,10 +3,7 @@ import { consola } from 'consola'
 import { existsSync } from 'node:fs'
 import process from 'node:process'
 import { join, resolve } from 'pathe'
-import * as path from 'pathe'
-import type {
-  RegistryItem,
-} from '../../../registry/schema'
+import type { RegistryItem } from '../../../registry/schema'
 import { parseComment, readDirectory, readFile, writeFile } from '../../utils'
 import { buildBlocksRegistry } from './build-blocks-registry'
 import { buildComponentsRegistry } from './build-components-registry'
@@ -24,9 +21,9 @@ interface BuildCommandOptions {
   skipComposables: boolean
 }
 
-const ROOT_PATH = path.join(__dirname, '..', '..', '..', '..')
-export const REGISTRY_PATH = path.join('src', 'registry')
-export const REGISTRY_OUTPUT_PATH = path.join(ROOT_PATH, 'public', 'r')
+const ROOT_PATH = join(__dirname, '..', '..', '..', '..')
+export const REGISTRY_PATH = join('src', 'registry')
+export const REGISTRY_OUTPUT_PATH = join(ROOT_PATH, 'public', 'r')
 export const UI_PATH = join(REGISTRY_PATH, 'components', 'ui')
 export const COMPONENTS_PATH = join(REGISTRY_PATH, 'components')
 export const BLOCKS_PATH = join(REGISTRY_PATH, 'blocks')
@@ -301,7 +298,7 @@ export const build = new Command()
       }
 
       await writeFile(
-        path.join(ROOT_PATH, 'registry.json'),
+        join(ROOT_PATH, 'registry.json'),
         JSON.stringify(registrySchema, null, 2),
       )
 

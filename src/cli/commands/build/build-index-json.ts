@@ -1,4 +1,4 @@
-import path from 'node:path'
+import { join } from 'pathe'
 import type {
   RegistryItem,
 } from '../../../registry/schema'
@@ -18,7 +18,7 @@ export async function buildIndexJson(registryItems: RegistryItem[]) {
   })
 
   await writeFile(
-    path.join(REGISTRY_OUTPUT_PATH, 'index.json'),
+    join(REGISTRY_OUTPUT_PATH, 'index.json'),
     JSON.stringify(items, null, 2),
   )
 }
