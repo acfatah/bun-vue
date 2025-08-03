@@ -1,4 +1,4 @@
-export const registryItem = {
+export const metadata = {
   cssVars: {
     '@layer base': {
       light: {

@@ -1,10 +1,10 @@
 import type { RegistryItem } from '@/schema'
 
-export const registryItem = {
+export const metadata = {
   type: 'registry:block',
-  name: 'sign-in',
-  title: 'Sign In Form',
-  description: 'Sign In form with email and password fields.',
+  name: 'forgot-password',
+  title: 'Forgot Password Form',
+  description: 'Forgot password form.',
   docs: 'Remember to add CenteredLayout as meta.layout to the login route.',
   files: [
     {
@@ -13,14 +13,14 @@ export const registryItem = {
       target: 'src/layouts/CenteredLayout.vue',
     },
     {
-      path: 'pages/SignIn.vue',
+      path: 'pages/ForgotPassword.vue',
       type: 'registry:page',
-      target: 'src/pages/SignIn.vue',
+      target: 'src/pages/ForgotPassword.vue',
     },
     {
-      path: 'router/sign-in.ts',
+      path: 'router/forgot-password.ts',
       type: 'registry:file',
-      target: 'src/router/sign-in.ts',
+      target: 'src/router/forgot-password.ts',
     },
   ],
 } satisfies RegistryItem
