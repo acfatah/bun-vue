@@ -13,7 +13,10 @@ import {
 } from '../../utils'
 import { buildBlocksRegistry } from './build-blocks-registry'
 import { buildComponentsRegistry } from './build-components-registry'
+import { buildIcons } from './build-icons'
 import { buildIndexJson } from './build-index-json'
+import { buildStyles } from './build-styles'
+import { buildThemes } from './build-themes'
 import { buildUIRegistry } from './build-ui-registry'
 import { getFileDependencies } from './get-file-dependecies'
 
@@ -332,6 +335,9 @@ export const build = new Command()
       consola.start('Building registry...')
       await rimraf(REGISTRY_OUTPUT_PATH)
       await buildIndexJson(items)
+      await buildThemes()
+      await buildStyles()
+      await buildIcons()
       await runShadcnVueBuild()
       consola.success('Registry built successfully.')
     }
