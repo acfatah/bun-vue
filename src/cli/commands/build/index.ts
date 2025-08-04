@@ -254,7 +254,7 @@ async function runShadcnVueBuild() {
 
 export const build = new Command()
   .name('build')
-  .description('build components for a shadcn registry')
+  .description('Build components registry for shadcn-vue-ex.')
   .argument('[registry]', 'path to registry.json file', './registry.json')
   .option(
     '-o, --output <path>',
@@ -296,6 +296,7 @@ export const build = new Command()
       throw new Error('BASE_URL is required to generate registry url')
     }
 
+    // FIXME: some of these skip options does not work properly
     skipBuild = opts.skipBuild
     skipUi = opts.skipUi
     skipComponents = opts.skipComponents

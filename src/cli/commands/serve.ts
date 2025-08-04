@@ -12,14 +12,14 @@ interface ServeCommandOptions {
 
 export const serve = new Command()
   .name('serve')
-  .description('Serve registry files locally using Bun')
+  .description('Serve registry files locally using Bun.')
   .option(
     '--public-dir [public-dir]',
     'destination directory for json files',
     './public/r',
   )
   .option(
-    '-h, --host',
+    '-h, --host [host]',
     'hostname to listen on',
     'localhost',
   )

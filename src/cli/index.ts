@@ -7,8 +7,8 @@ import { serve } from './commands/serve'
 
 async function main() {
   const program = new Command()
-    .name('shadcn-vue-ex')
-    .description('add components and dependencies to your project')
+    .name('bun cli')
+    .description('Command line interface for shadcn-vue-ex')
     .version(
       packageJson.version,
       '-v, --version',
