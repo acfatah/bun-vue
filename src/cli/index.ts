@@ -3,6 +3,7 @@
 import { Command } from 'commander'
 import packageJson from '../../package.json'
 import { build } from './commands/build'
+import { serve } from './commands/serve'
 
 async function main() {
   const program = new Command()
@@ -16,6 +17,7 @@ async function main() {
 
   program
     .addCommand(build)
+    .addCommand(serve)
 
   program.parse()
 }
