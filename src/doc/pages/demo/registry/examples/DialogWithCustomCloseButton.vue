@@ -42,7 +42,7 @@ import { Label } from '@/components/ui/label'
         </div>
         <Button type="submit" size="sm" class="px-3">
           <span class="sr-only">Copy</span>
-          <Icon icon="radix-icons:copy" class="size-4" />
+          <Icon icon="lucide:copy" class="size-4" />
         </Button>
       </div>
       <DialogFooter class="justify-end">

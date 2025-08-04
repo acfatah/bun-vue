@@ -34,7 +34,7 @@ const forwardedProps = useForwardProps(delegatedProps)
   >
     <slot />
     <Icon
-      icon="radix-icons:chevron-right"
+      icon="lucide:chevron-right"
       class="ml-auto"
     />
   </ContextMenuSubTrigger>
