@@ -12,7 +12,8 @@ export async function buildComponentsRegistry(componentName: string) {
   const source = await readFile(filepath, { encoding: 'utf8' })
   const target = join('~', 'src', 'components', componentName)
   const { dependencies, registryDependencies } = await getFileDependencies(filepath, source)
-  const kebabName = componentName.replace(/\B([A-Z][a-z])/g, `-$1`).toLowerCase()
+  const [name] = componentName.split('.vue')
+  const kebabName = name.replace(/\B([A-Z][a-z])/g, `-$1`).toLowerCase()
 
   return {
     name: kebabName,
