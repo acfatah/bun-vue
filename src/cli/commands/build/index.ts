@@ -4,7 +4,13 @@ import { existsSync } from 'node:fs'
 import process from 'node:process'
 import { join, resolve } from 'pathe'
 import type { RegistryItem } from '../../../registry/schema'
-import { parseComment, readDirectory, readFile, writeFile } from '../../utils'
+import {
+  parseComment,
+  readDirectory,
+  readFile,
+  rimraf,
+  writeFile,
+} from '../../utils'
 import { buildBlocksRegistry } from './build-blocks-registry'
 import { buildComponentsRegistry } from './build-components-registry'
 import { buildIndexJson } from './build-index-json'
@@ -226,9 +232,21 @@ export async function buildRegistry() {
     crawlComposables(),
   ])
 
-  registry.push(...ui, ...components, ...blocks, ...lib, ...composables)
+  registry.push(
+    ...ui,
+    ...components,
+    ...blocks,
+    ...lib,
+    ...composables,
+  )
 
-  return registry
+  return registry.sort(
+    (a, b) => a.name.localeCompare(b.name),
+  )
+}
+
+async function runShadcnVueBuild() {
+  await Bun.$`bunx --bun shadcn-vue build`
 }
 
 export const build = new Command()
@@ -286,9 +304,7 @@ export const build = new Command()
 
     try {
       consola.start('Creating registry.json file...')
-      items = (await buildRegistry()).sort(
-        (a, b) => a.name.localeCompare(b.name),
-      )
+      items = await buildRegistry()
 
       const registrySchema = {
         $schema: 'https://shadcn-vue.com/schema/registry.json',
@@ -314,9 +330,9 @@ export const build = new Command()
 
     try {
       consola.start('Building registry...')
-      await Bun.$`rm -rf ${REGISTRY_OUTPUT_PATH}`
+      await rimraf(REGISTRY_OUTPUT_PATH)
       await buildIndexJson(items)
-      await Bun.$`bunx --bun shadcn-vue build`
+      await runShadcnVueBuild()
       consola.success('Registry built successfully.')
     }
     catch (error) {

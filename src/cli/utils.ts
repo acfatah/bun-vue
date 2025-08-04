@@ -36,6 +36,10 @@ export async function removeFile(filename: string) {
   }
 }
 
+export async function rimraf(path: string) {
+  await Bun.$`rm -rf ${path}`
+}
+
 export async function parseComment(filename: string) {
   const file = Bun.file(filename)
   const code = await file.text()
