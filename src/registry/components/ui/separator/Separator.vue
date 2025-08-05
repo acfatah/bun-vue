@@ -23,8 +23,8 @@ const delegatedProps = reactiveOmit(props, 'class')
     :class="cn(
       `
         relative shrink-0 bg-border
-        data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full
-        data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px
+        data-[orientation=horizontal]:h-px data-[orientation=horizontal]:min-w-full
+        data-[orientation=vertical]:min-h-full data-[orientation=vertical]:w-px
       `,
       props.class,
     )"
