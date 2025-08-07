@@ -47,7 +47,7 @@
     "vue": "^3.5.18",
     "vue-router": "^4.5.1",
     "vue-sonner": "^2.0.2",
-    "zod": "^4.0.14"
+    "zod": "^4.0.15"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.19.0",
@@ -62,7 +62,7 @@
     "common-tags": "^1.8.2",
     "consola": "^3.4.2",
     "eslint": "^9.32.0",
-    "eslint-plugin-better-tailwindcss": "^3.7.3",
+    "eslint-plugin-better-tailwindcss": "^3.7.4",
     "eslint-plugin-format": "^1.0.1",
     "minimist": "^1.2.8",
     "oxc-parser": "^0.77.3",
