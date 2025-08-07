@@ -11,7 +11,10 @@ const props = defineProps<{
   <main
     data-slot="sidebar-inset"
     :class="cn(
-      'relative flex min-h-svh flex-1 flex-col bg-background',
+      `
+        relative flex max-h-svh flex-1 flex-col overflow-hidden bg-background
+        md:max-h-[calc(100svh-1rem)]
+      `,
       `
         md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0
         md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm
