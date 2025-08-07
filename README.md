@@ -12,15 +12,28 @@ Boilerplate to start building `shadcn-ui` Vue front-end Single Page Application
 (SPA) in minutes with `TypeScript` and `Bun`.
 
 > [!IMPORTANT]
-> WORK IN PROGRESS
+> Active development in progress!
 
-## Starter Templates
+## Starter Template
 
 `mkdir` your project name, `cd` to it then run,
 
 ```bash
 bunx --bun tiged acfatah/shadcn-vue-ex/templates/starter && bun update
 ```
+
+> [!IMPORTANT]
+> You need to serve the component registry first by cloning this repository and
+> run `bun cli serve`.
+
+To list available blocks and components, run:
+
+```bash
+bun ui list
+```
+
+To add a block or component, let say basic login form block, simply run `bun add login-basic`. The
+block registry resides under `src/registry/blocks/login-basic`.
 
 ## Post-install Scripts
 
