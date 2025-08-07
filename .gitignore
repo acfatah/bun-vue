@@ -28,3 +28,6 @@ dist-ssr
 # Registry files
 registry.json
 public/r
+
+# Template files
+templates/*/bun.lock
