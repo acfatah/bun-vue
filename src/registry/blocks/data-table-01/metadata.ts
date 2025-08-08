@@ -9,6 +9,9 @@ export const metadata = {
     '@vee-validate/zod',
     'zod',
   ],
+  registryDependencies: [
+    'checkbox',
+  ],
   files: [
     {
       path: './components/DropdownAction.vue',
