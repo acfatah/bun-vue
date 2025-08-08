@@ -12,6 +12,20 @@ async function listComponents() {
   return await res.json()
 }
 
+program.command('status')
+  .description('Check the status of the registry')
+  .action(async () => {
+    try {
+      await fetch(`${REGISTRY_URL}/index.json`)
+    }
+    catch (error) {
+      consola.error(error.message)
+
+      process.exit(1)
+    }
+    consola.success('Registry is up and running.')
+  })
+
 program.command('list')
   .description('List available blocks and components')
   .action(async () => {
