@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { join } from 'pathe'
 import type {
   RegistryItem,
@@ -23,6 +24,17 @@ export async function buildBlocksRegistry(blockPath: string, blockName: string) 
     console.warn(`No registry item found for ${blockPath}`)
 
     return
+  }
+
+  for (const item of metadata.dependencies ?? []) {
+    dependencies.add(item)
+  }
+
+  for (const item of metadata.registryDependencies ?? []) {
+    const kebabName = item.replace(/\B([A-Z][a-z])/g, `-$1`).toLowerCase()
+    const registryUrl = `${process.env.VITE_REGISTRY_URL}/${kebabName}.json`
+
+    registryDependencies.add(registryUrl)
   }
 
   for (const item of metadata.files ?? []) {
