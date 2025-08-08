@@ -29,6 +29,12 @@ export const columns = [
     enableHiding: false,
   }),
 
+  // id
+  columnHelper.accessor('id', {
+    header: () => 'ID',
+    cell: ({ row }) => h('div', null, row.getValue('id')),
+  }),
+
   // username
   columnHelper.accessor('username', {
     header: () => 'Username',
