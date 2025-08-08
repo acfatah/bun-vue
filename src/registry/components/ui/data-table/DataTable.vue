@@ -74,7 +74,7 @@ const table = useVueTable({
   state: {
     get sorting() { return sorting.value },
     get columnFilters() { return columnFilters.value },
-    get columnVisibility() { return columnVisibility.value },
+    get columnVisibility() { return { id: false, ...columnVisibility.value } },
     get rowSelection() { return rowSelection.value },
   },
 })
