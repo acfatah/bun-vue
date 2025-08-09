@@ -6,23 +6,36 @@ import process from 'node:process'
 
 const REGISTRY_URL = process.env.REGISTRY_URL || 'http://localhost:8080/r'
 
-async function listComponents() {
-  const res = await fetch(`${REGISTRY_URL}/index.json`)
+async function checkStatus() {
+  try {
+    await fetch(`${REGISTRY_URL}/index.json`, {
+      method: 'OPTIONS',
+    })
+  }
+  catch (error) {
+    consola.error(error.message)
 
-  return await res.json()
+    process.exit(1)
+  }
+}
+
+async function listComponents() {
+  try {
+    const res = await fetch(`${REGISTRY_URL}/index.json`)
+
+    return await res.json()
+  }
+  catch (error) {
+    consola.error(error.message)
+
+    process.exit(1)
+  }
 }
 
 program.command('status')
   .description('Check the status of the registry')
   .action(async () => {
-    try {
-      await fetch(`${REGISTRY_URL}/index.json`)
-    }
-    catch (error) {
-      consola.error(error.message)
-
-      process.exit(1)
-    }
+    await checkStatus()
     consola.success('Registry is up and running.')
   })
 
@@ -91,6 +104,8 @@ program.command('add')
   .option('-o, --overwrite', 'overwrite existing files. (default: false)')
   .option('-s, --silent', 'mute output. (default: false)')
   .action(async (components, options) => {
+    await checkStatus()
+
     const urls: string[] = components.reduce((acc: string[], component: string) => {
       acc.push(`${REGISTRY_URL}/${component}.json`)
 
