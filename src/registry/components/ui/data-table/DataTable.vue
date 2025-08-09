@@ -40,14 +40,12 @@ const props = withDefaults(defineProps<{
   data: Record<string, any>[]
   class?: string
   pagination?: boolean
+  filter?: boolean
   loading?: boolean
-  hideFilter?: boolean
-  hidePagination?: boolean
 }>(), {
   pagination: true,
+  filter: false,
   loading: false,
-  hideFilter: false,
-  hidePagination: false,
 })
 
 // Table state
@@ -95,7 +93,7 @@ const table = useVueTable({
       `,
       props.class)"
   >
-    <slot v-if="!props.hideFilter" name="filter" :table="table">
+    <slot v-if="props.filter" name="filter" :table="table">
       <div class="flex w-full items-center gap-2 py-4">
         <Input
           class="w-full max-w-sm" placeholder="Quick search..."
@@ -177,8 +175,8 @@ const table = useVueTable({
         </TableBody>
       </Table>
     </div>
-    <slot v-if="!props.hidePagination" name="pagination" :table="table">
-      <div v-if="pagination" class="flex w-full items-center justify-end space-x-2 py-4">
+    <slot v-if="props.pagination" name="pagination" :table="table">
+      <div class="flex w-full items-center justify-end space-x-2 py-4">
         <div class="flex-1 text-sm text-muted-foreground">
           {{ table.getFilteredSelectedRowModel().rows.length }} of
           {{ table.getFilteredRowModel().rows.length }} row(s) selected.
