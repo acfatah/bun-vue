@@ -7,6 +7,7 @@ import type {
   VisibilityState,
 } from '@tanstack/vue-table'
 import { Icon } from '@iconify/vue'
+
 import {
   FlexRender,
   getCoreRowModel,
@@ -24,6 +25,16 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { Input } from '@/components/ui/input'
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationFirst,
+  PaginationItem,
+  PaginationLast,
+  PaginationNext,
+  PaginationPrevious,
+} from '@/components/ui/pagination'
 import {
   Table,
   TableBody,
@@ -134,7 +145,14 @@ const table = useVueTable({
         </DropdownMenu>
       </div>
     </slot>
-    <div class="w-full rounded-md border py-1">
+
+    <div
+      class="
+        w-full rounded-md border py-1
+        [&_[data-slot='table-container']]:h-[532px]
+        [&_[data-slot='table-container']]:overflow-y-hidden
+      "
+    >
       <Table>
         <TableHeader>
           <TableRow v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
@@ -148,7 +166,7 @@ const table = useVueTable({
         </TableHeader>
         <TableBody>
           <template v-if="props.loading">
-            <TableCell :colspan="columns.length" class="h-24 text-center">
+            <TableCell :colspan="columns.length" class="h-[490px] text-center">
               <Icon
                 icon="lucide:loader-circle"
                 class="m-auto animate-spin"
@@ -175,28 +193,71 @@ const table = useVueTable({
         </TableBody>
       </Table>
     </div>
+
     <slot v-if="props.pagination" name="pagination" :table="table">
-      <div class="flex w-full items-center justify-end space-x-2 py-4">
-        <div class="flex-1 text-sm text-muted-foreground">
+      <div
+        class="
+          flex flex-col items-center justify-between gap-y-2 pt-4
+          sm:flex-row
+        "
+      >
+        <div class="text-sm whitespace-nowrap text-muted-foreground">
           {{ table.getFilteredSelectedRowModel().rows.length }} of
           {{ table.getFilteredRowModel().rows.length }} row(s) selected.
         </div>
-        <Button
-          variant="outline"
-          size="sm"
-          :disabled="!table.getCanPreviousPage()"
-          @click="table.previousPage()"
+
+        <Pagination
+          v-slot="{ page: currentPage }"
+          class="
+            flex
+            sm:justify-end
+          "
+          show-edges
+          :sibling-count="1"
+          :page="table.getState().pagination.pageIndex + 1"
+          :items-per-page="10"
+          :total="table.getRowCount()"
         >
-          Previous
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          :disabled="!table.getCanNextPage()"
-          @click="table.nextPage()"
-        >
-          Next
-        </Button>
+          <PaginationContent v-slot="{ items }">
+            <PaginationFirst
+              :disabled="!table.getCanPreviousPage()"
+              @click="table.setPageIndex(0)"
+            />
+
+            <PaginationPrevious
+              :disabled="!table.getCanPreviousPage()"
+              @click="table.previousPage()"
+            />
+
+            <template v-for="(page, index) in items">
+              <PaginationItem
+                v-if="page.type === 'page'"
+                :key="index"
+                :value="page.value"
+                :is-active="page.value === currentPage"
+                @click="table.setPageIndex(page.value - 1)"
+              >
+                {{ page.value }}
+              </PaginationItem>
+
+              <PaginationEllipsis
+                v-else
+                :key="page.type"
+                :index="index"
+              />
+            </template>
+
+            <PaginationNext
+              :disabled="!table.getCanNextPage()"
+              @click="table.nextPage()"
+            />
+
+            <PaginationLast
+              :disabled="!table.getCanNextPage()"
+              @click="table.setPageIndex(table.getPageCount() - 1)"
+            />
+          </PaginationContent>
+        </Pagination>
       </div>
     </slot>
   </div>

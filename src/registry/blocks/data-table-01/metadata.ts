@@ -1,4 +1,7 @@
+import { h } from 'vue'
 import type { RegistryItem } from '@/schema'
+
+import DataTable from './DataTable.vue'
 
 export const metadata = {
   type: 'registry:block',
@@ -45,3 +48,7 @@ export const metadata = {
     },
   ],
 } satisfies RegistryItem
+
+export const preview = {
+  page: h(DataTable),
+}
