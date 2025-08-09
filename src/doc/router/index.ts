@@ -39,7 +39,13 @@ const router = createRouter({
     ...v4Routes,
 
     {
+      path: '/blocks/:name',
+      component: () => import('../pages/BlockPreview.vue'),
+    },
+
+    {
       path: '/:pathMatch(.*)*',
+      name: 'not-found',
       component: () => import('../pages/NotFound.vue'),
     },
   ],

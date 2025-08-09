@@ -6,5 +6,7 @@ useDark()
 </script>
 
 <template>
-  <component :is="$route.meta.layout || BlankLayout" />
+  <Suspense>
+    <component :is="$route.meta.layout || BlankLayout" />
+  </Suspense>
 </template>
