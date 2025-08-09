@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<PaginationNextProps & {
   size?: ButtonVariants['size']
   class?: HTMLAttributes['class']
 }>(), {
-  size: 'md',
+  size: 'icon',
 })
 
 const delegatedProps = reactiveOmit(props, 'class', 'size')
@@ -36,12 +36,6 @@ const forwarded = useForwardProps(delegatedProps)
     v-bind="forwarded"
   >
     <slot>
-      <span
-        class="
-          hidden
-          sm:block
-        "
-      >Next</span>
       <Icon icon="lucide:chevron-right" />
     </slot>
   </PaginationNext>
