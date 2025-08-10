@@ -20,6 +20,7 @@
         "commander": "^14.0.0",
         "embla-carousel-vue": "^8.6.0",
         "es-toolkit": "^1.39.8",
+        "mitt": "^3.0.1",
         "non.geist": "^1.0.4",
         "nprogress": "^0.2.0",
         "pinia": "^3.0.3",
