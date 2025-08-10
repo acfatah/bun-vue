@@ -1,11 +1,26 @@
 import { Icon } from '@iconify/vue'
 import { createColumnHelper } from '@tanstack/vue-table'
+import mitt from 'mitt'
 import { h } from 'vue'
 
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import type { UserRecord } from './schema'
 import DropdownAction from './components/DropdownAction.vue'
+
+export const actions = mitt<{
+  view: UserRecord
+  update: UserRecord
+}>()
+
+export const labels = {
+  id: 'ID',
+  username: 'Username',
+  email: 'Email',
+  active: 'Status',
+  credit: 'Credit',
+  expiry: 'Expiry',
+}
 
 // The column definitions
 // https://tanstack.com/table/latest/docs/guide/column-defs
@@ -31,13 +46,13 @@ export const columns = [
 
   // id
   columnHelper.accessor('id', {
-    header: () => 'ID',
+    header: () => labels.id,
     cell: ({ row }) => h('div', null, row.getValue('id')),
   }),
 
   // username
   columnHelper.accessor('username', {
-    header: () => 'Username',
+    header: () => labels.username,
     cell: ({ row }) => h('div', null, row.getValue('username')),
   }),
 
@@ -47,20 +62,20 @@ export const columns = [
       return h(Button, {
         variant: 'ghost',
         onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
-      }, () => ['Email', h(Icon, { icon: 'lucide:chevrons-up-down', class: 'ml-2 h-4 w-4' })])
+      }, () => [labels.email, h(Icon, { icon: 'lucide:chevrons-up-down', class: 'ml-2 h-4 w-4' })])
     },
     cell: ({ row }) => h('div', { class: 'lowercase' }, row.getValue('email')),
   }),
 
   // Status column
   columnHelper.accessor('active', {
-    header: () => 'Status',
+    header: () => labels.active,
     cell: ({ row }) => h('div', { class: 'capitalize' }, row.getValue('active') ? 'active' : 'inactive'),
   }),
 
   // Credit column
   columnHelper.accessor('credit', {
-    header: () => h('div', { class: 'text-right' }, 'Credit'),
+    header: () => h('div', { class: 'text-right' }, labels.credit),
     footer: props => props.column.getFacetedUniqueValues().size,
     cell: ({ row }) => {
       const credit = Number.parseFloat(row.getValue('credit'))
@@ -77,7 +92,7 @@ export const columns = [
 
   // Expiry column
   columnHelper.accessor('expiry', {
-    header: () => 'Expiry',
+    header: () => labels.expiry,
     cell: ({ row }) => h('div', null, (row.getValue('expiry') as Date).toLocaleDateString()),
   }),
 
@@ -88,8 +103,8 @@ export const columns = [
     cell: ({ row }) => h('div', { class: 'flex justify-end' }, h(DropdownAction, {
       data: row.original,
       onExpand: row.toggleExpanded,
+      onViewRow: data => actions.emit('view', data),
+      onUpdateRow: data => actions.emit('update', data),
     })),
   }),
 ]
-
-export default columns

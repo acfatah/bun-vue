@@ -16,6 +16,8 @@ const props = defineProps<{
   data: UserRecord
 }>()
 
+const emit = defineEmits(['viewRow', 'updateRow'])
+
 function copy(text: string) {
   navigator.clipboard.writeText(text)
 }
@@ -35,8 +37,12 @@ function copy(text: string) {
         Copy user ID
       </DropdownMenuItem>
       <DropdownMenuSeparator />
-      <DropdownMenuItem>View</DropdownMenuItem>
-      <DropdownMenuItem>Update</DropdownMenuItem>
+      <DropdownMenuItem @click="emit('viewRow', props.data)">
+        View
+      </DropdownMenuItem>
+      <DropdownMenuItem @click="emit('updateRow', props.data)">
+        Update
+      </DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>
 </template>
