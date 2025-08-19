@@ -22,6 +22,7 @@
     "@internationalized/date": "^3.8.2",
     "@tailwindcss/vite": "^4.1.12",
     "@tanstack/vue-table": "^8.21.3",
+    "@unovis/ts": "^1.6.0",
     "@unovis/vue": "^1.6.0",
     "@vee-validate/zod": "^4.15.1",
     "@vueuse/components": "^13.7.0",
