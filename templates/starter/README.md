@@ -16,3 +16,29 @@
 </div>
 
 This starter template should help get you started developing with Vue 3, Tailwind CSS and TypeScript on Bun.
+
+## Getting Started
+
+Run the following to update and install dependencies:
+
+```bash
+bun update
+```
+
+Remove `.keep` files by running:
+
+```bash
+find . -type f -name '.keep' -delete
+```
+
+Then, initialize git by running:
+
+```bash
+git init && git add -A && git commit -m "Initial commit"
+```
+
+Initialize git hook by running:
+
+```bash
+bunx --bun simple-git-hooks
+```
