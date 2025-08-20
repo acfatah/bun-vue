@@ -21,7 +21,7 @@ const forwardedProps = useForwardProps(delegatedProps)
     :class="cn(
       buttonVariants({ variant: 'ghost' }),
       `
-        absolute right-0 size-8 bg-transparent p-0 opacity-50
+        absolute right-0 size-8 bg-transparent p-0
         hover:opacity-100
       `,
       props.class,
