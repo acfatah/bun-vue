@@ -5,7 +5,7 @@ export const schema = z.object({
 
   username: z
     .string()
-    .min(2, {
+    .min(3, {
       message: 'Username must be at least 2 characters.',
     }),
 
@@ -19,7 +19,7 @@ export const schema = z.object({
     message: 'A credit amount is required.',
   }),
 
-  expiry: z.string().pipe(z.coerce.date()),
+  expiry: z.date(),
 })
 
 export type UserRecord = z.infer<typeof schema>
