@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { GenericObject, SubmissionHandler } from 'vee-validate'
-import type { z } from 'zod'
+import type { UserRecord } from './schema'
+
 import { Icon } from '@iconify/vue'
 import {
   CalendarDate,
@@ -39,7 +40,7 @@ import { labels } from './columns'
 import { schema } from './schema'
 
 const props = defineProps<{
-  data: typeof userFormSchema
+  data: UserRecord
 }>()
 
 const userFormSchema = toTypedSchema(schema)
@@ -51,11 +52,15 @@ const df = new DateFormatter('en-US', {
 const expiryPlaceholder = ref()
 
 const onSubmit: SubmissionHandler<GenericObject> = function (values) {
-  const formValues = values as z.infer<typeof schema>
+  const formValues = values as UserRecord
 
   toast({
     title: 'You submitted the following values:',
-    description: h('pre', { class: 'mt-2 w-full rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(formValues, null, 2))),
+    description: h(
+      'pre',
+      { class: 'mt-2 w-full rounded-md bg-slate-950 p-4' },
+      h('code', { class: 'text-white' }, JSON.stringify(formValues, null, 2)),
+    ),
   })
 }
 </script>
