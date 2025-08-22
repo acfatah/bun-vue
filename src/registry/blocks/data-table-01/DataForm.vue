@@ -225,7 +225,7 @@ const onSubmit: SubmissionHandler<GenericObject> = function (values) {
           md:w-min
         "
       >
-        Save changes
+        Save
       </Button>
     </div>
   </Form>

@@ -20,7 +20,7 @@ export const labels = {
   active: 'Status',
   credit: 'Credit',
   expiry: 'Expiry',
-}
+} as const
 
 export const formatter = {
   active(value: boolean) {
