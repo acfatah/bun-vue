@@ -22,6 +22,40 @@ export const labels = {
   expiry: 'Expiry',
 }
 
+export const formatter = {
+  active(value: boolean) {
+    return value ? 'Active' : 'Inactive'
+  },
+
+  credit(value: unknown) {
+    let credit: number = 0
+
+    if (typeof value === 'string') {
+      credit = Number.parseFloat(value)
+    }
+    else if (typeof value === 'number') {
+      credit = value
+    }
+    else {
+      console.warn('Credit value must be a string or number')
+    }
+
+    // Format the amount as a dollar amount
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }).format(credit)
+  },
+
+  expiry(value: Date | undefined) {
+    if (!value) {
+      return ''
+    }
+
+    return value.toLocaleDateString()
+  },
+}
+
 // The column definitions
 // https://tanstack.com/table/latest/docs/guide/column-defs
 const columnHelper = createColumnHelper<UserRecord>()
@@ -70,30 +104,20 @@ export const columns = [
   // Status column
   columnHelper.accessor('active', {
     header: () => labels.active,
-    cell: ({ row }) => h('div', { class: 'capitalize' }, row.getValue('active') ? 'active' : 'inactive'),
+    cell: ({ row }) => h('div', { class: 'capitalize' }, formatter.active(row.getValue('active'))),
   }),
 
   // Credit column
   columnHelper.accessor('credit', {
     header: () => h('div', { class: 'text-right' }, labels.credit),
     footer: props => props.column.getFacetedUniqueValues().size,
-    cell: ({ row }) => {
-      const credit = Number.parseFloat(row.getValue('credit'))
-
-      // Format the amount as a dollar amount
-      const formatted = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-      }).format(credit)
-
-      return h('div', { class: 'text-right font-medium' }, formatted)
-    },
+    cell: ({ row }) => h('div', { class: 'text-right font-medium' }, formatter.credit(row.getValue('credit'))),
   }),
 
   // Expiry column
   columnHelper.accessor('expiry', {
     header: () => labels.expiry,
-    cell: ({ row }) => h('div', null, (row.getValue('expiry') as Date).toLocaleDateString()),
+    cell: ({ row }) => h('div', null, formatter.expiry(row.getValue('expiry'))),
   }),
 
   // Action column
