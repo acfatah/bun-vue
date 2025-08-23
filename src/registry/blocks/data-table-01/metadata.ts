@@ -42,6 +42,11 @@ export const metadata = {
       target: 'src/pages/data-table-01/DataTable.vue',
     },
     {
+      path: './DataView.vue',
+      type: 'registry:page',
+      target: 'src/pages/data-table-01/DataView.vue',
+    },
+    {
       path: './schema.ts',
       type: 'registry:file',
       target: 'src/pages/data-table-01/schema.ts',
