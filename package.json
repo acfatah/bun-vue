@@ -15,7 +15,7 @@
     "format:staged": "staged_files=$(git diff --cached --name-only --diff-filter=d); bunx --bun eslint --fix --pass-on-no-patterns --no-warn-ignored $staged_files && git add $staged_files",
     "typecheck": "bunx --bun vue-tsc --noEmit",
     "precommit": "bun lint:staged",
-    "cli": "bun src/cli"
+    "registry": "bun src/cli"
   },
   "dependencies": {
     "@iconify/vue": "^5.0.0",

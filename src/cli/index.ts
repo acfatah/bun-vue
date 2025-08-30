@@ -7,8 +7,8 @@ import { serve } from './commands/serve'
 
 async function main() {
   const program = new Command()
-    .name('bun cli')
-    .description('Command line interface for shadcn-vue-ex')
+    .name('bun registry')
+    .description('Command line interface for bun-vue registry.')
     .version(
       packageJson.version,
       '-v, --version',
