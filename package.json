@@ -13,9 +13,10 @@
     "lint:inspect": "bunx --bun eslint --inspect-config",
     "format": "changed_files=$(git diff --name-only --diff-filter=d HEAD); bunx --bun eslint --fix $changed_files",
     "format:staged": "staged_files=$(git diff --cached --name-only --diff-filter=d); bunx --bun eslint --fix --pass-on-no-patterns --no-warn-ignored $staged_files && git add $staged_files",
-    "typecheck": "bunx --bun vue-tsc --noEmit",
+    "type-check": "bunx --bun vue-tsc --noEmit",
     "precommit": "bun lint:staged",
-    "registry": "bun src/cli"
+    "registry": "bun src/cli",
+    "update-templates": "bun scripts/update-templates.ts"
   },
   "dependencies": {
     "@iconify/vue": "^5.0.0",
