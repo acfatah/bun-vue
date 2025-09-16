@@ -22,6 +22,7 @@
     "update-templates": "bun scripts/update-templates.ts"
   },
   "dependencies": {
+    "@ark-ui/vue": "^5.24.1",
     "@iconify/vue": "^5.0.0",
     "@internationalized/date": "^3.9.0",
     "@tailwindcss/vite": "^4.1.13",
