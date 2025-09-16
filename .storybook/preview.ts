@@ -18,12 +18,16 @@ const preview: Preview = {
   parameters: {
     backgrounds: { disable: true },
 
-    viewport: {
-      options: TAILWINDCSS_VIEWPORTS,
+    docs: {
+      codePanel: true,
     },
 
     themes: {
       target: 'html',
+    },
+
+    viewport: {
+      options: TAILWINDCSS_VIEWPORTS,
     },
   },
 
