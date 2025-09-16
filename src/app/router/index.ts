@@ -1,10 +1,9 @@
 import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { createRouter, createWebHistory } from 'vue-router'
 
-import V4Layout from '../layouts/V4Layout.vue'
-import { v4Routes } from '../pages/demo/routes'
+import { DEFAULT_PAGE_TITLE } from '../constant'
+import BlankLayout from '../layouts/BlankLayout.vue'
 
-const DEFAULT_PAGE_TITLE = 'Shadcn for Vue - shadcn/vue'
 const { start: startLoading, done: doneLoading } = useNProgress()
 
 const router = createRouter({
@@ -31,16 +30,8 @@ const router = createRouter({
       path: '/',
       component: () => import('../pages/Index.vue'),
       meta: {
-        layout: V4Layout,
+        layout: BlankLayout,
       },
-    },
-
-    // V4 routes
-    ...v4Routes,
-
-    {
-      path: '/blocks/:name',
-      component: () => import('../pages/BlockPreview.vue'),
     },
 
     {

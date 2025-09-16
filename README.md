@@ -21,7 +21,7 @@
   </p>
 </div>
 
-Registry for [`shadcn/ui`](https://ui.shadcn.com), which focus on `Bun`, `TypeScript` and `Vue 3`.
+Registry for [`shadcn/ui`](https://ui.shadcn.com), implemented using Ark UI, specifically built using `Bun`, `TypeScript` and `Vue 3`.
 
 > [!IMPORTANT]
 > Active development in progress!

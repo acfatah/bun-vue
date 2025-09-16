@@ -10,7 +10,7 @@
  */
 import { createFetch, useStorage } from '@vueuse/core'
 
-const API_URL = import.meta.env.VITE_API_URL
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
 const tokenStorage = useStorage('token', null)
 
 export const useFetch = createFetch({
