@@ -10,13 +10,15 @@
     "dev": "bunx --bun vite",
     "build": "bunx --bun vite build",
     "preview": "bunx --bun vite preview",
+    "storybook": "bunx --bun storybook dev -p 6006",
+    "storybook:build": "bunx --bun storybook build",
     "lint": "bunx --bun eslint",
     "lint:changed": "bunx --bun eslint --pass-on-no-patterns --no-warn-ignored $(git diff --name-only --diff-filter=d HEAD)",
     "lint:staged": "bunx --bun eslint --pass-on-no-patterns --no-warn-ignored $(git diff --cached --name-only --diff-filter=d)",
     "lint:inspect": "bunx --bun eslint --inspect-config",
     "format": "changed_files=$(git diff --name-only --diff-filter=d HEAD); bunx --bun eslint --fix $changed_files",
     "format:staged": "staged_files=$(git diff --cached --name-only --diff-filter=d); bunx --bun eslint --fix --pass-on-no-patterns --no-warn-ignored $staged_files && git add $staged_files",
-    "type-check": "bunx --bun vue-tsc --noEmit",
+    "typecheck": "bunx --bun vue-tsc --noEmit",
     "precommit": "bun lint:staged",
     "registry": "bun src/cli",
     "update-templates": "bun scripts/update-templates.ts"
@@ -58,6 +60,8 @@
     "@antfu/eslint-config": "^4.19.0",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
+    "@storybook/addon-themes": "^9.1.6",
+    "@storybook/vue3-vite": "^9.1.6",
     "@types/bun": "^1.2.22",
     "@types/common-tags": "^1.8.4",
     "@types/minimist": "^1.2.5",
@@ -69,15 +73,20 @@
     "eslint": "^9.35.0",
     "eslint-plugin-better-tailwindcss": "^3.7.8",
     "eslint-plugin-format": "^1.0.1",
+    "eslint-plugin-storybook": "^9.1.6",
     "minimist": "^1.2.8",
     "oxc-parser": "^0.77.3",
     "pathe": "^2.0.3",
+    "react": "^19.1.1",
+    "storybook": "^9.1.6",
     "typescript": "~5.8.3",
     "vite": "^7.1.5",
     "vite-svg-loader": "^5.1.0",
     "vue-tsc": "^2.2.12"
   },
-  "trustedDependencies": ["@tailwindcss/oxide"],
+  "trustedDependencies": [
+    "@tailwindcss/oxide"
+  ],
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"

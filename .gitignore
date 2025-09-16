@@ -31,3 +31,6 @@ public/r
 
 # Template files
 templates/*/bun.lock
+
+*storybook.log
+storybook-static

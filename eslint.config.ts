@@ -2,6 +2,9 @@ import antfu from '@antfu/eslint-config'
 import pluginVitest from '@vitest/eslint-plugin'
 import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss'
 
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+import storybook from 'eslint-plugin-storybook'
+
 export default antfu(
   {
     formatters: true,
@@ -11,6 +14,7 @@ export default antfu(
   {
     plugins: {
       'better-tailwindcss': eslintPluginBetterTailwindcss,
+      'plugin:storybook/recommended': storybook,
     },
 
     rules: {
