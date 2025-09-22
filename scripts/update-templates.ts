@@ -1,83 +1,88 @@
 #!/usr/bin/env bun
 
+/**
+ * Script to update all Bun templates in the 'templates' directory.
+ */
+
 import type { Dirent } from 'node:fs'
 import Bun from 'bun'
-import { readdir } from 'node:fs/promises'
+import process from 'node:process'
 import { join } from 'pathe'
+import { readDir } from './utils'
 
-async function updateTemplate(dirent: Dirent): Promise<void> {
-  const path = join(dirent.parentPath, dirent.name)
+const TARGET_DIR = 'templates'
+
+/**
+ * Update dependencies in the given directory.
+ */
+async function updateDeps(target: string | Dirent): Promise<void> {
+  const path = typeof target === 'string' ? target : join(target.parentPath, target.name)
   const versionFile = join(path, '.bun-version')
+  const pathName = path === '.' ? 'root' : `"${path}"`
 
-  // Update .bun-version file
+  // Update .bun-version file to follow the Bun version on the system
   await Bun.$`bun --version > ${versionFile}`
 
   // Update packages
-  console.log(`Updating "${path}" template...`)
+  console.log(`Updating "${pathName}"`)
 
-  const proc = Bun.spawn(
-    ['bun', 'update'],
-    {
-      cwd: path,
-      stdout: 'pipe',
-      stderr: 'pipe',
-    },
-  )
+  const proc = Bun.spawn(['bun', 'update'], {
+    cwd: path,
+    // Avoid backpressure: stream directly to terminal
+    stdout: 'inherit',
+    stderr: 'inherit',
+  })
 
-  const exitCode = await proc.exited
+  // Safety timeout (default 5 minutes; override with UPDATE_TIMEOUT_MS)
+  const timeoutMs = Number(process.env.UPDATE_TIMEOUT_MS ?? 5 * 60 * 1000)
+  let timedOut = false
+  const timer = setTimeout(() => {
+    timedOut = true
+    try {
+      proc.kill()
+    }
+    catch {}
+  }, timeoutMs)
+
+  const exitCode = await proc.exited.finally(() => clearTimeout(timer))
+
+  if (timedOut) {
+    console.error(`Update for ${pathName} timed out after ${timeoutMs}ms and was killed.`)
+
+    return
+  }
 
   if (exitCode) {
-    const [stderrText, stdoutText] = await Promise.all([
-      proc.stderr ? new Response(proc.stderr).text() : Promise.resolve(''),
-      proc.stdout ? new Response(proc.stdout).text() : Promise.resolve(''),
-    ])
-
-    const message = [stderrText, stdoutText].filter(Boolean).join('\n')
-
-    console.group(`Error updating "${path}" (exit ${exitCode}):`)
-    if (message) {
-      for (const line of message.split(/\r?\n/)) {
-        console.error(line)
-      }
-    }
-    else {
-      console.error(
-        'Process failed with no output. Consider setting stdout to "pipe" or "inherit" in Bun.spawn to capture stack traces.',
-      )
-    }
-    console.groupEnd()
+    console.error(`ERROR: Failed to update "${path}" (exit ${exitCode}). See output above.`)
   }
   else {
-    console.log(`Done updating "${path}".`)
+    console.log(`Done updating "${pathName}".`)
   }
 }
 
 async function main() {
-  // Update .bun-version file
+  // Update root directory
   await Bun.$`bun --version > .bun-version`
+  await updateDeps('.')
 
-  const dir = await readdir('templates', {
+  const dir = await readDir(TARGET_DIR, {
     withFileTypes: true,
-  })
+  }) as Dirent[]
 
-  const tasks: Promise<void>[] = []
-
+  // Run sequentially to avoid backpressure and resource spikes
   for (const dirent of dir) {
     if (!dirent.isDirectory())
       continue
 
-    tasks.push(
-      updateTemplate(dirent),
-    )
+    try {
+      await updateDeps(dirent)
+    }
+    catch (error) {
+      console.error(`An error occurred during the update of "${join(dirent.parentPath, dirent.name)}":`, error)
+    }
   }
 
-  try {
-    await Promise.all(tasks)
-    console.log('All updates completed.')
-  }
-  catch (error) {
-    console.error('An error occurred during the update:', error)
-  }
+  console.log('All updates completed.')
 }
 
 main()
