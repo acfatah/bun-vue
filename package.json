@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "update:all": "bun scripts/update-all.ts",
+    "cli": "bun src/cli/index.ts",
     "dev": "bunx --bun vite",
     "build": "bunx --bun vite build",
     "preview": "bunx --bun vite preview",
