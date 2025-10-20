@@ -2,6 +2,7 @@ import antfu from '@antfu/eslint-config'
 import pluginVitest from '@vitest/eslint-plugin'
 import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss'
 
+// https://github.com/antfu/eslint-config?tab=readme-ov-file#antfueslint-config
 export default antfu(
   {
     formatters: true,
