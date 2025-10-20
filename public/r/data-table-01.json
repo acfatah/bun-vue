@@ -10,20 +10,20 @@
     "@vueuse/core"
   ],
   "registryDependencies": [
-    "http://localhost:8080/public/r/checkbox.json",
-    "http://localhost:8080/public/r/button.json",
-    "http://localhost:8080/public/r/dropdown-menu.json",
-    "http://localhost:8080/public/r/calendar.json",
-    "http://localhost:8080/public/r/form.json",
-    "http://localhost:8080/public/r/input.json",
-    "http://localhost:8080/public/r/popover.json",
-    "http://localhost:8080/public/r/switch.json",
-    "http://localhost:8080/public/r/toast.json",
-    "http://localhost:8080/public/r/utils.json",
-    "http://localhost:8080/public/r/data-table.json",
-    "http://localhost:8080/public/r/dialog.json",
-    "http://localhost:8080/public/r/sheet.json",
-    "http://localhost:8080/public/r/label.json"
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/checkbox.json",
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/button.json",
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/dropdown-menu.json",
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/calendar.json",
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/form.json",
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/input.json",
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/popover.json",
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/switch.json",
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/toast.json",
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json",
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/data-table.json",
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/dialog.json",
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/sheet.json",
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/label.json"
   ],
   "files": [
     {

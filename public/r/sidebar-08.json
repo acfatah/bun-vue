@@ -6,13 +6,13 @@
     "@iconify/vue"
   ],
   "registryDependencies": [
-    "http://localhost:8080/public/r/breadcrumb.json",
-    "http://localhost:8080/public/r/separator.json",
-    "http://localhost:8080/public/r/sidebar.json",
-    "http://localhost:8080/public/r/avatar.json",
-    "http://localhost:8080/public/r/collapsible.json",
-    "http://localhost:8080/public/r/dropdown-menu.json",
-    "http://localhost:8080/public/r/scroll-area.json"
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/breadcrumb.json",
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/separator.json",
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/sidebar.json",
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/avatar.json",
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/collapsible.json",
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/dropdown-menu.json",
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/scroll-area.json"
   ],
   "files": [
     {

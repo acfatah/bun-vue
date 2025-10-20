@@ -6,7 +6,7 @@
   "description": "Displays a card with header, content, and footer.",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:8080/public/r/utils.json"
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
   ],
   "files": [
     {

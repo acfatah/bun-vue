@@ -10,8 +10,8 @@
     "@vueuse/core"
   ],
   "registryDependencies": [
-    "http://localhost:8080/public/r/utils.json",
-    "http://localhost:8080/public/r/dialog.json"
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json",
+    "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/dialog.json"
   ],
   "files": [
     {

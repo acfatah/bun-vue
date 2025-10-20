@@ -27,7 +27,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -59,7 +59,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": []
   },
@@ -111,8 +111,8 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/button.json",
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/button.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -163,7 +163,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -186,7 +186,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "@vueuse/core",
@@ -233,7 +233,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -256,7 +256,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui"
@@ -326,10 +326,10 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json",
-      "http://localhost:8080/public/r/calendar.json",
-      "http://localhost:8080/public/r/select.json",
-      "http://localhost:8080/public/r/button.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/calendar.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/select.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/button.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -377,7 +377,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": []
   },
@@ -421,8 +421,8 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json",
-      "http://localhost:8080/public/r/button.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/button.json"
     ],
     "dependencies": [
       "embla-carousel-vue",
@@ -446,7 +446,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -478,7 +478,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui"
@@ -540,7 +540,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -596,8 +596,8 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json",
-      "http://localhost:8080/public/r/dialog.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/dialog.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -677,7 +677,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -715,12 +715,12 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/button.json",
-      "http://localhost:8080/public/r/dropdown-menu.json",
-      "http://localhost:8080/public/r/input.json",
-      "http://localhost:8080/public/r/pagination.json",
-      "http://localhost:8080/public/r/table.json",
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/button.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/dropdown-menu.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/input.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/pagination.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/table.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "@tanstack/vue-table",
@@ -761,20 +761,20 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/checkbox.json",
-      "http://localhost:8080/public/r/button.json",
-      "http://localhost:8080/public/r/dropdown-menu.json",
-      "http://localhost:8080/public/r/calendar.json",
-      "http://localhost:8080/public/r/form.json",
-      "http://localhost:8080/public/r/input.json",
-      "http://localhost:8080/public/r/popover.json",
-      "http://localhost:8080/public/r/switch.json",
-      "http://localhost:8080/public/r/toast.json",
-      "http://localhost:8080/public/r/utils.json",
-      "http://localhost:8080/public/r/data-table.json",
-      "http://localhost:8080/public/r/dialog.json",
-      "http://localhost:8080/public/r/sheet.json",
-      "http://localhost:8080/public/r/label.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/checkbox.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/button.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/dropdown-menu.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/calendar.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/form.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/input.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/popover.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/switch.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/toast.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/data-table.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/dialog.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/sheet.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/label.json"
     ],
     "dependencies": [
       "@vee-validate/zod",
@@ -836,7 +836,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -892,7 +892,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "vaul-vue",
@@ -968,7 +968,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -1010,11 +1010,11 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/button.json",
-      "http://localhost:8080/public/r/card.json",
-      "http://localhost:8080/public/r/form.json",
-      "http://localhost:8080/public/r/input.json",
-      "http://localhost:8080/public/r/toast.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/button.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/card.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/form.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/input.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/toast.json"
     ],
     "dependencies": [
       "vee-validate",
@@ -1066,8 +1066,8 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json",
-      "http://localhost:8080/public/r/label.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/label.json"
     ],
     "dependencies": [
       "@vueuse/core",
@@ -1120,7 +1120,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -1143,7 +1143,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "@vueuse/core"
@@ -1165,7 +1165,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "@vueuse/core",
@@ -1188,7 +1188,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -1213,11 +1213,11 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/button.json",
-      "http://localhost:8080/public/r/card.json",
-      "http://localhost:8080/public/r/form.json",
-      "http://localhost:8080/public/r/input.json",
-      "http://localhost:8080/public/r/toast.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/button.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/card.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/form.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/input.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/toast.json"
     ],
     "dependencies": [
       "vee-validate",
@@ -1297,7 +1297,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -1349,7 +1349,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -1389,7 +1389,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -1441,8 +1441,8 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json",
-      "http://localhost:8080/public/r/button.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/button.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -1478,7 +1478,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -1514,7 +1514,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -1545,7 +1545,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -1572,7 +1572,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -1640,8 +1640,8 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json",
-      "http://localhost:8080/public/r/button.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/button.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -1673,7 +1673,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -1701,7 +1701,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -1764,7 +1764,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -1788,7 +1788,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -1843,7 +1843,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -1987,14 +1987,14 @@
       }
     },
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json",
-      "http://localhost:8080/public/r/input.json",
-      "http://localhost:8080/public/r/tooltip.json",
-      "http://localhost:8080/public/r/scroll-area.json",
-      "http://localhost:8080/public/r/sheet.json",
-      "http://localhost:8080/public/r/skeleton.json",
-      "http://localhost:8080/public/r/button.json",
-      "http://localhost:8080/public/r/separator.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/input.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/tooltip.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/scroll-area.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/sheet.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/skeleton.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/button.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/separator.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -2032,13 +2032,13 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/breadcrumb.json",
-      "http://localhost:8080/public/r/separator.json",
-      "http://localhost:8080/public/r/sidebar.json",
-      "http://localhost:8080/public/r/avatar.json",
-      "http://localhost:8080/public/r/collapsible.json",
-      "http://localhost:8080/public/r/dropdown-menu.json",
-      "http://localhost:8080/public/r/scroll-area.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/breadcrumb.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/separator.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/sidebar.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/avatar.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/collapsible.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/dropdown-menu.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/scroll-area.json"
     ],
     "dependencies": [
       "@iconify/vue"
@@ -2062,11 +2062,11 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/button.json",
-      "http://localhost:8080/public/r/card.json",
-      "http://localhost:8080/public/r/form.json",
-      "http://localhost:8080/public/r/input.json",
-      "http://localhost:8080/public/r/toast.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/button.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/card.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/form.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/input.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/toast.json"
     ],
     "dependencies": [
       "vee-validate",
@@ -2092,11 +2092,11 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/button.json",
-      "http://localhost:8080/public/r/card.json",
-      "http://localhost:8080/public/r/form.json",
-      "http://localhost:8080/public/r/input.json",
-      "http://localhost:8080/public/r/toast.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/button.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/card.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/form.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/input.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/toast.json"
     ],
     "dependencies": [
       "vee-validate",
@@ -2120,7 +2120,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": []
   },
@@ -2140,7 +2140,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -2212,7 +2212,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -2235,7 +2235,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -2290,7 +2290,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "@vueuse/core"
@@ -2324,7 +2324,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -2363,7 +2363,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -2387,7 +2387,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "@vueuse/core"
@@ -2441,7 +2441,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -2465,7 +2465,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -2492,8 +2492,8 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/toggle.json",
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/toggle.json",
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
@@ -2536,7 +2536,7 @@
       }
     ],
     "registryDependencies": [
-      "http://localhost:8080/public/r/utils.json"
+      "https://raw.githubusercontent.com/acfatah/bun-vue/refs/heads/main/public/r/utils.json"
     ],
     "dependencies": [
       "reka-ui",
