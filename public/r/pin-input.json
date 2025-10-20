@@ -1,0 +1,42 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "pin-input",
+  "type": "registry:ui",
+  "title": "Pin Input",
+  "description": "Allows users to input a sequence of one-character alphanumeric inputs.",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core",
+    "@iconify/vue"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/pin-input/PinInputGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PrimitiveProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { Primitive, useForwardProps } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<PrimitiveProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <Primitive\n    data-slot=\"pin-input-group\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn('flex items-center', props.class)\"\n  >\n    <slot />\n  </Primitive>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/pin-input/PinInput.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PinInputRootEmits, PinInputRootProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { PinInputRoot, useForwardPropsEmits } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = withDefaults(defineProps<PinInputRootProps & {\n  class?: HTMLAttributes['class']\n}>(), {\n  modelValue: () => [],\n})\n\nconst emits = defineEmits<PinInputRootEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <PinInputRoot\n    data-slot=\"pin-input\"\n    v-bind=\"forwarded\"\n    :class=\"cn(\n      `\n        flex items-center gap-2\n        disabled:cursor-not-allowed\n        has-disabled:opacity-50\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </PinInputRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/pin-input/PinInputSlot.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PinInputInputProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { PinInputInput, useForwardProps } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<PinInputInputProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <PinInputInput\n    data-slot=\"pin-input-slot\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        relative flex h-9 w-9 items-center justify-center border-y border-r border-input text-center\n        text-sm shadow-xs transition-all outline-none\n        first:rounded-l-md first:border-l\n        last:rounded-r-md\n        focus:z-10 focus:border-ring focus:ring-[3px] focus:ring-ring/50\n        aria-invalid:border-destructive\n        focus:aria-invalid:border-destructive focus:aria-invalid:ring-destructive/20\n        dark:bg-input/30 dark:focus:aria-invalid:ring-destructive/40\n      `,\n      props.class,\n\n    )\"\n  />\n</template>\n\n<style lang=\"css\">\n/**\n * The following styles are used to hide the password reveal toggle on the pin input.\n */\n\n/* https://learn.microsoft.com/en-us/microsoft-edge/web-platform/password-reveal */\n[data-slot='pin-input-slot']::-ms-reveal {\n  display: none;\n}\n\n[data-slot='pin-input-slot'] input[type='password'] {\n  -webkit-text-security: none;\n  -moz-text-security: none;\n}\n</style>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/pin-input/PinInputSeparator.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PrimitiveProps } from 'reka-ui'\nimport { Icon } from '@iconify/vue'\nimport { Primitive, useForwardProps } from 'reka-ui'\n\nconst props = defineProps<PrimitiveProps>()\nconst forwardedProps = useForwardProps(props)\n</script>\n\n<template>\n  <Primitive\n    data-slot=\"pin-input-separator\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot>\n      <Icon icon=\"lucide:minus\" />\n    </slot>\n  </primitive>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/pin-input/index.ts",
+      "content": "/**\n * Pin Input\n *\n * Allows users to input a sequence of one-character alphanumeric inputs.\n */\n\nexport { default as PinInput } from './PinInput.vue'\nexport { default as PinInputGroup } from './PinInputGroup.vue'\nexport { default as PinInputSeparator } from './PinInputSeparator.vue'\nexport { default as PinInputSlot } from './PinInputSlot.vue'\n",
+      "type": "registry:ui"
+    }
+  ]
+}

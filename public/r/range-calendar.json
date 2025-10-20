@@ -1,0 +1,83 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "range-calendar",
+  "type": "registry:ui",
+  "title": "Range Calendar",
+  "description": "A calendar component that allows users to select a range of dates.",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core",
+    "@iconify/vue"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/utils.json",
+    "http://localhost:8080/public/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/range-calendar/RangeCalendarGrid.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { RangeCalendarGridProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { RangeCalendarGrid, useForwardProps } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<RangeCalendarGridProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <RangeCalendarGrid\n    data-slot=\"range-calendar-grid\"\n    :class=\"cn('w-full border-collapse space-x-1', props.class)\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </RangeCalendarGrid>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/range-calendar/RangeCalendarGridHead.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { RangeCalendarGridHeadProps } from 'reka-ui'\nimport { RangeCalendarGridHead } from 'reka-ui'\n\nconst props = defineProps<RangeCalendarGridHeadProps>()\n</script>\n\n<template>\n  <RangeCalendarGridHead\n    data-slot=\"range-calendar-grid-head\"\n    v-bind=\"props\"\n  >\n    <slot />\n  </RangeCalendarGridHead>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/range-calendar/RangeCalendarGridBody.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { RangeCalendarGridBodyProps } from 'reka-ui'\nimport { RangeCalendarGridBody } from 'reka-ui'\n\nconst props = defineProps<RangeCalendarGridBodyProps>()\n</script>\n\n<template>\n  <RangeCalendarGridBody\n    data-slot=\"range-calendar-grid-body\"\n    v-bind=\"props\"\n  >\n    <slot />\n  </RangeCalendarGridBody>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/range-calendar/RangeCalendarHeading.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { RangeCalendarHeadingProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { RangeCalendarHeading, useForwardProps } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<RangeCalendarHeadingProps & {\n  class?: HTMLAttributes['class']\n}>()\n\ndefineSlots<{\n  default: (props: { headingValue: string }) => any\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <RangeCalendarHeading\n    v-slot=\"{ headingValue }\"\n    v-bind=\"forwardedProps\"\n    data-slot=\"range-calendar-heading\"\n    :class=\"cn('text-sm font-medium', props.class)\"\n  >\n    <slot :heading-value>\n      {{ headingValue }}\n    </slot>\n  </RangeCalendarHeading>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/range-calendar/RangeCalendarNextButton.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { RangeCalendarNextProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { Icon } from '@iconify/vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { RangeCalendarNext, useForwardProps } from 'reka-ui'\nimport { buttonVariants } from '@/components/ui/button'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<RangeCalendarNextProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <RangeCalendarNext\n    data-slot=\"range-calendar-next-button\"\n    :class=\"cn(\n      buttonVariants({ variant: 'outline' }),\n      `\n        absolute right-1 size-7 bg-transparent p-0 opacity-50\n        hover:opacity-100\n        [&>svg]:size-4 [&>svg]:shrink-0\n      `,\n      props.class,\n    )\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot>\n      <Icon icon=\"lucide:chevron-right\" />\n    </slot>\n  </RangeCalendarNext>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/range-calendar/RangeCalendar.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { RangeCalendarRootEmits, RangeCalendarRootProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { RangeCalendarRoot, useForwardPropsEmits } from 'reka-ui'\nimport { cn } from '@/lib/utils'\nimport {\n  RangeCalendarCell,\n  RangeCalendarCellTrigger,\n  RangeCalendarGrid,\n  RangeCalendarGridBody,\n  RangeCalendarGridHead,\n  RangeCalendarGridRow,\n  RangeCalendarHeadCell,\n  RangeCalendarHeader,\n  RangeCalendarHeading,\n  RangeCalendarNextButton,\n  RangeCalendarPrevButton,\n} from '.'\n\nconst props = defineProps<RangeCalendarRootProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst emits = defineEmits<RangeCalendarRootEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <RangeCalendarRoot\n    v-slot=\"{ grid, weekDays }\"\n    data-slot=\"range-calendar\"\n    :class=\"cn('p-3 select-none', props.class)\"\n    v-bind=\"forwarded\"\n  >\n    <RangeCalendarHeader>\n      <RangeCalendarHeading />\n      <div class=\"flex items-center gap-1\">\n        <RangeCalendarPrevButton />\n        <RangeCalendarNextButton />\n      </div>\n    </RangeCalendarHeader>\n\n    <div\n      class=\"\n        mt-4 flex flex-col gap-y-4\n        sm:flex-row sm:gap-x-4 sm:gap-y-0\n      \"\n    >\n      <RangeCalendarGrid v-for=\"month in grid\" :key=\"month.value.toString()\">\n        <RangeCalendarGridHead>\n          <RangeCalendarGridRow>\n            <RangeCalendarHeadCell\n              v-for=\"day in weekDays\" :key=\"day\"\n            >\n              {{ day }}\n            </RangeCalendarHeadCell>\n          </RangeCalendarGridRow>\n        </RangeCalendarGridHead>\n        <RangeCalendarGridBody>\n          <RangeCalendarGridRow\n            v-for=\"(weekDates, index) in month.rows\"\n            :key=\"`weekDate-${index}`\"\n            class=\"mt-2 w-full\"\n          >\n            <RangeCalendarCell\n              v-for=\"weekDate in weekDates\"\n              :key=\"weekDate.toString()\"\n              :date=\"weekDate\"\n            >\n              <RangeCalendarCellTrigger\n                :day=\"weekDate\"\n                :month=\"month.value\"\n              />\n            </RangeCalendarCell>\n          </RangeCalendarGridRow>\n        </RangeCalendarGridBody>\n      </RangeCalendarGrid>\n    </div>\n  </RangeCalendarRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/range-calendar/RangeCalendarCellTrigger.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { RangeCalendarCellTriggerProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { RangeCalendarCellTrigger, useForwardProps } from 'reka-ui'\nimport { buttonVariants } from '@/components/ui/button'\nimport { cn } from '@/lib/utils'\n\nconst props = withDefaults(defineProps<RangeCalendarCellTriggerProps & {\n  class?: HTMLAttributes['class']\n}>(), {\n  as: 'button',\n})\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <RangeCalendarCellTrigger\n    data-slot=\"range-calendar-trigger\"\n    :class=\"cn(\n      buttonVariants({ variant: 'ghost' }),\n      `\n        h-8 w-8 p-0 font-normal\n        data-[selected]:opacity-100\n        [&[data-today]:not([data-selected])]:bg-accent\n        [&[data-today]:not([data-selected])]:text-accent-foreground\n      `,\n\n      // Selection Start\n      `\n        data-[selection-start]:bg-primary data-[selection-start]:text-primary-foreground\n        data-[selection-start]:hover:bg-primary data-[selection-start]:hover:text-primary-foreground\n        data-[selection-start]:focus:bg-primary data-[selection-start]:focus:text-primary-foreground\n      `,\n\n      // Selection End\n      `\n        data-[selection-end]:bg-primary data-[selection-end]:text-primary-foreground\n        data-[selection-end]:hover:bg-primary data-[selection-end]:hover:text-primary-foreground\n        data-[selection-end]:focus:bg-primary data-[selection-end]:focus:text-primary-foreground\n      `,\n\n      // Outside months\n      'data-[outside-view]:text-muted-foreground',\n      // Disabled\n      'data-[disabled]:text-muted-foreground data-[disabled]:opacity-50',\n      // Unavailable\n      'data-[unavailable]:text-destructive-foreground data-[unavailable]:line-through',\n      props.class,\n    )\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </RangeCalendarCellTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/range-calendar/RangeCalendarHeader.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { RangeCalendarHeaderProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { RangeCalendarHeader, useForwardProps } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<RangeCalendarHeaderProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <RangeCalendarHeader\n    data-slot=\"range-calendar-header\"\n    :class=\"cn(\n      'relative flex w-full items-center justify-center pt-1',\n      props.class,\n    )\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </RangeCalendarHeader>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/range-calendar/RangeCalendarHeadCell.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { RangeCalendarHeadCellProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { RangeCalendarHeadCell, useForwardProps } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<RangeCalendarHeadCellProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <RangeCalendarHeadCell\n    data-slot=\"range-calendar-head-cell\"\n    :class=\"cn(\n      'w-8 rounded-md text-[0.8rem] font-normal text-muted-foreground',\n      props.class,\n    )\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </RangeCalendarHeadCell>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/range-calendar/RangeCalendarPrevButton.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { RangeCalendarPrevProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { Icon } from '@iconify/vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { RangeCalendarPrev, useForwardProps } from 'reka-ui'\nimport { buttonVariants } from '@/components/ui/button'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<RangeCalendarPrevProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <RangeCalendarPrev\n    data-slot=\"range-calendar-prev-button\"\n    :class=\"cn(\n      buttonVariants({ variant: 'outline' }),\n      `\n        absolute left-1 size-7 bg-transparent p-0 opacity-50\n        hover:opacity-100\n        [&>svg]:size-4 [&>svg]:shrink-0\n      `,\n      props.class,\n    )\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot>\n      <Icon icon=\"lucide:chevron-left\" />\n    </slot>\n  </RangeCalendarPrev>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/range-calendar/RangeCalendarGridRow.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { RangeCalendarGridRowProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { RangeCalendarGridRow, useForwardProps } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<RangeCalendarGridRowProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <RangeCalendarGridRow\n    data-slot=\"range-calendar-grid-row\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn('flex', props.class)\"\n  >\n    <slot />\n  </RangeCalendarGridRow>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/range-calendar/RangeCalendarCell.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { RangeCalendarCellProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { RangeCalendarCell, useForwardProps } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<RangeCalendarCellProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <RangeCalendarCell\n    data-slot=\"range-calendar-cell\"\n    :class=\"cn(\n      `\n        relative p-0 text-center text-sm\n        focus-within:relative focus-within:z-20\n        [&:has([data-selected])]:bg-accent\n        first:[&:has([data-selected])]:rounded-l-md\n        last:[&:has([data-selected])]:rounded-r-md\n        [&:has([data-selected][data-selection-end])]:rounded-r-md\n        [&:has([data-selected][data-selection-start])]:rounded-l-md\n      `,\n      props.class,\n    )\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </RangeCalendarCell>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/range-calendar/index.ts",
+      "content": "/**\n * Range Calendar\n *\n * A calendar component that allows users to select a range of dates.\n */\n\nexport { default as RangeCalendar } from './RangeCalendar.vue'\nexport { default as RangeCalendarCell } from './RangeCalendarCell.vue'\nexport { default as RangeCalendarCellTrigger } from './RangeCalendarCellTrigger.vue'\nexport { default as RangeCalendarGrid } from './RangeCalendarGrid.vue'\nexport { default as RangeCalendarGridBody } from './RangeCalendarGridBody.vue'\nexport { default as RangeCalendarGridHead } from './RangeCalendarGridHead.vue'\nexport { default as RangeCalendarGridRow } from './RangeCalendarGridRow.vue'\nexport { default as RangeCalendarHeadCell } from './RangeCalendarHeadCell.vue'\nexport { default as RangeCalendarHeader } from './RangeCalendarHeader.vue'\nexport { default as RangeCalendarHeading } from './RangeCalendarHeading.vue'\nexport { default as RangeCalendarNextButton } from './RangeCalendarNextButton.vue'\nexport { default as RangeCalendarPrevButton } from './RangeCalendarPrevButton.vue'\nexport { type DateRange } from 'reka-ui'\n",
+      "type": "registry:ui"
+    }
+  ]
+}

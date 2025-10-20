@@ -1,0 +1,37 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "sign-in",
+  "type": "registry:block",
+  "dependencies": [
+    "vee-validate",
+    "@vee-validate/zod",
+    "zod"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/button.json",
+    "http://localhost:8080/public/r/card.json",
+    "http://localhost:8080/public/r/form.json",
+    "http://localhost:8080/public/r/input.json",
+    "http://localhost:8080/public/r/toast.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/blocks/sign-in/layouts/CenteredLayout.vue",
+      "content": "<template>\n  <div\n    class=\"\n      container m-auto flex h-screen min-h-[360px] min-w-[360px] flex-col items-center\n      justify-center p-1\n      sm:p-8\n    \"\n  >\n    <RouterView />\n  </div>\n</template>\n",
+      "type": "registry:component",
+      "target": "~/src/layouts/CenteredLayout.vue"
+    },
+    {
+      "path": "src/registry/blocks/sign-in/pages/SignIn.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { GenericObject, SubmissionHandler } from 'vee-validate'\nimport { toTypedSchema } from '@vee-validate/zod'\nimport { h, ref } from 'vue'\nimport { z } from 'zod'\nimport { Button } from '@/components/ui/button'\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from '@/components/ui/card'\nimport {\n  Form,\n  FormControl,\n  // FormDescription,\n  FormField,\n  FormItem,\n  FormLabel,\n  FormMessage,\n} from '@/components/ui/form'\nimport { Input } from '@/components/ui/input'\nimport { toast } from '@/components/ui/toast'\n\nconst schema = z.object({\n  email: z\n    .string({ message: 'Email cannot be empty' })\n    .pipe(z.email('Email is invalid')),\n\n  password: z\n    .string()\n    .min(6, {\n      message: 'Password must be at least 6 characters.',\n    }),\n})\n\ntype FormValues = z.infer<typeof schema>\nconst formSchema = toTypedSchema(schema)\nconst loading = ref(false)\n\nconst onSubmit: SubmissionHandler<GenericObject> = function (values) {\n  const formValues = values as FormValues\n\n  toast({\n    title: 'You submitted the following values:',\n    description: h(\n      'pre',\n      { class: 'mt-2 w-full rounded-md bg-slate-950 p-4' },\n      h('code', { class: 'text-white' }, JSON.stringify(formValues, null, 2)),\n    ),\n  })\n}\n</script>\n\n<template>\n  <Card class=\"w-full max-w-sm\">\n    <Form\n      v-slot=\"{ meta }\"\n      class=\"w-full\"\n      :validation-schema=\"formSchema\"\n      @submit=\"onSubmit\"\n    >\n      <CardHeader>\n        <CardTitle class=\"text-2xl\">\n          Login\n        </CardTitle>\n        <CardDescription>\n          Enter your email below to login to your account.\n        </CardDescription>\n      </CardHeader>\n\n      <CardContent class=\"grid gap-4\">\n        <FormField v-slot=\"{ componentField }\" name=\"email\">\n          <FormItem>\n            <FormLabel>Email</FormLabel>\n            <FormControl>\n              <Input type=\"email\" v-bind=\"componentField\" placeholder=\"m@example.com\" />\n            </FormControl>\n            <!-- <FormDescription>\n              Your email\n            </FormDescription> -->\n            <FormMessage />\n          </FormItem>\n        </FormField>\n\n        <FormField v-slot=\"{ componentField }\" name=\"password\">\n          <FormItem>\n            <FormLabel class=\"flex items-center\">\n              Password\n              <RouterLink to=\"/forgot-password\" class=\"ml-auto text-sm underline\">\n                Forgot your password?\n              </RouterLink>\n            </FormLabel>\n            <FormControl>\n              <Input type=\"password\" v-bind=\"componentField\" placeholder=\"******\" />\n            </FormControl>\n            <!-- <FormDescription>\n              Your password\n            </FormDescription> -->\n            <FormMessage />\n          </FormItem>\n        </FormField>\n      </CardContent>\n\n      <CardFooter class=\"mt-6 grid gap-4\">\n        <Button\n          type=\"submit\"\n          class=\"w-full\"\n          :disabled=\"loading || (meta.touched && !meta.valid)\"\n        >\n          Login\n        </Button>\n\n        <Button variant=\"outline\" class=\"w-full\">\n          Login with Google\n        </Button>\n\n        <div class=\"text-center text-sm\">\n          Don't have an account?\n          <RouterLink to=\"/sign-up\" class=\"underline\">\n            Sign up\n          </RouterLink>\n        </div>\n      </CardFooter>\n    </Form>\n  </Card>\n</template>\n",
+      "type": "registry:page",
+      "target": "~/src/pages/SignIn.vue"
+    },
+    {
+      "path": "src/registry/blocks/sign-in/router/sign-in.ts",
+      "content": "import type { RouteRecordRaw } from 'vue-router'\nimport CenteredLayout from '@/layouts/CenteredLayout.vue'\nimport SignIn from '@/pages/SignIn.vue'\n\nconst routes: RouteRecordRaw[] = [\n  {\n    path: '/sign-in',\n    name: 'sign-in',\n    meta: { layout: CenteredLayout },\n    component: SignIn,\n  },\n]\n\nexport default routes\n",
+      "type": "registry:file",
+      "target": "~/src/router/sign-in.ts"
+    }
+  ]
+}

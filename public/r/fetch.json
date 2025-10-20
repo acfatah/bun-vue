@@ -1,0 +1,19 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "fetch",
+  "type": "registry:lib",
+  "title": "Extends the default `@vueuse/core` useFetch implementation.",
+  "description": "- Adds the base URL loaded from `VITE_API_URL`. - Adds the `Authorization` header if local storage `token` is defined. * Read more: - https://vueuse.org/core/useFetch - https://vueuse.org/core/useStorage",
+  "dependencies": [
+    "@vueuse/core"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/registry/lib/fetch.ts",
+      "content": "/**\n * Extends the default `@vueuse/core` useFetch implementation.\n *\n * - Adds the base URL loaded from `VITE_API_URL`.\n * - Adds the `Authorization` header if local storage `token` is defined.\n *\n * Read more:\n * - https://vueuse.org/core/useFetch\n * - https://vueuse.org/core/useStorage\n */\nimport { createFetch, useStorage } from '@vueuse/core'\n\nconst API_URL = import.meta.env.VITE_API_URL\nconst tokenStorage = useStorage('token', null)\n\nexport const useFetch = createFetch({\n  baseUrl: API_URL,\n  options: {\n    onFetchError(ctx) {\n      // console.error(ctx.error)\n\n      return ctx\n    },\n\n    // https://vueuse.org/core/useFetch/#intercepting-a-request\n    async beforeFetch({ options }) {\n      if (!API_URL)\n        throw new Error('VITE_API_URL is not defined')\n\n      options.credentials = 'include'\n\n      options.headers = {\n        Accept: 'application/json',\n        ...options.headers,\n        ...(typeof tokenStorage.value === 'string' && {\n          Authorization: `Bearer ${tokenStorage.value}`,\n        }),\n      }\n\n      return { options }\n    },\n\n    async afterFetch(ctx) {\n      //\n\n      return ctx\n    },\n  },\n})\n\nexport default {\n  useFetch,\n}\n",
+      "type": "registry:lib",
+      "target": "~/src/lib/fetch.ts"
+    }
+  ]
+}

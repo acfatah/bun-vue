@@ -1,0 +1,26 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "slider",
+  "type": "registry:ui",
+  "title": "Slider",
+  "description": "An input where the user selects a value from within a given range.",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/slider/Slider.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { SliderRootEmits, SliderRootProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport {\n  SliderRange,\n  SliderRoot,\n  SliderThumb,\n  SliderTrack,\n  useForwardPropsEmits,\n} from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<SliderRootProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst emits = defineEmits<SliderRootEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <SliderRoot\n    v-slot=\"{ modelValue }\"\n    data-slot=\"slider\"\n    :class=\"cn(\n      `\n        relative flex w-full touch-none items-center select-none\n        data-[disabled]:opacity-50\n        data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44\n        data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col\n      `,\n      props.class,\n    )\"\n    v-bind=\"forwarded\"\n  >\n    <SliderTrack\n      data-slot=\"slider-track\"\n      :class=\"cn(\n        `\n          relative grow overflow-hidden rounded-full bg-muted\n          data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full\n          data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5\n        `,\n      )\"\n    >\n      <SliderRange\n        data-slot=\"slider-range\"\n        :class=\"cn(\n          `\n            absolute bg-primary\n            data-[orientation=horizontal]:h-full\n            data-[orientation=vertical]:w-full\n          `,\n        )\"\n      />\n    </SliderTrack>\n\n    <SliderThumb\n      v-for=\"(_, key) in modelValue\"\n      :key=\"key\"\n      data-slot=\"slider-thumb\"\n      :class=\"cn(\n        `\n          block size-4 shrink-0 rounded-full border border-primary bg-background shadow-sm\n          ring-ring/50 transition-[color,box-shadow]\n          hover:ring-4\n          focus-visible:ring-4 focus-visible:outline-hidden\n          disabled:pointer-events-none disabled:opacity-50\n        `,\n      )\"\n    />\n  </SliderRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/slider/index.ts",
+      "content": "/**\n * Slider\n *\n * An input where the user selects a value from within a given range.\n */\n\nexport { default as Slider } from './Slider.vue'\n",
+      "type": "registry:ui"
+    }
+  ]
+}

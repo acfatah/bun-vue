@@ -1,0 +1,26 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "label",
+  "type": "registry:ui",
+  "title": "Label",
+  "description": "Renders an accessible label associated with controls.",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/label/Label.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { LabelProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { Label, useForwardProps } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<LabelProps & {\n  class?: HTMLAttributes['class']\n  disabled?: boolean\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <Label\n    data-slot=\"label\"\n    :data-disabled=\"disabled ? '' : undefined\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        flex items-center gap-2 text-sm leading-none font-medium select-none\n        group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50\n        peer-disabled:cursor-not-allowed peer-disabled:opacity-50\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Label>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/label/index.ts",
+      "content": "/**\n * Label\n *\n * Renders an accessible label associated with controls.\n */\n\nexport { default as Label } from './Label.vue'\n",
+      "type": "registry:ui"
+    }
+  ]
+}

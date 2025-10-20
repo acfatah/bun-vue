@@ -1,0 +1,51 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "tooltip",
+  "type": "registry:ui",
+  "title": "Tooltip",
+  "description": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/tooltip/TooltipProvider.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { TooltipProviderProps } from 'reka-ui'\nimport { TooltipProvider } from 'reka-ui'\n\nconst props = withDefaults(defineProps<TooltipProviderProps>(), {\n  delayDuration: 0,\n})\n</script>\n\n<template>\n  <TooltipProvider v-bind=\"props\">\n    <slot />\n  </TooltipProvider>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/tooltip/TooltipTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { TooltipTriggerProps } from 'reka-ui'\nimport { TooltipTrigger } from 'reka-ui'\n\nconst props = defineProps<TooltipTriggerProps>()\n</script>\n\n<template>\n  <TooltipTrigger\n    data-slot=\"tooltip-trigger\"\n    v-bind=\"props\"\n  >\n    <slot />\n  </TooltipTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/tooltip/TooltipArrow.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { TooltipArrow } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <TooltipArrow\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      'z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px] bg-primary fill-primary',\n      props.class,\n    )\"\n  >\n    <slot />\n  </TooltipArrow>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/tooltip/Tooltip.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { TooltipRootEmits, TooltipRootProps } from 'reka-ui'\nimport {\n  TooltipProvider,\n  TooltipRoot,\n  useForwardPropsEmits,\n} from 'reka-ui'\n\nconst props = defineProps<TooltipRootProps>()\nconst emits = defineEmits<TooltipRootEmits>()\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <TooltipProvider>\n    <TooltipRoot\n      data-slot=\"tooltip\"\n      v-bind=\"forwarded\"\n    >\n      <slot />\n    </TooltipRoot>\n  </TooltipProvider>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/tooltip/TooltipContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { TooltipContentEmits, TooltipContentProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { TooltipContent, TooltipPortal, useForwardPropsEmits } from 'reka-ui'\nimport { cn } from '@/lib/utils'\nimport { TooltipArrow } from '.'\n\ndefineOptions({\n  inheritAttrs: false,\n})\n\nconst props = withDefaults(defineProps<TooltipContentProps & {\n  class?: HTMLAttributes['class']\n}>(), {\n  sideOffset: 4,\n})\n\nconst emits = defineEmits<TooltipContentEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <TooltipPortal>\n    <TooltipContent\n      data-slot=\"tooltip-content\"\n      v-bind=\"{ ...forwarded, ...$attrs }\"\n      :class=\"cn(\n        `\n          z-50 w-fit animate-in rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground\n          fade-in-0 zoom-in-95\n          data-[side=bottom]:slide-in-from-top-2\n          data-[side=left]:slide-in-from-right-2\n          data-[side=right]:slide-in-from-left-2\n          data-[side=top]:slide-in-from-bottom-2\n          data-[state=closed]:animate-out data-[state=closed]:fade-out-0\n          data-[state=closed]:zoom-out-95\n          md:max-w-full md:text-balance\n        `,\n        // screen width minus scrollbar width\n        'max-w-[calc(100dvw-15px)]',\n        props.class,\n      )\"\n    >\n      <slot />\n\n      <TooltipArrow />\n    </TooltipContent>\n  </TooltipPortal>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/tooltip/Hint.vue",
+      "content": "<script setup lang=\"ts\">\nimport { TooltipRoot } from 'reka-ui'\nimport {\n  TooltipArrow,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from '.'\n\nconst props = withDefaults(defineProps<{\n  disabled?: boolean\n  side?: 'top' | 'right' | 'bottom' | 'left'\n  text?: string\n  class?: string\n}>(), {\n  side: 'top',\n  text: '',\n})\n</script>\n\n<template>\n  <slot v-if=\"props.disabled\" />\n\n  <TooltipProvider v-else>\n    <TooltipRoot>\n      <TooltipTrigger as-child>\n        <slot />\n      </TooltipTrigger>\n\n      <TooltipContent\n        :side=\"props.side\"\n        class=\"[&_svg:not([class*='size-'])]:size-4\"\n      >\n        <slot name=\"content\" />\n        {{ text }}\n        <TooltipArrow />\n      </TooltipContent>\n    </TooltipRoot>\n  </TooltipProvider>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/tooltip/index.ts",
+      "content": "/**\n * Tooltip\n *\n * A popup that displays information related to an element when the element receives\n * keyboard focus or the mouse hovers over it.\n */\n\nexport { default as Hint } from './Hint.vue'\nexport { default as Tooltip } from './Tooltip.vue'\nexport { default as TooltipArrow } from './TooltipArrow.vue'\nexport { default as TooltipContent } from './TooltipContent.vue'\nexport { default as TooltipProvider } from './TooltipProvider.vue'\nexport { default as TooltipTrigger } from './TooltipTrigger.vue'\n",
+      "type": "registry:ui"
+    }
+  ]
+}

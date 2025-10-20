@@ -1,0 +1,26 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "toggle",
+  "type": "registry:ui",
+  "title": "Toggle",
+  "description": "A two-state button that can be either on or off.",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/toggle/Toggle.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { ToggleEmits, ToggleProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { Toggle, useForwardPropsEmits } from 'reka-ui'\nimport { cn } from '@/lib/utils'\nimport type { ToggleVariants } from '.'\nimport { toggleVariants } from '.'\n\nconst props = withDefaults(defineProps<ToggleProps & {\n  class?: HTMLAttributes['class']\n  variant?: ToggleVariants['variant']\n  size?: ToggleVariants['size']\n}>(), {\n  variant: 'default',\n  size: 'md',\n  disabled: false,\n})\n\nconst emits = defineEmits<ToggleEmits>()\n\nconst delegatedProps = reactiveOmit(props, 'class', 'size', 'variant')\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <Toggle\n    data-slot=\"toggle\"\n    v-bind=\"forwarded\"\n    :class=\"cn(toggleVariants({ variant, size }), props.class)\"\n  >\n    <slot />\n  </Toggle>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/toggle/index.ts",
+      "content": "/**\n * Toggle\n *\n * A two-state button that can be either on or off.\n */\n\nimport type { VariantProps } from 'class-variance-authority'\nimport { cva } from 'class-variance-authority'\n\nexport { default as Toggle } from './Toggle.vue'\n\nexport const toggleVariants = cva(\n  [\n    `\n      inline-flex w-min items-center justify-center gap-2 rounded-md text-sm font-medium\n      whitespace-nowrap transition-[color,box-shadow] outline-none\n      hover:bg-muted hover:text-muted-foreground\n      focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50\n      disabled:pointer-events-none disabled:opacity-50\n      aria-invalid:border-destructive aria-invalid:ring-destructive/20\n      data-[state=on]:bg-accent data-[state=on]:text-accent-foreground\n      dark:aria-invalid:ring-destructive/40\n      [&_svg]:pointer-events-none [&_svg]:shrink-0\n      [&_svg:not([class*='size-'])]:size-4\n    `,\n  ],\n\n  {\n    variants: {\n      variant: {\n        default: 'bg-transparent',\n        outline:\n          `\n            border border-input bg-transparent shadow-xs\n            hover:bg-accent hover:text-accent-foreground\n          `,\n      },\n\n      size: {\n        sm: 'h-8 min-w-8 px-1.5',\n        md: 'h-9 min-w-9 px-2',\n        lg: 'h-10 min-w-10 px-2.5',\n      },\n    },\n\n    defaultVariants: {\n      variant: 'default',\n      size: 'md',\n    },\n  },\n)\n\nexport type ToggleVariants = VariantProps<typeof toggleVariants>\n",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "scroll-area",
+  "type": "registry:ui",
+  "title": "Scroll Area",
+  "description": "Augments native scroll functionality for custom, cross-browser styling.",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/scroll-area/ScrollArea.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { ScrollAreaRootProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport {\n  ScrollAreaCorner,\n  ScrollAreaRoot,\n  ScrollAreaViewport,\n} from 'reka-ui'\nimport { cn } from '@/lib/utils'\nimport ScrollBar from './ScrollBar.vue'\n\nconst props = withDefaults(\n  defineProps<ScrollAreaRootProps & {\n    class?: HTMLAttributes['class']\n  }>(),\n  {\n    type: 'auto',\n  },\n)\n\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <ScrollAreaRoot\n    data-slot=\"scroll-area\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn('relative', props.class)\"\n  >\n    <ScrollAreaViewport\n      data-slot=\"scroll-area-viewport\"\n      :class=\"cn(\n        `\n          size-full rounded-[inherit] transition-[color,box-shadow] outline-none\n          focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1\n        `,\n      )\"\n    >\n      <slot />\n    </ScrollAreaViewport>\n    <ScrollBar />\n    <ScrollAreaCorner />\n  </ScrollAreaRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/scroll-area/ScrollBar.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { ScrollAreaScrollbarProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { ScrollAreaScrollbar, ScrollAreaThumb } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = withDefaults(defineProps<ScrollAreaScrollbarProps & {\n  class?: HTMLAttributes['class']\n}>(), {\n  orientation: 'vertical',\n})\n\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <ScrollAreaScrollbar\n    data-slot=\"scroll-area-scrollbar\"\n    v-bind=\"delegatedProps\"\n    :data-orientation=\"orientation\"\n    :class=\"cn(\n      `\n        flex touch-none p-px transition-colors select-none\n        data-[orientation=horizontal]:h-2.5 data-[orientation=horizontal]:flex-col\n        data-[orientation=horizontal]:border-t data-[orientation=horizontal]:border-t-transparent\n        data-[orientation=vertical]:h-full data-[orientation=vertical]:w-2.5\n        data-[orientation=vertical]:border-l data-[orientation=vertical]:border-l-transparent\n      `,\n      props.class,\n    )\"\n  >\n    <ScrollAreaThumb\n      data-slot=\"scroll-area-thumb\"\n      class=\"\n        relative flex-1 rounded-full bg-border\n        hover:bg-ring/60\n      \"\n    />\n  </ScrollAreaScrollbar>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/scroll-area/index.ts",
+      "content": "/**\n * Scroll Area\n *\n * Augments native scroll functionality for custom, cross-browser styling.\n */\n\nexport { default as ScrollArea } from './ScrollArea.vue'\nexport { default as ScrollBar } from './ScrollBar.vue'\n\nexport type ScrollType = 'auto' | 'always' | 'scroll' | 'hover'\n",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "switch",
+  "type": "registry:ui",
+  "title": "Switch",
+  "description": "A control that allows the user to toggle between checked and not checked.",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/switch/Switch.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { SwitchRootEmits, SwitchRootProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport {\n  SwitchRoot,\n  SwitchThumb,\n  useForwardPropsEmits,\n} from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<SwitchRootProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst emits = defineEmits<SwitchRootEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <SwitchRoot\n    data-slot=\"switch\"\n    v-bind=\"forwarded\"\n    :class=\"cn(\n      `\n        peer inline-flex h-[1.15rem] w-8 shrink-0 items-center rounded-full border\n        border-transparent shadow-xs transition-all outline-none\n        focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50\n        disabled:cursor-not-allowed disabled:opacity-50\n        data-[state=checked]:bg-primary\n        data-[state=unchecked]:bg-input\n        dark:data-[state=unchecked]:bg-input/80\n      `,\n      props.class,\n    )\"\n  >\n    <SwitchThumb\n      data-slot=\"switch-thumb\"\n      :class=\"cn(\n        `\n          pointer-events-none block size-4 rounded-full bg-background ring-0 transition-transform\n          data-[state=checked]:translate-x-[calc(100%-2px)]\n          data-[state=unchecked]:translate-x-0\n          dark:data-[state=checked]:bg-primary-foreground dark:data-[state=unchecked]:bg-foreground\n        `,\n      )\"\n    >\n      <slot name=\"thumb\" />\n    </SwitchThumb>\n  </SwitchRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/switch/index.ts",
+      "content": "/**\n * Switch\n *\n * A control that allows the user to toggle between checked and not checked.\n */\n\nexport { default as Switch } from './Switch.vue'\n",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "progress",
+  "type": "registry:ui",
+  "title": "Progress",
+  "description": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/progress/RadialProgressV1.vue",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue'\nimport { cn } from '@/lib/utils'\n\nconst props = withDefaults(defineProps<{\n  modelValue?: number\n  size?: number\n  thickness?: number\n}>(), {\n  modelValue: 0,\n  size: 75,\n  thickness: 8,\n})\n\nconst front = ref<SVGElement | null>(null)\nconst center = computed(() => props.size / 2)\nconst radius = computed(() => props.size / 2 - props.thickness)\nconst dashArray = computed(() => 2 * Math.PI * radius.value)\nconst filledLength = computed(() => dashArray.value * (props.modelValue / 100))\nconst unfilledLength = computed(() => dashArray.value - filledLength.value)\n</script>\n\n<template>\n  <div class=\"relative flex justify-center\">\n    <svg\n      :width=\"props.size\"\n      :height=\"props.size\"\n      :viewBox=\"`0 0 ${props.size} ${props.size}`\"\n    >\n      <g class=\"origin-center rotate-180\">\n        <!-- progress-background -->\n        <circle\n          v-if=\"props.modelValue < 100\"\n          :cx=\"center\"\n          :cy=\"center\"\n          :r=\"radius\"\n          class=\"progress-background stroke-primary/20\"\n          fill=\"none\"\n        />\n        <!-- progress-indicator -->\n        <g class=\"animate-in duration-300 ease-in fade-in\">\n          <circle\n            v-if=\"props.modelValue > 0\"\n            ref=\"front\"\n            :cx=\"center\"\n            :cy=\"center\"\n            :r=\"radius\"\n            :class=\"cn(\n              'progress-indicator fill-foreward animate-in stroke-primary duration-300 ease-out',\n            )\"\n            fill=\"none\"\n          />\n        </g>\n      </g>\n      <foreignObject :width=\"props.size\" :height=\"props.size\">\n        <div\n          xmlns=\"http://www.w3.org/1999/xhtml\"\n          class=\"flex h-full items-center justify-center\"\n        >\n          <slot>\n            <Label>{{ props.modelValue }}%</Label>\n          </slot>\n        </div>\n      </foreignObject>\n    </svg>\n  </div>\n</template>\n\n<style scoped>\n.progress-background {\n  stroke-width: v-bind(thickness);\n}\n\n.progress-indicator {\n  stroke-width: v-bind(thickness);\n  stroke-linecap: round;\n  stroke-dasharray: v-bind(filledLength) v-bind(unfilledLength);\n}\n</style>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/progress/RadialProgress.vue",
+      "content": "<script setup lang=\"ts\">\nimport { ProgressIndicator, ProgressRoot } from 'reka-ui'\nimport { computed } from 'vue'\nimport { cn } from '@/lib/utils'\n\nconst props = withDefaults(defineProps<{\n  modelValue?: number\n  size?: number\n  thickness?: number\n}>(), {\n  modelValue: 0,\n  /** Default to 8rem */\n  size: 128,\n  thickness: 8,\n})\n\nconst RADIUS = 45\nconst circumference = 2 * Math.PI * RADIUS\n\nconst dashOffset = computed(() =>\n  (props.modelValue / 100) * circumference,\n)\n\nconst trackPath = computed(() => {\n  return `\n          M 50 50\n          m 0 -${RADIUS}\n          a ${RADIUS} ${RADIUS} 0 1 1 0 ${RADIUS * 2}\n          a ${RADIUS} ${RADIUS} 0 1 1 0 -${RADIUS * 2}\n          `\n})\n</script>\n\n<template>\n  <div class=\"relative\" :style=\"{ width: `${size}px`, height: `${size}px` }\">\n    <ProgressRoot\n      :model-value=\"modelValue\"\n      as-child\n    >\n      <svg\n        class=\"h-full w-full\"\n        viewBox=\"0 0 100 100\"\n      >\n        <!-- Background circle -->\n        <path\n          :d=\"trackPath\"\n          class=\"fill-none stroke-muted stroke-[6px]\"\n        />\n        <!-- Progress circle -->\n        <ProgressIndicator as-child>\n          <path\n            :d=\"trackPath\"\n            :class=\"cn(\n              `\n                fill-none stroke-primary transition-[stroke-dasharray,opacity] duration-700\n                data-[value='0']:opacity-0\n              `,\n            )\"\n            :style=\"{\n              'stroke-linecap': 'round',\n              'stroke-dasharray': `${dashOffset}px, ${circumference}px`,\n              'stroke-dashoffset': '0px',\n              'stroke-width': `${thickness}px`,\n            }\"\n          />\n        </ProgressIndicator>\n      </svg>\n      <div class=\"absolute inset-0 flex items-center justify-center\">\n        <slot v-bind=\"{ modelValue }\">\n          <span class=\"text-lg font-bold text-foreground\">{{ modelValue }}%</span>\n        </slot>\n      </div>\n    </ProgressRoot>\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/progress/Progress.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { ProgressRootProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { ProgressIndicator, ProgressRoot } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = withDefaults(defineProps<ProgressRootProps & {\n  class?: HTMLAttributes['class']\n}>(), {\n  modelValue: 0,\n})\n\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <ProgressRoot\n    data-slot=\"progress\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      'relative h-2 w-full overflow-hidden rounded-full bg-primary/20',\n      props.class,\n    )\"\n  >\n    <ProgressIndicator\n      data-slot=\"progress-indicator\"\n      class=\"h-full w-full flex-1 bg-primary transition-all\"\n      :style=\"`transform: translateX(-${100 - (props.modelValue ?? 0)}%);`\"\n    />\n  </ProgressRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/progress/index.ts",
+      "content": "/**\n * Progress\n *\n * Displays an indicator showing the completion progress of a task, typically\n * displayed as a progress bar.\n */\n\nexport { default as Progress } from './Progress.vue'\nexport { default as RadialProgress } from './RadialProgress.vue'\nexport { default as RadialProgressV1 } from './RadialProgressV1.vue'\n",
+      "type": "registry:ui"
+    }
+  ]
+}

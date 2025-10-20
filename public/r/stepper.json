@@ -1,0 +1,56 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "stepper",
+  "type": "registry:ui",
+  "title": "Stepper",
+  "description": "A set of steps that are used to indicate progress through a multi-step process.",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/stepper/StepperIndicator.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { StepperIndicatorProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { StepperIndicator, useForwardProps } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<StepperIndicatorProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <StepperIndicator\n    v-bind=\"forwarded\"\n    :class=\"cn(\n      'inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground/50',\n      // Disabled\n      'group-data-[disabled]:text-muted-foreground group-data-[disabled]:opacity-50',\n      // Active\n      'group-data-[state=active]:bg-primary group-data-[state=active]:text-primary-foreground',\n      // Completed\n      'group-data-[state=completed]:bg-accent group-data-[state=completed]:text-accent-foreground',\n      props.class,\n    )\"\n  >\n    <slot />\n  </StepperIndicator>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/stepper/StepperTrigger.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { StepperTriggerProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { StepperTrigger, useForwardProps } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<StepperTriggerProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <StepperTrigger\n    v-bind=\"forwarded\"\n    :class=\"cn(\n      'flex flex-col items-center gap-1 rounded-md p-1 text-center',\n      props.class,\n    )\"\n  >\n    <slot />\n  </StepperTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/stepper/StepperItem.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { StepperItemProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { StepperItem, useForwardProps } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<StepperItemProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <StepperItem\n    v-slot=\"slotProps\"\n    v-bind=\"forwarded\"\n    :class=\"cn(\n      `\n        group flex items-center gap-2\n        data-[disabled]:pointer-events-none\n      `,\n      props.class,\n    )\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </StepperItem>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/stepper/StepperDescription.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { StepperDescriptionProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { StepperDescription, useForwardProps } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<StepperDescriptionProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <StepperDescription\n    v-slot=\"slotProps\"\n    v-bind=\"forwarded\"\n    :class=\"cn(`text-xs text-muted-foreground`, props.class)\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </StepperDescription>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/stepper/StepperSeparator.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { StepperSeparatorProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { StepperSeparator, useForwardProps } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<StepperSeparatorProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <StepperSeparator\n    v-bind=\"forwarded\"\n    :class=\"cn(\n      'bg-muted',\n      // Disabled\n      'group-data-[disabled]:bg-muted group-data-[disabled]:opacity-50',\n      // Completed\n      'group-data-[state=completed]:bg-accent-foreground',\n      props.class,\n    )\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/stepper/Stepper.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { StepperRootEmits, StepperRootProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { StepperRoot, useForwardPropsEmits } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<StepperRootProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst emits = defineEmits<StepperRootEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <StepperRoot\n    v-slot=\"slotProps\"\n    :class=\"cn(\n      'flex gap-2',\n      props.class,\n    )\"\n    v-bind=\"forwarded\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </StepperRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/stepper/index.ts",
+      "content": "/**\n * Stepper\n *\n * A set of steps that are used to indicate progress through a multi-step process.\n */\n\nexport { default as Stepper } from './Stepper.vue'\nexport { default as StepperDescription } from './StepperDescription.vue'\nexport { default as StepperIndicator } from './StepperIndicator.vue'\nexport { default as StepperItem } from './StepperItem.vue'\nexport { default as StepperSeparator } from './StepperSeparator.vue'\nexport { default as StepperTitle } from './StepperTitle.vue'\nexport { default as StepperTrigger } from './StepperTrigger.vue'\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/stepper/StepperTitle.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { StepperTitleProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { StepperTitle, useForwardProps } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<StepperTitleProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <StepperTitle\n    v-bind=\"forwarded\"\n    :class=\"cn('text-md font-semibold whitespace-nowrap', props.class)\"\n  >\n    <slot />\n  </StepperTitle>\n</template>\n",
+      "type": "registry:ui"
+    }
+  ]
+}

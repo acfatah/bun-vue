@@ -1,0 +1,2577 @@
+[
+  {
+    "name": "accordion",
+    "type": "registry:ui",
+    "title": "Accordion",
+    "description": "A vertically stacked set of interactive headings that each reveal a section of content.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/accordion/AccordionTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/accordion/Accordion.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/accordion/AccordionItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/accordion/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/accordion/AccordionContent.vue",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@iconify/vue",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "alert",
+    "type": "registry:ui",
+    "title": "Alert",
+    "description": "Displays a callout for user attention.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/alert/Alert.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/alert/AlertDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/alert/AlertTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/alert/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": []
+  },
+  {
+    "name": "alert-dialog",
+    "type": "registry:ui",
+    "title": "Alert Dialog",
+    "description": "A modal dialog that interrupts the user with important content and expects a response.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/alert-dialog/AlertDialogCancel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/alert-dialog/AlertDialogHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/alert-dialog/AlertDialogContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/alert-dialog/AlertDialogFooter.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/alert-dialog/AlertDialogDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/alert-dialog/AlertDialogTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/alert-dialog/AlertDialogTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/alert-dialog/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/alert-dialog/AlertDialog.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/alert-dialog/AlertDialogAction.vue",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/button.json",
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "aspect-ratio",
+    "type": "registry:ui",
+    "title": "Aspect Ratio",
+    "description": "Displays content within a desired ratio.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/aspect-ratio/AspectRatio.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/aspect-ratio/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [],
+    "dependencies": [
+      "reka-ui"
+    ]
+  },
+  {
+    "name": "avatar",
+    "type": "registry:ui",
+    "title": "Avatar",
+    "description": "An image element with a fallback for representing the user.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/avatar/AvatarFallback.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/avatar/AvatarImage.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/avatar/Avatar.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/avatar/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "badge",
+    "type": "registry:ui",
+    "title": "Badge",
+    "description": "Displays a badge or a component that looks like a badge.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/badge/Badge.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/badge/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "@vueuse/core",
+      "reka-ui"
+    ]
+  },
+  {
+    "name": "breadcrumb",
+    "type": "registry:ui",
+    "title": "Breadcrumb",
+    "description": "Displays the path to the current resource using a hierarchy of links.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/breadcrumb/BreadcrumbLink.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/breadcrumb/BreadcrumbSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/breadcrumb/BreadcrumbPage.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/breadcrumb/BreadcrumbItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/breadcrumb/BreadcrumbEllipsis.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/breadcrumb/BreadcrumbList.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/breadcrumb/Breadcrumb.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/breadcrumb/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@iconify/vue"
+    ]
+  },
+  {
+    "name": "button",
+    "type": "registry:ui",
+    "title": "Button",
+    "description": "Displays a button or a component that looks like a button.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/button/Button.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/button/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui"
+    ]
+  },
+  {
+    "name": "calendar",
+    "type": "registry:ui",
+    "title": "Calender",
+    "description": "A date field component that allows users to enter and edit date.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/calendar/CalendarGridRow.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/calendar/Calendar.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/calendar/CalendarNextButton.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/calendar/CalendarGridHead.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/calendar/CalendarPrevButton.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/calendar/CalendarCell.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/calendar/Calendar1.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/calendar/CalendarHeadCell.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/calendar/CalendarGrid.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/calendar/CalendarHeading.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/calendar/CalendarCellTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/calendar/CalendarGridBody.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/calendar/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/calendar/CalendarHeader.vue",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json",
+      "http://localhost:8080/public/r/calendar.json",
+      "http://localhost:8080/public/r/select.json",
+      "http://localhost:8080/public/r/button.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core",
+      "@iconify/vue"
+    ]
+  },
+  {
+    "name": "card",
+    "type": "registry:ui",
+    "title": "Card",
+    "description": "Displays a card with header, content, and footer.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/card/CardFooter.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/card/CardAction.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/card/Card.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/card/CardDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/card/CardTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/card/CardHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/card/CardContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/card/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": []
+  },
+  {
+    "name": "carousel",
+    "type": "registry:ui",
+    "title": "Carousel",
+    "description": "A carousel with motion and swipe built using Embla.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/carousel/CarouselItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/carousel/interface.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/carousel/CarouselPrevious.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/carousel/CarouselNext.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/carousel/Carousel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/carousel/CarouselContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/carousel/use-carousel.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/carousel/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json",
+      "http://localhost:8080/public/r/button.json"
+    ],
+    "dependencies": [
+      "embla-carousel-vue",
+      "@iconify/vue",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "checkbox",
+    "type": "registry:ui",
+    "title": "Checkbox",
+    "description": "A control that allows the user to toggle between checked and not checked.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/checkbox/Checkbox.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/checkbox/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@iconify/vue",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "collapsible",
+    "type": "registry:ui",
+    "title": "Collapsible",
+    "description": "An interactive component which expands/collapses a panel.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/collapsible/Collapsible.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/collapsible/CollapsibleContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/collapsible/CollapsibleTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/collapsible/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui"
+    ]
+  },
+  {
+    "name": "combobox",
+    "type": "registry:ui",
+    "title": "Combobox",
+    "description": "Autocomplete input and command palette with a list of suggestions.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/combobox/ComboboxAnchor.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/combobox/ComboboxEmpty.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/combobox/ComboboxList.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/combobox/ComboboxSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/combobox/ComboboxViewport.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/combobox/ComboboxTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/combobox/Combobox.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/combobox/ComboboxGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/combobox/ComboboxItemIndicator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/combobox/ComboboxInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/combobox/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/combobox/ComboboxItem.vue",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core",
+      "@iconify/vue"
+    ]
+  },
+  {
+    "name": "command",
+    "type": "registry:ui",
+    "title": "Command",
+    "description": "Fast, composable, unstyled command menu.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/command/CommandInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/command/CommandSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/command/CommandItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/command/Command.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/command/CommandShortcut.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/command/CommandEmpty.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/command/CommandList.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/command/CommandGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/command/CommandDialog.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/command/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json",
+      "http://localhost:8080/public/r/dialog.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@iconify/vue",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "context-menu",
+    "type": "registry:ui",
+    "title": "Context Menu",
+    "description": "Displays a menu to the user — such as a set of actions or functions — triggered by a button.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/context-menu/ContextMenuShortcut.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/context-menu/ContextMenuItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/context-menu/ContextMenuPortal.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/context-menu/ContextMenuSubContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/context-menu/ContextMenuLabel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/context-menu/ContextMenuRadioItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/context-menu/ContextMenuCheckboxItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/context-menu/ContextMenuTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/context-menu/ContextMenuSubTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/context-menu/ContextMenu.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/context-menu/ContextMenuGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/context-menu/ContextMenuSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/context-menu/ContextMenuRadioGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/context-menu/ContextMenuContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/context-menu/ContextMenuSub.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/context-menu/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core",
+      "@iconify/vue"
+    ]
+  },
+  {
+    "name": "dark-mode-toggle",
+    "type": "registry:component",
+    "files": [
+      {
+        "path": "src/registry/components/DarkModeToggle.vue",
+        "type": "registry:component"
+      }
+    ],
+    "registryDependencies": [],
+    "dependencies": [
+      "@iconify/vue"
+    ]
+  },
+  {
+    "name": "data-table",
+    "type": "registry:ui",
+    "title": "Data Table",
+    "description": "Powerful table and datagrids built using TanStack Table.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/data-table/DataTable.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/data-table/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/button.json",
+      "http://localhost:8080/public/r/dropdown-menu.json",
+      "http://localhost:8080/public/r/input.json",
+      "http://localhost:8080/public/r/pagination.json",
+      "http://localhost:8080/public/r/table.json",
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "@tanstack/vue-table",
+      "@iconify/vue"
+    ]
+  },
+  {
+    "name": "data-table-01",
+    "type": "registry:block",
+    "files": [
+      {
+        "path": "src/registry/blocks/data-table-01/components/DropdownAction.vue",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/registry/blocks/data-table-01/data/users.ts",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/registry/blocks/data-table-01/columns.ts",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/registry/blocks/data-table-01/DataForm.vue",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/registry/blocks/data-table-01/DataTable.vue",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/registry/blocks/data-table-01/DataView.vue",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/registry/blocks/data-table-01/schema.ts",
+        "type": "registry:block"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/checkbox.json",
+      "http://localhost:8080/public/r/button.json",
+      "http://localhost:8080/public/r/dropdown-menu.json",
+      "http://localhost:8080/public/r/calendar.json",
+      "http://localhost:8080/public/r/form.json",
+      "http://localhost:8080/public/r/input.json",
+      "http://localhost:8080/public/r/popover.json",
+      "http://localhost:8080/public/r/switch.json",
+      "http://localhost:8080/public/r/toast.json",
+      "http://localhost:8080/public/r/utils.json",
+      "http://localhost:8080/public/r/data-table.json",
+      "http://localhost:8080/public/r/dialog.json",
+      "http://localhost:8080/public/r/sheet.json",
+      "http://localhost:8080/public/r/label.json"
+    ],
+    "dependencies": [
+      "@vee-validate/zod",
+      "zod",
+      "@iconify/vue",
+      "vee-validate",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "dialog",
+    "type": "registry:ui",
+    "title": "Dialog",
+    "description": "A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/dialog/DialogHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dialog/DialogTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dialog/DialogOverlay.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dialog/DialogFooter.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dialog/DialogClose.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dialog/DialogTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dialog/DialogDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dialog/Dialog.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dialog/DialogScrollContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dialog/DialogContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dialog/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core",
+      "@iconify/vue"
+    ]
+  },
+  {
+    "name": "drawer",
+    "type": "registry:ui",
+    "title": "Drawer",
+    "description": "A drawer component for vue. Built on top of Vaul Vue.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/drawer/DrawerTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/drawer/DrawerClose.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/drawer/Drawer.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/drawer/DrawerHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/drawer/DrawerFooter.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/drawer/DrawerTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/drawer/DrawerOverlay.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/drawer/DrawerDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/drawer/DrawerContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/drawer/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "vaul-vue",
+      "reka-ui",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "dropdown-menu",
+    "type": "registry:ui",
+    "title": "Dropdown Menu",
+    "description": "Displays a menu to the user — such as a set of actions or functions — triggered by a button.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/dropdown-menu/DropdownMenuTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dropdown-menu/DropdownMenuSub.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dropdown-menu/DropdownMenuSubTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dropdown-menu/DropdownMenuGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dropdown-menu/DropdownMenuCheckboxItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dropdown-menu/DropdownMenuSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dropdown-menu/DropdownMenuLabel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dropdown-menu/DropdownMenuSubContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dropdown-menu/DropdownMenuItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dropdown-menu/DropdownMenuContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dropdown-menu/DropdownMenu.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dropdown-menu/DropdownMenuRadioGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dropdown-menu/DropdownMenuRadioItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dropdown-menu/DropdownMenuShortcut.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/dropdown-menu/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@iconify/vue",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "fetch",
+    "type": "registry:lib",
+    "title": "Extends the default `@vueuse/core` useFetch implementation.",
+    "description": "- Adds the base URL loaded from `VITE_API_URL`. - Adds the `Authorization` header if local storage `token` is defined. * Read more: - https://vueuse.org/core/useFetch - https://vueuse.org/core/useStorage",
+    "files": [
+      {
+        "path": "src/registry/lib/fetch.ts",
+        "type": "registry:lib"
+      }
+    ],
+    "registryDependencies": [],
+    "dependencies": [
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "forgot-password",
+    "type": "registry:block",
+    "files": [
+      {
+        "path": "src/registry/blocks/forgot-password/layouts/CenteredLayout.vue",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/registry/blocks/forgot-password/pages/ForgotPassword.vue",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/registry/blocks/forgot-password/router/forgot-password.ts",
+        "type": "registry:block"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/button.json",
+      "http://localhost:8080/public/r/card.json",
+      "http://localhost:8080/public/r/form.json",
+      "http://localhost:8080/public/r/input.json",
+      "http://localhost:8080/public/r/toast.json"
+    ],
+    "dependencies": [
+      "vee-validate",
+      "@vee-validate/zod",
+      "zod"
+    ]
+  },
+  {
+    "name": "form",
+    "type": "registry:ui",
+    "title": "Form",
+    "description": "Forms built on top of VeeValidate and Zod.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/form/FormDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/form/FormAction.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/form/FormItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/form/FormLabel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/form/useFormField.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/form/FormMessage.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/form/FormControl.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/form/injectionKeys.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/form/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json",
+      "http://localhost:8080/public/r/label.json"
+    ],
+    "dependencies": [
+      "@vueuse/core",
+      "reka-ui",
+      "vee-validate",
+      "@vee-validate/zod",
+      "zod"
+    ]
+  },
+  {
+    "name": "fullscreen-toggle",
+    "type": "registry:component",
+    "files": [
+      {
+        "path": "src/registry/components/FullscreenToggle.vue",
+        "type": "registry:component"
+      }
+    ],
+    "registryDependencies": [],
+    "dependencies": [
+      "@iconify/vue",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "hover-card",
+    "type": "registry:ui",
+    "title": "Hover Card",
+    "description": "For sighted users to preview content available behind a link.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/hover-card/HoverCardArrow.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/hover-card/HoverCard.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/hover-card/HoverCardContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/hover-card/HoverCardTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/hover-card/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "input",
+    "type": "registry:ui",
+    "title": "Input",
+    "description": "Displays a form input field or a component that looks like an input field.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/input/Input.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/input/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "kbd",
+    "type": "registry:ui",
+    "title": "Kbd",
+    "description": "A component to represent keyboard input.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/kbd/Kbd.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/kbd/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "@vueuse/core",
+      "reka-ui"
+    ]
+  },
+  {
+    "name": "label",
+    "type": "registry:ui",
+    "title": "Label",
+    "description": "Renders an accessible label associated with controls.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/label/Label.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/label/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "login-basic",
+    "type": "registry:block",
+    "files": [
+      {
+        "path": "src/registry/blocks/login-basic/layouts/CenteredLayout.vue",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/registry/blocks/login-basic/pages/Login.vue",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/registry/blocks/login-basic/router/login.ts",
+        "type": "registry:block"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/button.json",
+      "http://localhost:8080/public/r/card.json",
+      "http://localhost:8080/public/r/form.json",
+      "http://localhost:8080/public/r/input.json",
+      "http://localhost:8080/public/r/toast.json"
+    ],
+    "dependencies": [
+      "vee-validate",
+      "@vee-validate/zod",
+      "zod"
+    ]
+  },
+  {
+    "name": "menubar",
+    "type": "registry:ui",
+    "title": "Menubar",
+    "description": "A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/menubar/MenubarItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/menubar/MenubarGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/menubar/MenubarSubContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/menubar/MenubarContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/menubar/Menubar.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/menubar/MenubarCheckboxItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/menubar/MenubarLabel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/menubar/MenubarSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/menubar/MenubarSubTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/menubar/MenubarShortcut.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/menubar/MenubarRadioGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/menubar/MenubarTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/menubar/MenubarMenu.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/menubar/MenubarRadioItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/menubar/MenubarSub.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/menubar/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core",
+      "@iconify/vue"
+    ]
+  },
+  {
+    "name": "navigation-menu",
+    "type": "registry:ui",
+    "title": "Navigation Menu",
+    "description": "A collection of links for navigating websites.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/navigation-menu/NavigationMenuItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/navigation-menu/NavigationMenuIndicator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/navigation-menu/NavigationMenu.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/navigation-menu/NavigationMenuLink.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/navigation-menu/NavigationMenuViewport.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/navigation-menu/NavigationMenuTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/navigation-menu/NavigationMenuContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/navigation-menu/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/navigation-menu/NavigationMenuList.vue",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core",
+      "@iconify/vue"
+    ]
+  },
+  {
+    "name": "number-field",
+    "type": "registry:ui",
+    "title": "Number Field",
+    "description": "A number field allows a user to enter a number and increment or decrement the value using stepper buttons.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/number-field/NumberFieldInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/number-field/NumberFieldDecrement.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/number-field/NumberFieldContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/number-field/NumberField.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/number-field/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/number-field/NumberFieldIncrement.vue",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@iconify/vue",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "pagination",
+    "type": "registry:ui",
+    "title": "Pagination",
+    "description": "Displays data in paged format and provides navigation between pages.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/pagination/PaginationContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/pagination/PaginationItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/pagination/PaginationPrevious.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/pagination/PaginationEllipsis.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/pagination/Pagination.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/pagination/PaginationNext.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/pagination/PaginationLast.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/pagination/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/pagination/PaginationFirst.vue",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json",
+      "http://localhost:8080/public/r/button.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core",
+      "@iconify/vue"
+    ]
+  },
+  {
+    "name": "pin-input",
+    "type": "registry:ui",
+    "title": "Pin Input",
+    "description": "Allows users to input a sequence of one-character alphanumeric inputs.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/pin-input/PinInputGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/pin-input/PinInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/pin-input/PinInputSlot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/pin-input/PinInputSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/pin-input/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core",
+      "@iconify/vue"
+    ]
+  },
+  {
+    "name": "popover",
+    "type": "registry:ui",
+    "title": "Popover",
+    "description": "Displays rich content in a portal, triggered by a button.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/popover/PopoverAnchor.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/popover/Popover.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/popover/PopoverTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/popover/PopoverContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/popover/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "progress",
+    "type": "registry:ui",
+    "title": "Progress",
+    "description": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/progress/RadialProgressV1.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/progress/RadialProgress.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/progress/Progress.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/progress/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "radio-group",
+    "type": "registry:ui",
+    "title": "Radio Group",
+    "description": "A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/radio-group/RadioGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/radio-group/RadioGroupItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/radio-group/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core",
+      "@iconify/vue"
+    ]
+  },
+  {
+    "name": "range-calendar",
+    "type": "registry:ui",
+    "title": "Range Calendar",
+    "description": "A calendar component that allows users to select a range of dates.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/range-calendar/RangeCalendarGrid.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/range-calendar/RangeCalendarGridHead.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/range-calendar/RangeCalendarGridBody.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/range-calendar/RangeCalendarHeading.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/range-calendar/RangeCalendarNextButton.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/range-calendar/RangeCalendar.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/range-calendar/RangeCalendarCellTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/range-calendar/RangeCalendarHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/range-calendar/RangeCalendarHeadCell.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/range-calendar/RangeCalendarPrevButton.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/range-calendar/RangeCalendarGridRow.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/range-calendar/RangeCalendarCell.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/range-calendar/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json",
+      "http://localhost:8080/public/r/button.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core",
+      "@iconify/vue"
+    ]
+  },
+  {
+    "name": "resizable",
+    "type": "registry:ui",
+    "title": "Resizable",
+    "description": "Accessible resizable panel groups and layouts with keyboard support.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/resizable/ResizablePanel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/resizable/ResizableHandle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/resizable/ResizablePanelGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/resizable/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@iconify/vue",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "scroll-area",
+    "type": "registry:ui",
+    "title": "Scroll Area",
+    "description": "Augments native scroll functionality for custom, cross-browser styling.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/scroll-area/ScrollArea.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/scroll-area/ScrollBar.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/scroll-area/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "select",
+    "type": "registry:ui",
+    "title": "Select",
+    "description": "Displays a list of options for the user to pick from—triggered by a button.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/select/SelectScrollDownButton.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/select/SelectScrollUpButton.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/select/SelectGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/select/SelectLabel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/select/SelectContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/select/SelectItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/select/SelectTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/select/Select.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/select/SelectValue.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/select/SelectItemText.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/select/SelectSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/select/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@iconify/vue",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "separator",
+    "type": "registry:ui",
+    "title": "Separator",
+    "description": "Visually or semantically separates content.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/separator/Separator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/separator/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "sheet",
+    "type": "registry:ui",
+    "title": "Sheet",
+    "description": "Extends the Dialog component to display content that complements the main content of the screen.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/sheet/SheetHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sheet/Sheet.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sheet/SheetTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sheet/SheetOverlay.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sheet/SheetTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sheet/SheetContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sheet/SheetFooter.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sheet/SheetClose.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sheet/SheetDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sheet/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core",
+      "@iconify/vue"
+    ]
+  },
+  {
+    "name": "sidebar",
+    "type": "registry:ui",
+    "title": "Sidebar",
+    "description": "A composable, themeable and customizable sidebar component.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarGroupAction.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarMenuItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarMenuButtonChild.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarMenuAction.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarGroupLabel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarMenuSub.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarMenuBadge.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarMenuSubButton.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarRail.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarMenuButton.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarFooter.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarProvider.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarMenu.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarMenuSubItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarGroupContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarInset.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/Sidebar.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarMenuSkeleton.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/SidebarSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sidebar/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "cssVars": {
+      "@layer base": {
+        "light": {
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.145 0 0)",
+          "sidebar-primary": "oklch(0.205 0 0)",
+          "sidebar-primary-foreground": "oklch(0.985 0 0)",
+          "sidebar-accent": "oklch(0.97 0 0)",
+          "sidebar-accent-foreground": "oklch(0.205 0 0)",
+          "sidebar-border": "oklch(0.922 0 0)",
+          "sidebar-ring": "oklch(0.708 0 0)"
+        },
+        "dark": {
+          "sidebar": "oklch(0.205 0 0)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.488 0.243 264.376)",
+          "sidebar-primary-foreground": "oklch(0.985 0 0)",
+          "sidebar-accent": "oklch(0.269 0 0)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.439 0 0)"
+        }
+      }
+    },
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json",
+      "http://localhost:8080/public/r/input.json",
+      "http://localhost:8080/public/r/tooltip.json",
+      "http://localhost:8080/public/r/scroll-area.json",
+      "http://localhost:8080/public/r/sheet.json",
+      "http://localhost:8080/public/r/skeleton.json",
+      "http://localhost:8080/public/r/button.json",
+      "http://localhost:8080/public/r/separator.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core",
+      "@iconify/vue"
+    ]
+  },
+  {
+    "name": "sidebar-08",
+    "type": "registry:block",
+    "files": [
+      {
+        "path": "src/registry/blocks/sidebar-08/layouts/SidebarInsetLayout/Header.vue",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/registry/blocks/sidebar-08/layouts/SidebarInsetLayout/index.ts",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/registry/blocks/sidebar-08/layouts/SidebarInsetLayout/sidebar-menu.ts",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/registry/blocks/sidebar-08/layouts/SidebarInsetLayout/SidebarInsetLayout.vue",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/registry/blocks/sidebar-08/pages/Sidebar08.vue",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/registry/blocks/sidebar-08/router/sidebar-08.ts",
+        "type": "registry:block"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/breadcrumb.json",
+      "http://localhost:8080/public/r/separator.json",
+      "http://localhost:8080/public/r/sidebar.json",
+      "http://localhost:8080/public/r/avatar.json",
+      "http://localhost:8080/public/r/collapsible.json",
+      "http://localhost:8080/public/r/dropdown-menu.json",
+      "http://localhost:8080/public/r/scroll-area.json"
+    ],
+    "dependencies": [
+      "@iconify/vue"
+    ]
+  },
+  {
+    "name": "sign-in",
+    "type": "registry:block",
+    "files": [
+      {
+        "path": "src/registry/blocks/sign-in/layouts/CenteredLayout.vue",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/registry/blocks/sign-in/pages/SignIn.vue",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/registry/blocks/sign-in/router/sign-in.ts",
+        "type": "registry:block"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/button.json",
+      "http://localhost:8080/public/r/card.json",
+      "http://localhost:8080/public/r/form.json",
+      "http://localhost:8080/public/r/input.json",
+      "http://localhost:8080/public/r/toast.json"
+    ],
+    "dependencies": [
+      "vee-validate",
+      "@vee-validate/zod",
+      "zod"
+    ]
+  },
+  {
+    "name": "sign-up",
+    "type": "registry:block",
+    "files": [
+      {
+        "path": "src/registry/blocks/sign-up/layouts/CenteredLayout.vue",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/registry/blocks/sign-up/pages/SignUp.vue",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/registry/blocks/sign-up/router/sign-up.ts",
+        "type": "registry:block"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/button.json",
+      "http://localhost:8080/public/r/card.json",
+      "http://localhost:8080/public/r/form.json",
+      "http://localhost:8080/public/r/input.json",
+      "http://localhost:8080/public/r/toast.json"
+    ],
+    "dependencies": [
+      "vee-validate",
+      "@vee-validate/zod",
+      "zod"
+    ]
+  },
+  {
+    "name": "skeleton",
+    "type": "registry:ui",
+    "title": "Skeleton",
+    "description": "Use to show a placeholder while content is loading.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/skeleton/Skeleton.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/skeleton/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": []
+  },
+  {
+    "name": "slider",
+    "type": "registry:ui",
+    "title": "Slider",
+    "description": "An input where the user selects a value from within a given range.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/slider/Slider.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/slider/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "sonner",
+    "type": "registry:ui",
+    "title": "Sonner",
+    "description": "An opinionated toast component for Vue. See: https://vue-sonner.vercel.app",
+    "files": [
+      {
+        "path": "src/registry/components/ui/sonner/use-sonner.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sonner/Sonner.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/sonner/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [],
+    "dependencies": [
+      "vue-sonner",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "stepper",
+    "type": "registry:ui",
+    "title": "Stepper",
+    "description": "A set of steps that are used to indicate progress through a multi-step process.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/stepper/StepperIndicator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/stepper/StepperTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/stepper/StepperItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/stepper/StepperDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/stepper/StepperSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/stepper/Stepper.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/stepper/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/stepper/StepperTitle.vue",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "switch",
+    "type": "registry:ui",
+    "title": "Switch",
+    "description": "A control that allows the user to toggle between checked and not checked.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/switch/Switch.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/switch/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "table",
+    "type": "registry:ui",
+    "title": "Table",
+    "description": "A responsive table component.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/table/TableRow.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/table/TableHead.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/table/TableBody.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/table/TableHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/table/TableCaption.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/table/TableFooter.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/table/Table.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/table/TableCell.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/table/TableEmpty.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/table/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "tabs",
+    "type": "registry:ui",
+    "title": "Tabs",
+    "description": "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/tabs/TabsTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/tabs/Tabs.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/tabs/TabsContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/tabs/TabsList.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/tabs/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "tags-input",
+    "type": "registry:ui",
+    "title": "Tags Input",
+    "description": "Tag inputs render tags inside an input, followed by an actual text input.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/tags-input/TagsInputItemDelete.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/tags-input/TagsInputInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/tags-input/TagsInputItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/tags-input/TagsInputItemText.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/tags-input/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/tags-input/TagsInput.vue",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@iconify/vue",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "textarea",
+    "type": "registry:ui",
+    "title": "Textarea",
+    "description": "Displays a form textarea or a component that looks like a textarea.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/textarea/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/textarea/Textarea.vue",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "toast",
+    "type": "registry:ui",
+    "title": "Toast",
+    "description": "A succinct message that is displayed temporarily.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/toast/ToastTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/toast/ToastAction.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/toast/Toaster.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/toast/ToastProvider.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/toast/ToastDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/toast/ToastClose.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/toast/Toast.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/toast/use-toast.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/toast/ToastViewport.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/toast/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core",
+      "@iconify/vue"
+    ]
+  },
+  {
+    "name": "toggle",
+    "type": "registry:ui",
+    "title": "Toggle",
+    "description": "A two-state button that can be either on or off.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/toggle/Toggle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/toggle/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "toggle-group",
+    "type": "registry:ui",
+    "title": "Toggle Group",
+    "description": "A set of two-state buttons that can be toggled on or off.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/toggle-group/ToggleGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/toggle-group/ToggleGroupItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/toggle-group/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/toggle.json",
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "tooltip",
+    "type": "registry:ui",
+    "title": "Tooltip",
+    "description": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+    "files": [
+      {
+        "path": "src/registry/components/ui/tooltip/TooltipProvider.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/tooltip/TooltipTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/tooltip/TooltipArrow.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/tooltip/Tooltip.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/tooltip/TooltipContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/tooltip/Hint.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/registry/components/ui/tooltip/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "registryDependencies": [
+      "http://localhost:8080/public/r/utils.json"
+    ],
+    "dependencies": [
+      "reka-ui",
+      "@vueuse/core"
+    ]
+  },
+  {
+    "name": "use-bg-color",
+    "type": "registry:hook",
+    "title": "Change the background color of the body to a custom color",
+    "description": "Replace the class `bg-background` with provided bgClass. Defaults to `bg-muted`. Don't forget to handle dark variant.",
+    "files": [
+      {
+        "path": "src/registry/composables/use-bg-color.ts",
+        "type": "registry:hook"
+      }
+    ],
+    "registryDependencies": [],
+    "dependencies": []
+  },
+  {
+    "name": "utils",
+    "type": "registry:lib",
+    "title": "",
+    "description": "",
+    "files": [
+      {
+        "path": "src/registry/lib/utils.ts",
+        "type": "registry:lib"
+      }
+    ],
+    "registryDependencies": [],
+    "dependencies": [
+      "clsx",
+      "tailwind-merge"
+    ]
+  }
+]

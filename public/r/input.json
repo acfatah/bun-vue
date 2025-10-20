@@ -1,0 +1,25 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "input",
+  "type": "registry:ui",
+  "title": "Input",
+  "description": "Displays a form input field or a component that looks like an input field.",
+  "dependencies": [
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/input/Input.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\nimport { useVModel } from '@vueuse/core'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  defaultValue?: string | number\n  modelValue?: string | number\n  class?: HTMLAttributes['class']\n}>()\n\nconst emits = defineEmits<{\n  (e: 'update:modelValue', payload: string | number): void\n}>()\n\nconst modelValue = useVModel(props, 'modelValue', emits, {\n  passive: true,\n  defaultValue: props.defaultValue,\n})\n</script>\n\n<template>\n  <input\n    v-model=\"modelValue\"\n    data-slot=\"input\"\n    :class=\"cn(\n      `\n        flex h-9 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 shadow-xs\n        transition-[color,box-shadow] outline-none\n        selection:bg-primary selection:text-primary-foreground\n        file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium\n        file:text-foreground\n        placeholder:text-muted-foreground\n        focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50\n        disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50\n        aria-invalid:border-destructive aria-invalid:ring-destructive/20\n        md:text-sm\n        dark:bg-input/30 dark:[color-scheme:dark] dark:aria-invalid:ring-destructive/40\n      `,\n      props.class,\n    )\"\n  >\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/input/index.ts",
+      "content": "/**\n * Input\n *\n * Displays a form input field or a component that looks like an input field.\n */\n\nexport { default as Input } from './Input.vue'\n",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "dark-mode-toggle",
+  "type": "registry:component",
+  "dependencies": [
+    "@iconify/vue"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/registry/components/DarkModeToggle.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Icon } from '@iconify/vue'\nimport { UseDark } from '@vueuse/components'\n</script>\n\n<template>\n  <UseDark v-slot=\"{ isDark, toggleDark }\">\n    <button\n      class=\"\n        inline-flex h-8 w-8 items-center justify-center gap-2 rounded-md text-sm font-medium\n        whitespace-nowrap ring-offset-background transition-colors\n        hover:bg-accent hover:text-accent-foreground\n        focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\n        focus-visible:outline-none\n        disabled:pointer-events-none disabled:opacity-50\n        [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0\n      \"\n      aria-label=\"Toggle dark mode\"\n      @click=\"toggleDark()\"\n    >\n      <Icon v-if=\"!isDark\" icon=\"lucide:moon\" class=\"size-4\" />\n      <Icon v-if=\"isDark\" icon=\"lucide:sun\" class=\"size-4\" />\n    </button>\n  </UseDark>\n</template>\n",
+      "type": "registry:component",
+      "target": "~/src/components/DarkModeToggle.vue"
+    }
+  ]
+}

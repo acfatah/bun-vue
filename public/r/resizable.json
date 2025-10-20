@@ -1,0 +1,37 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "resizable",
+  "type": "registry:ui",
+  "title": "Resizable",
+  "description": "Accessible resizable panel groups and layouts with keyboard support.",
+  "dependencies": [
+    "reka-ui",
+    "@iconify/vue",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/resizable/ResizablePanel.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { SplitterPanelEmits, SplitterPanelProps } from 'reka-ui'\nimport { SplitterPanel, useForwardPropsEmits } from 'reka-ui'\n\nconst props = defineProps<SplitterPanelProps>()\nconst emits = defineEmits<SplitterPanelEmits>()\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <SplitterPanel\n    data-slot=\"resizable-panel\"\n    v-bind=\"forwarded\"\n  >\n    <slot />\n  </SplitterPanel>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/resizable/ResizableHandle.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { SplitterResizeHandleEmits, SplitterResizeHandleProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { Icon } from '@iconify/vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { SplitterResizeHandle, useForwardPropsEmits } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<SplitterResizeHandleProps & {\n  class?: HTMLAttributes['class']\n  withHandle?: boolean\n}>()\n\nconst emits = defineEmits<SplitterResizeHandleEmits>()\nconst delegatedProps = reactiveOmit(props, 'class', 'withHandle')\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <SplitterResizeHandle\n    data-slot=\"resizable-handle\"\n    v-bind=\"forwarded\"\n    :class=\"cn(\n      `\n        relative flex w-px items-center justify-center bg-border\n        after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2\n        focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1\n        focus-visible:outline-hidden\n        data-[orientation=vertical]:h-px data-[orientation=vertical]:w-full\n        data-[orientation=vertical]:after:left-0 data-[orientation=vertical]:after:h-1\n        data-[orientation=vertical]:after:w-full data-[orientation=vertical]:after:translate-x-0\n        data-[orientation=vertical]:after:-translate-y-1/2\n        [&[data-orientation=vertical]>div]:rotate-90\n      `,\n      props.class,\n    )\"\n  >\n    <template v-if=\"props.withHandle\">\n      <div class=\"z-10 flex h-4 w-3 items-center justify-center rounded-xs border bg-border\">\n        <Icon icon=\"lucide:grip-vertical\" class=\"size-2.5\" />\n      </div>\n    </template>\n  </SplitterResizeHandle>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/resizable/ResizablePanelGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { SplitterGroupEmits, SplitterGroupProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { SplitterGroup, useForwardPropsEmits } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<SplitterGroupProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst emits = defineEmits<SplitterGroupEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <SplitterGroup\n    data-slot=\"resizable-panel-group\"\n    v-bind=\"forwarded\"\n    :class=\"cn(\n      `\n        flex h-full w-full\n        data-[orientation=vertical]:flex-col\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </SplitterGroup>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/resizable/index.ts",
+      "content": "/**\n * Resizable\n *\n * Accessible resizable panel groups and layouts with keyboard support.\n */\n\nexport { default as ResizableHandle } from './ResizableHandle.vue'\nexport { default as ResizablePanel } from './ResizablePanel.vue'\nexport { default as ResizablePanelGroup } from './ResizablePanelGroup.vue'\n",
+      "type": "registry:ui"
+    }
+  ]
+}

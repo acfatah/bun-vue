@@ -1,0 +1,97 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "menubar",
+  "type": "registry:ui",
+  "title": "Menubar",
+  "description": "A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core",
+    "@iconify/vue"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/menubar/MenubarItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarItemEmits, MenubarItemProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { MenubarItem, useForwardPropsEmits } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<MenubarItemProps & {\n  class?: HTMLAttributes['class']\n  inset?: boolean\n  variant?: 'default' | 'destructive'\n}>()\n\nconst emits = defineEmits<MenubarItemEmits>()\n\nconst delegatedProps = reactiveOmit(props, 'class', 'inset', 'variant')\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <MenubarItem\n    data-slot=\"menubar-item\"\n    :data-inset=\"inset ? '' : undefined\"\n    :data-variant=\"variant\"\n    v-bind=\"forwarded\"\n    :class=\"cn(\n      `\n        relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm\n        outline-hidden select-none\n        focus:bg-accent focus:text-accent-foreground\n        data-[disabled]:pointer-events-none data-[disabled]:opacity-50\n        data-[inset]:pl-8\n        data-[variant=destructive]:text-destructive-foreground\n        data-[variant=destructive]:focus:bg-destructive/10\n        data-[variant=destructive]:focus:text-destructive-foreground\n        dark:data-[variant=destructive]:focus:bg-destructive/40\n        [&_svg]:pointer-events-none [&_svg]:shrink-0\n        [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground\n        data-[variant=destructive]:*:[svg]:!text-destructive-foreground\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </MenubarItem>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/menubar/MenubarGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarGroupProps } from 'reka-ui'\nimport { MenubarGroup } from 'reka-ui'\n\nconst props = defineProps<MenubarGroupProps>()\n</script>\n\n<template>\n  <MenubarGroup\n    data-slot=\"menubar-group\"\n    v-bind=\"props\"\n  >\n    <slot />\n  </MenubarGroup>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/menubar/MenubarSubContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarSubContentEmits, MenubarSubContentProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport {\n  MenubarPortal,\n  MenubarSubContent,\n  useForwardPropsEmits,\n} from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<MenubarSubContentProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst emits = defineEmits<MenubarSubContentEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <MenubarPortal>\n    <MenubarSubContent\n      data-slot=\"menubar-sub-content\"\n      v-bind=\"forwarded\"\n      :class=\"cn(\n        `\n          z-50 min-w-[8rem] origin-(--reka-menubar-content-transform-origin) overflow-hidden\n          rounded-md border bg-popover p-1 text-popover-foreground shadow-lg\n          data-[side=bottom]:slide-in-from-top-2\n          data-[side=left]:slide-in-from-right-2\n          data-[side=right]:slide-in-from-left-2\n          data-[side=top]:slide-in-from-bottom-2\n          data-[state=closed]:animate-out data-[state=closed]:fade-out-0\n          data-[state=closed]:zoom-out-95\n          data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95\n        `,\n        props.class,\n      )\"\n    >\n      <slot />\n    </MenubarSubContent>\n  </MenubarPortal>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/menubar/MenubarContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarContentProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport {\n  MenubarContent,\n  MenubarPortal,\n  useForwardProps,\n} from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = withDefaults(defineProps<MenubarContentProps & {\n  class?: HTMLAttributes['class']\n}>(), {\n  align: 'start',\n  alignOffset: -4,\n  sideOffset: 8,\n})\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <MenubarPortal>\n    <MenubarContent\n      data-slot=\"menubar-content\"\n      v-bind=\"forwardedProps\"\n      :class=\"cn(\n        `\n          z-50 min-w-[12rem] origin-(--reka-menubar-content-transform-origin) overflow-hidden\n          rounded-md border bg-popover p-1 text-popover-foreground shadow-md\n          data-[side=bottom]:slide-in-from-top-2\n          data-[side=left]:slide-in-from-right-2\n          data-[side=right]:slide-in-from-left-2\n          data-[side=top]:slide-in-from-bottom-2\n          data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95\n          data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95\n        `,\n        props.class,\n      )\"\n    >\n      <slot />\n    </MenubarContent>\n  </MenubarPortal>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/menubar/Menubar.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarRootEmits, MenubarRootProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { MenubarRoot, useForwardPropsEmits } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<MenubarRootProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst emits = defineEmits<MenubarRootEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <MenubarRoot\n    data-slot=\"menubar\"\n    v-bind=\"forwarded\"\n    :class=\"cn(\n      'flex h-9 items-center gap-1 rounded-md border bg-background p-1 shadow-xs',\n      props.class,\n    )\"\n  >\n    <slot />\n  </MenubarRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/menubar/MenubarCheckboxItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarCheckboxItemEmits, MenubarCheckboxItemProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { Icon } from '@iconify/vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport {\n  MenubarCheckboxItem,\n  MenubarItemIndicator,\n  useForwardPropsEmits,\n} from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<MenubarCheckboxItemProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst emits = defineEmits<MenubarCheckboxItemEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <MenubarCheckboxItem\n    data-slot=\"menubar-checkbox-item\"\n    v-bind=\"forwarded\"\n    :class=\"cn(\n      `\n        relative flex cursor-default items-center gap-2 rounded-xs py-1.5 pr-2 pl-8 text-sm\n        outline-hidden select-none\n        focus:bg-accent focus:text-accent-foreground\n        data-[disabled]:pointer-events-none data-[disabled]:opacity-50\n        [&_svg]:pointer-events-none [&_svg]:shrink-0\n        [&_svg:not([class*='size-'])]:size-4\n      `,\n      props.class,\n    )\"\n  >\n    <span class=\"pointer-events-none absolute left-2 flex size-3.5 items-center justify-center\">\n      <MenubarItemIndicator>\n        <Icon icon=\"lucide:check\" />\n      </MenubarItemIndicator>\n    </span>\n    <slot />\n  </MenubarCheckboxItem>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/menubar/MenubarLabel.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarLabelProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { MenubarLabel } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<MenubarLabelProps & {\n  class?: HTMLAttributes['class']\n  inset?: boolean\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class', 'inset')\n</script>\n\n<template>\n  <MenubarLabel\n    :data-inset=\"inset ? '' : undefined\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      `\n        px-2 py-1.5 text-sm font-medium\n        data-[inset]:pl-8\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </MenubarLabel>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/menubar/MenubarSeparator.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarSeparatorProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { MenubarSeparator, useForwardProps } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<MenubarSeparatorProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <MenubarSeparator\n    data-slot=\"menubar-separator\"\n    :class=\" cn('-mx-1 my-1 h-px bg-border', props.class)\"\n    v-bind=\"forwardedProps\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/menubar/MenubarSubTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarSubTriggerProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { Icon } from '@iconify/vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { MenubarSubTrigger, useForwardProps } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<MenubarSubTriggerProps & {\n  class?: HTMLAttributes['class']\n  inset?: boolean\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class', 'inset')\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <MenubarSubTrigger\n    data-slot=\"menubar-sub-trigger\"\n    :data-inset=\"inset ? '' : undefined\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-none select-none\n        focus:bg-accent focus:text-accent-foreground\n        data-[inset]:pl-8\n        data-[state=open]:bg-accent data-[state=open]:text-accent-foreground\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n    <Icon icon=\"lucide:chevron-right\" class=\"ml-auto\" />\n  </MenubarSubTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/menubar/MenubarShortcut.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <span\n    data-slot=\"menubar-shortcut\"\n    :class=\"cn(\n      'ml-auto text-xs tracking-widest text-muted-foreground',\n      props.class,\n    )\"\n  >\n    <slot />\n  </span>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/menubar/MenubarRadioGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarRadioGroupEmits, MenubarRadioGroupProps } from 'reka-ui'\nimport { MenubarRadioGroup, useForwardPropsEmits } from 'reka-ui'\n\nconst props = defineProps<MenubarRadioGroupProps>()\nconst emits = defineEmits<MenubarRadioGroupEmits>()\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <MenubarRadioGroup\n    data-slot=\"menubar-radio-group\"\n    v-bind=\"forwarded\"\n  >\n    <slot />\n  </MenubarRadioGroup>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/menubar/MenubarTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarTriggerProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { MenubarTrigger, useForwardProps } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<MenubarTriggerProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <MenubarTrigger\n    data-slot=\"menubar-trigger\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        flex items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none\n        focus:bg-accent focus:text-accent-foreground\n        data-[state=open]:bg-accent data-[state=open]:text-accent-foreground\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </MenubarTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/menubar/MenubarMenu.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarMenuProps } from 'reka-ui'\nimport { MenubarMenu } from 'reka-ui'\n\nconst props = defineProps<MenubarMenuProps>()\n</script>\n\n<template>\n  <MenubarMenu\n    data-slot=\"menubar-menu\"\n    v-bind=\"props\"\n  >\n    <slot />\n  </MenubarMenu>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/menubar/MenubarRadioItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarRadioItemEmits, MenubarRadioItemProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { Icon } from '@iconify/vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport {\n  MenubarItemIndicator,\n  MenubarRadioItem,\n  useForwardPropsEmits,\n} from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<MenubarRadioItemProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst emits = defineEmits<MenubarRadioItemEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <MenubarRadioItem\n    data-slot=\"menubar-radio-item\"\n    v-bind=\"forwarded\"\n    :class=\"cn(\n      `\n        relative flex cursor-default items-center gap-2 rounded-xs py-1.5 pr-2 pl-8 text-sm\n        outline-hidden select-none\n        focus:bg-accent focus:text-accent-foreground\n        data-[disabled]:pointer-events-none data-[disabled]:opacity-50\n        [&_svg]:pointer-events-none [&_svg]:shrink-0\n        [&_svg:not([class*='size-'])]:size-4\n      `,\n      props.class,\n    )\"\n  >\n    <span class=\"pointer-events-none absolute left-2 flex size-3.5 items-center justify-center\">\n      <MenubarItemIndicator>\n        <Icon\n          icon=\"lucide:circle\"\n          class=\"\n            size-2\n            [&>circle]:fill-current\n          \"\n        />\n      </MenubarItemIndicator>\n    </span>\n    <slot />\n  </MenubarRadioItem>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/menubar/MenubarSub.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarSubEmits } from 'reka-ui'\nimport { MenubarSub, useForwardPropsEmits } from 'reka-ui'\n\ninterface MenubarSubRootProps {\n  defaultOpen?: boolean\n  open?: boolean\n}\n\nconst props = defineProps<MenubarSubRootProps>()\nconst emits = defineEmits<MenubarSubEmits>()\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <MenubarSub\n    data-slot=\"menubar-sub\"\n    v-bind=\"forwarded\"\n  >\n    <slot />\n  </MenubarSub>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/menubar/index.ts",
+      "content": "/**\n * Menubar\n *\n * A visually persistent menu common in desktop applications that provides quick\n * access to a consistent set of commands.\n */\n\nexport { default as Menubar } from './Menubar.vue'\nexport { default as MenubarCheckboxItem } from './MenubarCheckboxItem.vue'\nexport { default as MenubarContent } from './MenubarContent.vue'\nexport { default as MenubarGroup } from './MenubarGroup.vue'\nexport { default as MenubarItem } from './MenubarItem.vue'\nexport { default as MenubarLabel } from './MenubarLabel.vue'\nexport { default as MenubarMenu } from './MenubarMenu.vue'\nexport { default as MenubarRadioGroup } from './MenubarRadioGroup.vue'\nexport { default as MenubarRadioItem } from './MenubarRadioItem.vue'\nexport { default as MenubarSeparator } from './MenubarSeparator.vue'\nexport { default as MenubarShortcut } from './MenubarShortcut.vue'\nexport { default as MenubarSub } from './MenubarSub.vue'\nexport { default as MenubarSubContent } from './MenubarSubContent.vue'\nexport { default as MenubarSubTrigger } from './MenubarSubTrigger.vue'\nexport { default as MenubarTrigger } from './MenubarTrigger.vue'\n",
+      "type": "registry:ui"
+    }
+  ]
+}

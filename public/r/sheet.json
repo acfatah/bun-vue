@@ -1,0 +1,67 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "sheet",
+  "type": "registry:ui",
+  "title": "Sheet",
+  "description": "Extends the Dialog component to display content that complements the main content of the screen.",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core",
+    "@iconify/vue"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/sheet/SheetHeader.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{ class?: HTMLAttributes['class'] }>()\n</script>\n\n<template>\n  <div\n    data-slot=\"sheet-header\"\n    :class=\"cn('flex flex-col gap-1.5 p-4', props.class)\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/sheet/Sheet.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogRootEmits, DialogRootProps } from 'reka-ui'\nimport { DialogRoot, useForwardPropsEmits } from 'reka-ui'\n\nconst props = defineProps<DialogRootProps>()\nconst emits = defineEmits<DialogRootEmits>()\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <DialogRoot\n    data-slot=\"sheet\"\n    v-bind=\"forwarded\"\n  >\n    <slot />\n  </DialogRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/sheet/SheetTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogTriggerProps } from 'reka-ui'\nimport { DialogTrigger } from 'reka-ui'\n\nconst props = defineProps<DialogTriggerProps>()\n</script>\n\n<template>\n  <DialogTrigger\n    data-slot=\"sheet-trigger\"\n    v-bind=\"props\"\n  >\n    <slot />\n  </DialogTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/sheet/SheetOverlay.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogOverlayProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { DialogOverlay } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<DialogOverlayProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <DialogOverlay\n    data-slot=\"sheet-overlay\"\n    :class=\"cn(\n      `\n        fixed inset-0 z-50 bg-black/80\n        data-[state=closed]:animate-out data-[state=closed]:fade-out-0\n        data-[state=open]:animate-in data-[state=open]:fade-in-0\n      `,\n      props.class,\n    )\"\n    v-bind=\"delegatedProps\"\n  >\n    <slot />\n  </DialogOverlay>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/sheet/SheetTitle.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogTitleProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { DialogTitle } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<DialogTitleProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <DialogTitle\n    data-slot=\"sheet-title\"\n    :class=\"cn('text-lg leading-none font-semibold text-foreground', props.class)\"\n    v-bind=\"delegatedProps\"\n  >\n    <slot />\n  </DialogTitle>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/sheet/SheetContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogContentEmits, DialogContentProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { Icon } from '@iconify/vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport {\n  DialogClose,\n  DialogContent,\n  DialogPortal,\n  useForwardPropsEmits,\n} from 'reka-ui'\nimport { cn } from '@/lib/utils'\nimport type { SheetVariants } from '.'\nimport { sheetVariants } from '.'\nimport SheetOverlay from './SheetOverlay.vue'\n\ninterface SheetContentProps extends DialogContentProps {\n  class?: HTMLAttributes['class']\n  side?: SheetVariants['side']\n}\n\ndefineOptions({\n  inheritAttrs: false,\n})\n\nconst props = withDefaults(defineProps<SheetContentProps>(), {\n  side: 'right',\n})\n\nconst emits = defineEmits<DialogContentEmits>()\nconst delegatedProps = reactiveOmit(props, 'class', 'side')\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <DialogPortal>\n    <SheetOverlay />\n    <DialogContent\n      data-slot=\"sheet-content\"\n      :class=\"cn(sheetVariants({ side }), props.class)\"\n      v-bind=\"{ ...forwarded, ...$attrs }\"\n    >\n      <slot />\n\n      <DialogClose\n        :class=\"cn(\n          `\n            absolute top-4 right-4 rounded-xs opacity-70 ring-offset-background transition-opacity\n            hover:opacity-100\n            focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden\n            disabled:pointer-events-none\n            data-[state=open]:bg-secondary\n          `,\n        )\"\n      >\n        <Icon icon=\"lucide:x\" />\n        <span class=\"sr-only\">Close</span>\n      </DialogClose>\n    </DialogContent>\n  </DialogPortal>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/sheet/SheetFooter.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"sheet-footer\"\n    :class=\"cn('mt-auto flex flex-col gap-2 p-4', props.class)\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/sheet/SheetClose.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogCloseProps } from 'reka-ui'\nimport { DialogClose } from 'reka-ui'\n\nconst props = defineProps<DialogCloseProps>()\n</script>\n\n<template>\n  <DialogClose\n    data-slot=\"sheet-close\"\n    v-bind=\"props\"\n  >\n    <slot />\n  </DialogClose>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/sheet/SheetDescription.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogDescriptionProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { DialogDescription } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<DialogDescriptionProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <DialogDescription\n    data-slot=\"sheet-description\"\n    :class=\"cn('text-sm text-muted-foreground', props.class)\"\n    v-bind=\"delegatedProps\"\n  >\n    <slot />\n  </DialogDescription>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/sheet/index.ts",
+      "content": "/**\n * Sheet\n *\n * Extends the Dialog component to display content that complements the main\n * content of the screen.\n */\n\nimport type { VariantProps } from 'class-variance-authority'\nimport { cva } from 'class-variance-authority'\n\nexport { default as Sheet } from './Sheet.vue'\nexport { default as SheetClose } from './SheetClose.vue'\nexport { default as SheetContent } from './SheetContent.vue'\nexport { default as SheetDescription } from './SheetDescription.vue'\nexport { default as SheetFooter } from './SheetFooter.vue'\nexport { default as SheetHeader } from './SheetHeader.vue'\nexport { default as SheetTitle } from './SheetTitle.vue'\nexport { default as SheetTrigger } from './SheetTrigger.vue'\n\nexport const sheetVariants = cva(\n  `\n    fixed z-50 flex max-h-screen flex-col gap-4 bg-background shadow-lg transition ease-in-out\n    data-[state=closed]:animate-out data-[state=closed]:duration-300\n    data-[state=open]:animate-in data-[state=open]:duration-500\n  `,\n\n  {\n    variants: {\n      side: {\n        top: [\n          `\n            inset-x-0 top-0 h-auto border-b\n            data-[state=closed]:slide-out-to-top\n            data-[state=open]:slide-in-from-top\n          `,\n        ],\n\n        bottom: [\n          `\n            inset-x-0 bottom-0 h-auto border-t\n            data-[state=closed]:slide-out-to-bottom\n            data-[state=open]:slide-in-from-bottom\n          `,\n        ],\n\n        left: [\n          `\n            inset-y-0 left-0 h-full w-3/4 border-r\n            data-[state=closed]:slide-out-to-left\n            data-[state=open]:slide-in-from-left\n            sm:max-w-sm\n          `,\n        ],\n\n        right: [\n          `\n            inset-y-0 right-0 h-full w-3/4 border-l\n            data-[state=closed]:slide-out-to-right\n            data-[state=open]:slide-in-from-right\n            sm:max-w-sm\n          `,\n        ],\n      },\n    },\n\n    defaultVariants: {\n      side: 'right',\n    },\n  },\n)\n\nexport type SheetVariants = VariantProps<typeof sheetVariants>\n",
+      "type": "registry:ui"
+    }
+  ]
+}

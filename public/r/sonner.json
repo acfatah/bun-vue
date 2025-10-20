@@ -1,0 +1,29 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "sonner",
+  "type": "registry:ui",
+  "title": "Sonner",
+  "description": "An opinionated toast component for Vue. See: https://vue-sonner.vercel.app",
+  "dependencies": [
+    "vue-sonner",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/registry/components/ui/sonner/use-sonner.ts",
+      "content": "import { h, render, Teleport } from 'vue'\nimport { toast } from 'vue-sonner'\n\nimport 'vue-sonner/style.css'\nimport Sonner from './Sonner.vue'\n\nfunction createSonnerContainerOnce() {\n  let toastContainer = document.getElementById('sonner-container')\n\n  if (!toastContainer) {\n    toastContainer = document.createElement('div')\n    toastContainer.id = 'sonner-container'\n    document.body.appendChild(toastContainer)\n\n    render(\n      h(Teleport, { to: 'body' }, [h(Sonner)]),\n      toastContainer,\n    )\n  }\n}\n\nfunction useSonner() {\n  createSonnerContainerOnce()\n\n  return { toast }\n}\n\nexport { toast, useSonner }\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/sonner/Sonner.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { ToasterProps } from 'vue-sonner'\nimport { useDark } from '@vueuse/core'\nimport { Toaster } from 'vue-sonner'\n\nconst props = defineProps<ToasterProps>()\nconst isDark = useDark()\n</script>\n\n<template>\n  <Toaster\n    class=\"toaster group\"\n    v-bind=\"props\"\n    :rich-colors=\"true\"\n    :theme=\"isDark ? 'dark' : 'light'\"\n    :toast-options=\"{\n      classes: {\n        toast: 'group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg',\n        description: 'group-[.toast]:text-muted-foreground',\n        actionButton:\n          'group-[.toast]:bg-primary group-[.toast]:text-primary-foreground',\n        cancelButton:\n          'group-[.toast]:bg-muted group-[.toast]:text-muted-foreground',\n      },\n    }\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/sonner/index.ts",
+      "content": "/**\n * Sonner\n *\n * An opinionated toast component for Vue.\n * See: https://vue-sonner.vercel.app\n */\n\nexport { default as Sonner } from './Sonner.vue'\nexport { useSonner } from './use-sonner'\n",
+      "type": "registry:ui"
+    }
+  ]
+}

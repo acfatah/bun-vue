@@ -1,0 +1,25 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "textarea",
+  "type": "registry:ui",
+  "title": "Textarea",
+  "description": "Displays a form textarea or a component that looks like a textarea.",
+  "dependencies": [
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/textarea/index.ts",
+      "content": "/**\n * Textarea\n *\n * Displays a form textarea or a component that looks like a textarea.\n */\n\nexport { default as Textarea } from './Textarea.vue'\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/textarea/Textarea.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\nimport { useVModel } from '@vueuse/core'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n  defaultValue?: string | number\n  modelValue?: string | number\n}>()\n\nconst emits = defineEmits<{\n  (e: 'update:modelValue', payload: string | number): void\n}>()\n\nconst modelValue = useVModel(props, 'modelValue', emits, {\n  passive: true,\n  defaultValue: props.defaultValue,\n})\n</script>\n\n<template>\n  <textarea\n    v-model=\"modelValue\"\n    data-slot=\"textarea\"\n    :class=\"cn(\n      `\n        flex field-sizing-content min-h-16 w-full rounded-md border border-input bg-transparent px-3\n        py-2 text-base shadow-xs transition-[color,box-shadow] outline-none\n        placeholder:text-muted-foreground\n        focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50\n        disabled:cursor-not-allowed disabled:opacity-50\n        aria-invalid:border-destructive aria-invalid:ring-destructive/20\n        md:text-sm\n        dark:bg-input/30 dark:aria-invalid:ring-destructive/40\n      `,\n      props.class,\n    )\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "avatar",
+  "type": "registry:ui",
+  "title": "Avatar",
+  "description": "An image element with a fallback for representing the user.",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/avatar/AvatarFallback.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { AvatarFallbackProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { AvatarFallback } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<AvatarFallbackProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <AvatarFallback\n    data-slot=\"avatar-fallback\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      'flex size-full items-center justify-center rounded-full bg-muted',\n      props.class,\n    )\"\n  >\n    <slot />\n  </AvatarFallback>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/avatar/AvatarImage.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { AvatarImageProps } from 'reka-ui'\nimport { AvatarImage } from 'reka-ui'\n\nconst props = defineProps<AvatarImageProps>()\n</script>\n\n<template>\n  <AvatarImage\n    data-slot=\"avatar-image\"\n    v-bind=\"props\"\n    class=\"aspect-square size-full\"\n  >\n    <slot />\n  </AvatarImage>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/avatar/Avatar.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\nimport { AvatarRoot } from 'reka-ui'\nimport { cn } from '@/lib/utils'\nimport type { AvatarVariants } from '.'\nimport { avatarVariant } from '.'\n\nconst props = withDefaults(defineProps<{\n  class?: HTMLAttributes['class']\n  size?: AvatarVariants['size']\n  shape?: AvatarVariants['shape']\n}>(), {\n  size: 'sm',\n  shape: 'circle',\n})\n</script>\n\n<template>\n  <AvatarRoot\n    data-slot=\"avatar\"\n    :class=\"cn(\n      avatarVariant({ size, shape }),\n      props.class,\n    )\"\n  >\n    <slot />\n  </AvatarRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/avatar/index.ts",
+      "content": "/**\n * Avatar\n *\n * An image element with a fallback for representing the user.\n */\n\nimport type { VariantProps } from 'class-variance-authority'\nimport { cva } from 'class-variance-authority'\n\nexport { default as Avatar } from './Avatar.vue'\nexport { default as AvatarFallback } from './AvatarFallback.vue'\nexport { default as AvatarImage } from './AvatarImage.vue'\n\nexport const AvatarSize = {\n  sm: 'size-8',\n  md: 'size-16 text-2xl',\n  lg: 'size-32 text-5xl',\n}\n\nexport const AvatarShape = {\n  circle: 'rounded-full',\n  square: 'rounded-lg',\n}\n\nexport const avatarVariant = cva(\n  [\n    'relative flex shrink-0 overflow-hidden',\n  ],\n\n  {\n    variants: {\n      size: AvatarSize,\n      shape: AvatarShape,\n    },\n\n    defaultVariants: {\n      size: 'md',\n      shape: 'circle',\n    },\n  },\n)\n\nexport type AvatarVariants = VariantProps<typeof avatarVariant>\n",
+      "type": "registry:ui"
+    }
+  ]
+}

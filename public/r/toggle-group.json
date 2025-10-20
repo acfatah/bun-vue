@@ -1,0 +1,32 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "toggle-group",
+  "type": "registry:ui",
+  "title": "Toggle Group",
+  "description": "A set of two-state buttons that can be toggled on or off.",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/toggle.json",
+    "http://localhost:8080/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/toggle-group/ToggleGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { VariantProps } from 'class-variance-authority'\nimport type { ToggleGroupRootEmits, ToggleGroupRootProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { ToggleGroupRoot, useForwardPropsEmits } from 'reka-ui'\nimport { computed } from 'vue'\nimport type { toggleVariants } from '@/components/ui/toggle'\nimport { cn } from '@/lib/utils'\nimport { provideToggleGroupContext } from '.'\n\ntype ToggleGroupVariants = VariantProps<typeof toggleVariants>\n\nconst props = defineProps<ToggleGroupRootProps & {\n  class?: HTMLAttributes['class']\n  variant?: ToggleGroupVariants['variant']\n  size?: ToggleGroupVariants['size']\n}>()\nconst emits = defineEmits<ToggleGroupRootEmits>()\n\nprovideToggleGroupContext({\n  variant: computed(() => props.variant),\n  size: computed(() => props.size),\n})\n\nconst delegatedProps = reactiveOmit(props, 'class', 'size', 'variant')\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <ToggleGroupRoot\n    data-slot=\"toggle-group\"\n    :data-size=\"size\"\n    :data-variant=\"variant\"\n    v-bind=\"forwarded\"\n    :class=\"cn(\n      `\n        group/toggle-group flex w-fit items-center rounded-md\n        data-[variant=outline]:shadow-xs\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </ToggleGroupRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/toggle-group/ToggleGroupItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { ToggleGroupItemProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { ToggleGroupItem, useForwardProps } from 'reka-ui'\nimport type { ToggleVariants } from '@/components/ui/toggle'\nimport { toggleVariants } from '@/components/ui/toggle'\nimport { cn } from '@/lib/utils'\nimport { injectToggleGroupContext } from '.'\n\nconst props = defineProps<ToggleGroupItemProps & {\n  class?: HTMLAttributes['class']\n  variant?: ToggleVariants['variant']\n  size?: ToggleVariants['size']\n}>()\n\nconst context = injectToggleGroupContext()\nconst delegatedProps = reactiveOmit(props, 'class', 'size', 'variant')\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <ToggleGroupItem\n    data-slot=\"toggle-group-item\"\n    :data-variant=\"context?.variant.value || variant\"\n    :data-size=\"context?.size.value || size\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      toggleVariants({\n        variant: context?.variant.value || variant,\n        size: context?.size.value || size,\n      }),\n      `\n        min-w-0 flex-1 shrink-0 rounded-none shadow-none\n        first:rounded-l-md\n        last:rounded-r-md\n        focus:z-10\n        focus-visible:z-10\n        data-[variant=outline]:border-l-0 data-[variant=outline]:first:border-l\n      `,\n      props.class)\"\n  >\n    <slot />\n  </ToggleGroupItem>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/toggle-group/index.ts",
+      "content": "/**\n * Toggle Group\n *\n * A set of two-state buttons that can be toggled on or off.\n */\n\nimport type { Ref } from 'vue'\nimport { createContext } from 'reka-ui'\nimport type { ToggleVariants } from '@/components/ui/toggle'\n\nexport { default as ToggleGroup } from './ToggleGroup.vue'\nexport { default as ToggleGroupItem } from './ToggleGroupItem.vue'\n\nexport const [injectToggleGroupContext, provideToggleGroupContext]\n  = createContext<{\n    variant: Ref<ToggleVariants['variant']>\n    size: Ref<ToggleVariants['size']>\n  }>('ToggleGroup')\n",
+      "type": "registry:ui"
+    }
+  ]
+}

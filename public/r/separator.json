@@ -1,0 +1,26 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "separator",
+  "type": "registry:ui",
+  "title": "Separator",
+  "description": "Visually or semantically separates content.",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/separator/Separator.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { SeparatorProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { Separator } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = withDefaults(defineProps<SeparatorProps & {\n  class?: HTMLAttributes['class']\n}>(), {\n  orientation: 'horizontal',\n  decorative: true,\n})\n\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <Separator\n    data-slot=\"separator\"\n    v-bind=\"delegatedProps\"\n    :data-orientation=\"orientation\"\n    :class=\"cn(\n      `\n        relative shrink-0 bg-border\n        data-[orientation=horizontal]:h-px data-[orientation=horizontal]:min-w-full\n        data-[orientation=vertical]:min-h-full data-[orientation=vertical]:w-px\n      `,\n      props.class,\n    )\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/separator/index.ts",
+      "content": "/**\n * Separator\n *\n * Visually or semantically separates content.\n */\n\nexport { default as Separator } from './Separator.vue'\n",
+      "type": "registry:ui"
+    }
+  ]
+}

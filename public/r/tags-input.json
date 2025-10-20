@@ -1,0 +1,47 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "tags-input",
+  "type": "registry:ui",
+  "title": "Tags Input",
+  "description": "Tag inputs render tags inside an input, followed by an actual text input.",
+  "dependencies": [
+    "reka-ui",
+    "@iconify/vue",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/tags-input/TagsInputItemDelete.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { TagsInputItemDeleteProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { Icon } from '@iconify/vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { TagsInputItemDelete, useForwardProps } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<TagsInputItemDeleteProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <TagsInputItemDelete\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      'mr-1 flex rounded bg-transparent',\n      props.class,\n    )\"\n  >\n    <slot>\n      <Icon icon=\"lucide:x\" class=\"size-4\" />\n    </slot>\n  </TagsInputItemDelete>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/tags-input/TagsInputInput.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { TagsInputInputProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { TagsInputInput, useForwardProps } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<TagsInputInputProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <TagsInputInput\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        min-h-5 flex-1 bg-transparent px-1 text-sm\n        focus:outline-none\n      `,\n      props.class)\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/tags-input/TagsInputItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { TagsInputItemProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { TagsInputItem, useForwardProps } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<TagsInputItemProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <TagsInputItem\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        flex h-5 items-center rounded-md bg-secondary ring-offset-background\n        data-[state=active]:ring-2 data-[state=active]:ring-ring data-[state=active]:ring-offset-2\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </TagsInputItem>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/tags-input/TagsInputItemText.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { TagsInputItemTextProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { TagsInputItemText, useForwardProps } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<TagsInputItemTextProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <TagsInputItemText\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      'rounded bg-transparent px-2 py-0.5 text-sm',\n      props.class,\n    )\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/tags-input/index.ts",
+      "content": "/**\n * Tags Input\n *\n * Tag inputs render tags inside an input, followed by an actual text input.\n */\n\nexport { default as TagsInput } from './TagsInput.vue'\nexport { default as TagsInputInput } from './TagsInputInput.vue'\nexport { default as TagsInputItem } from './TagsInputItem.vue'\nexport { default as TagsInputItemDelete } from './TagsInputItemDelete.vue'\nexport { default as TagsInputItemText } from './TagsInputItemText.vue'\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/tags-input/TagsInput.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { TagsInputRootEmits, TagsInputRootProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { TagsInputRoot, useForwardPropsEmits } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<TagsInputRootProps & {\n  class?: HTMLAttributes['class']\n}>()\n\nconst emits = defineEmits<TagsInputRootEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <TagsInputRoot\n    v-bind=\"forwarded\"\n    :class=\"cn(\n      `\n        flex flex-wrap items-center gap-2 rounded-md border border-input bg-background px-3 py-1.5\n        text-sm\n      `,\n      props.class)\"\n  >\n    <slot />\n  </TagsInputRoot>\n</template>\n",
+      "type": "registry:ui"
+    }
+  ]
+}

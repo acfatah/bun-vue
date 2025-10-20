@@ -1,0 +1,27 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "checkbox",
+  "type": "registry:ui",
+  "title": "Checkbox",
+  "description": "A control that allows the user to toggle between checked and not checked.",
+  "dependencies": [
+    "reka-ui",
+    "@iconify/vue",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/checkbox/Checkbox.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { CheckboxRootEmits, CheckboxRootProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { Icon } from '@iconify/vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { CheckboxIndicator, CheckboxRoot, useForwardPropsEmits } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<CheckboxRootProps & { class?: HTMLAttributes['class'] }>()\nconst emits = defineEmits<CheckboxRootEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <CheckboxRoot\n    data-slot=\"checkbox\"\n    v-bind=\"forwarded\"\n    :class=\"cn(\n      `\n        peer size-4 shrink-0 rounded-[4px] border border-input shadow-xs transition-shadow\n        outline-none\n        focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50\n        disabled:cursor-not-allowed disabled:opacity-50\n        aria-invalid:border-destructive aria-invalid:ring-destructive/20\n        data-[state=checked]:border-primary data-[state=checked]:bg-primary\n        data-[state=checked]:text-primary-foreground\n        dark:aria-invalid:ring-destructive/40\n      `,\n      props.class,\n    )\"\n  >\n    <CheckboxIndicator\n      data-slot=\"checkbox-indicator\"\n      class=\"flex items-center justify-center text-current transition-none\"\n    >\n      <slot>\n        <Icon icon=\"lucide:check\" class=\"size-3.5\" />\n      </slot>\n    </CheckboxIndicator>\n  </CheckboxRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/checkbox/index.ts",
+      "content": "/**\n * Checkbox\n *\n * A control that allows the user to toggle between checked and not checked.\n */\n\nexport { default as Checkbox } from './Checkbox.vue'\n",
+      "type": "registry:ui"
+    }
+  ]
+}

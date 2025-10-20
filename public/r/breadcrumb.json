@@ -1,0 +1,56 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "breadcrumb",
+  "type": "registry:ui",
+  "title": "Breadcrumb",
+  "description": "Displays the path to the current resource using a hierarchy of links.",
+  "dependencies": [
+    "reka-ui",
+    "@iconify/vue"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/breadcrumb/BreadcrumbLink.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PrimitiveProps } from 'reka-ui'\nimport type { HTMLAttributes } from 'vue'\nimport { Primitive } from 'reka-ui'\nimport { cn } from '@/lib/utils'\n\nconst props = withDefaults(defineProps<PrimitiveProps & {\n  class?: HTMLAttributes['class']\n}>(), {\n  as: 'a',\n  asChild: false,\n})\n</script>\n\n<template>\n  <Primitive\n    data-slot=\"breadcrumb-link\"\n    :as=\"as\"\n    :as-child=\"asChild\"\n    :class=\"cn(\n      `\n        transition-colors\n        hover:text-foreground\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Primitive>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/breadcrumb/BreadcrumbSeparator.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\nimport { Icon } from '@iconify/vue'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <li\n    data-slot=\"breadcrumb-separator\"\n    role=\"presentation\"\n    aria-hidden=\"true\"\n    :class=\"cn('[&>svg]:size-3.5', props.class)\"\n  >\n    <slot>\n      <Icon icon=\"lucide:chevron-right\" />\n    </slot>\n  </li>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/breadcrumb/BreadcrumbPage.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <span\n    data-slot=\"breadcrumb-page\"\n    role=\"link\"\n    aria-disabled=\"true\"\n    aria-current=\"page\"\n    :class=\"cn(\n      'font-normal text-foreground',\n      props.class,\n    )\"\n  >\n    <slot />\n  </span>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/breadcrumb/BreadcrumbItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <li\n    data-slot=\"breadcrumb-item\"\n    :class=\"cn(\n      'inline-flex items-center gap-1.5',\n      props.class,\n    )\"\n  >\n    <slot />\n  </li>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/breadcrumb/BreadcrumbEllipsis.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\nimport { Icon } from '@iconify/vue'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <span\n    data-slot=\"breadcrumb-ellipsis\"\n    role=\"presentation\"\n    aria-hidden=\"true\"\n    :class=\"cn(\n      'flex items-center justify-center',\n      props.class,\n    )\"\n  >\n    <slot>\n      <Icon icon=\"lucide:more-horizontal\" />\n    </slot>\n    <span class=\"sr-only\">More</span>\n  </span>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/breadcrumb/BreadcrumbList.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <ol\n    data-slot=\"breadcrumb-list\"\n    :class=\"cn(\n      `\n        flex flex-wrap items-center gap-1.5 text-sm break-words text-muted-foreground\n        sm:gap-2.5\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </ol>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/breadcrumb/Breadcrumb.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <nav\n    aria-label=\"breadcrumb\"\n    data-slot=\"breadcrumb\"\n    :class=\"props.class\"\n  >\n    <slot />\n  </nav>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/breadcrumb/index.ts",
+      "content": "/**\n * Breadcrumb\n *\n * Displays the path to the current resource using a hierarchy of links.\n */\n\nexport { default as Breadcrumb } from './Breadcrumb.vue'\nexport { default as BreadcrumbEllipsis } from './BreadcrumbEllipsis.vue'\nexport { default as BreadcrumbItem } from './BreadcrumbItem.vue'\nexport { default as BreadcrumbLink } from './BreadcrumbLink.vue'\nexport { default as BreadcrumbList } from './BreadcrumbList.vue'\nexport { default as BreadcrumbPage } from './BreadcrumbPage.vue'\nexport { default as BreadcrumbSeparator } from './BreadcrumbSeparator.vue'\n",
+      "type": "registry:ui"
+    }
+  ]
+}

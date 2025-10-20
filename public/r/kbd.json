@@ -1,0 +1,26 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "kbd",
+  "type": "registry:ui",
+  "title": "Kbd",
+  "description": "A component to represent keyboard input.",
+  "dependencies": [
+    "@vueuse/core",
+    "reka-ui"
+  ],
+  "registryDependencies": [
+    "http://localhost:8080/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/kbd/Kbd.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from '@vueuse/core'\nimport { Primitive } from 'reka-ui'\nimport { cn } from '@/lib/utils'\nimport { kbdVariants } from '.'\n\nconst props = defineProps({\n  class: { type: null, required: false },\n  size: { type: null, required: false, default: 'sm' },\n})\n\nconst delegatedProps = reactiveOmit(props, 'class', 'size')\n</script>\n\n<template>\n  <Primitive\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      kbdVariants({ size: props.size }),\n      props.class,\n    )\"\n  >\n    <span data-slot=\"kbd-content\">\n      <slot />\n    </span>\n  </Primitive>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/registry/components/ui/kbd/index.ts",
+      "content": "/**\n * Kbd\n *\n * A component to represent keyboard input.\n */\n\nimport { cva } from 'class-variance-authority'\n\nexport { default as Kbd } from './Kbd.vue'\n\nexport const kbdVariants = cva(\n  `\n    pointer-events-none inline-flex items-center gap-1 rounded border bg-muted px-1.5 font-mono\n    font-medium text-muted-foreground opacity-100 select-none\n  `,\n  {\n    variants: {\n      size: {\n        xs: 'text-xs',\n        sm: 'text-sm',\n        md: 'text-md',\n        lg: 'text-lg',\n      },\n    },\n\n    defaultVariants: {\n      size: 'md',\n    },\n  },\n)\n",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "use-bg-color",
+  "type": "registry:hook",
+  "title": "Change the background color of the body to a custom color",
+  "description": "Replace the class `bg-background` with provided bgClass. Defaults to `bg-muted`. Don't forget to handle dark variant.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/registry/composables/use-bg-color.ts",
+      "content": "/**\n * Change the background color of the body to a custom color\n *\n * Replace the class `bg-background` with provided bgClass. Defaults to `bg-muted`.\n * Don't forget to handle dark variant.\n */\nimport { onMounted, onUnmounted } from 'vue'\n\nexport function useBgColor(bgClass = 'bg-muted') {\n  onMounted(() => {\n    document.body.classList.replace('bg-background', bgClass)\n  })\n\n  onUnmounted(() => {\n    document.body.classList.replace(bgClass, 'bg-background')\n  })\n}\n",
+      "type": "registry:hook",
+      "target": "~/src/composables/use-bg-color.ts"
+    }
+  ]
+}
