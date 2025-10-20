@@ -32,7 +32,7 @@ export async function buildBlocksRegistry(blockPath: string, blockName: string) 
 
   for (const item of metadata.registryDependencies ?? []) {
     const kebabName = item.replace(/\B([A-Z][a-z])/g, `-$1`).toLowerCase()
-    const registryUrl = `${process.env.VITE_REGISTRY_URL}/${kebabName}.json`
+    const registryUrl = `${process.env.REGISTRY_URL}/${kebabName}.json`
 
     registryDependencies.add(registryUrl)
   }

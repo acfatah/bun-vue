@@ -37,7 +37,7 @@ export async function getFileDependencies(filename: string, sourceCode: string) 
     if (source?.startsWith(REGISTRY_DEPENDENCY) && !source.endsWith('.vue')) {
       const componentName = source.split('/').slice(-1)[0]
       const kebabName = componentName.replace(/\B([A-Z][a-z])/g, `-$1`).toLowerCase()
-      const registryUrl = `${process.env.VITE_REGISTRY_URL}/${kebabName}.json`
+      const registryUrl = `${process.env.REGISTRY_URL}/${kebabName}.json`
 
       registryDependencies.add(registryUrl)
     }

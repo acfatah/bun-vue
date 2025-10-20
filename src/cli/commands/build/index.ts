@@ -313,7 +313,7 @@ export const build = new Command()
       const registrySchema = {
         $schema: 'https://shadcn-vue.com/schema/registry.json',
         name: 'shadcn-vue-ex',
-        homepage: process.env.VITE_REGISTRY_URL,
+        homepage: process.env.REGISTRY_URL,
         items,
       }
 
