@@ -53,10 +53,12 @@ const props = withDefaults(defineProps<{
   pagination?: boolean
   filter?: boolean
   loading?: boolean
+  checkboxSelection?: boolean
 }>(), {
   pagination: true,
   filter: false,
   loading: false,
+  checkboxSelection: false,
 })
 
 // Table state
@@ -91,17 +93,23 @@ const table = useVueTable({
 
 <template>
   <div
-    data-slot="data-table" :class="cn(
+    data-slot="data-table"
+    :class="cn(
       `w-full`,
       // styles to make the first column sticky
-      `
-        [&_table_td:nth-child(1)]:sticky [&_table_td:nth-child(1)]:left-0
-        [&_table_td:nth-child(1)]:bg-background
-        sm:[&_table_td:nth-child(1)]:bg-transparent
-        [&_table_th:nth-child(1)]:sticky [&_table_th:nth-child(1)]:left-0
-        [&_table_th:nth-child(1)]:bg-background
-        sm:[&_table_th:nth-child(1)]:bg-transparent
-      `,
+      props.checkboxSelection
+        ? `
+          [&_table_td:nth-child(1)]:sticky [&_table_td:nth-child(1)]:left-0
+          [&_table_td:nth-child(1)]:bg-background
+          sm:[&_table_td:nth-child(1)]:bg-transparent
+          [&_table_th:nth-child(1)]:sticky [&_table_th:nth-child(1)]:left-0
+          [&_table_th:nth-child(1)]:bg-background
+          sm:[&_table_th:nth-child(1)]:bg-transparent
+        `
+        : `
+          [&_table_td:nth-child(1)]:pl-4
+          [&_table_th:nth-child(1)]:pl-4
+        `,
       props.class)"
   >
     <slot v-if="props.filter" name="filter" :table="table">
