@@ -9,7 +9,9 @@ export const metadata = {
   title: 'Basic Datatable',
   description: 'A basic CRUD datatable with sorting, filtering, and row selection.',
   dependencies: [
+    '@internationalized/date',
     '@vee-validate/zod',
+    'mitt',
     'zod',
   ],
   registryDependencies: [
