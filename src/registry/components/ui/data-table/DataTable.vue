@@ -164,7 +164,12 @@ const table = useVueTable({
       <Table>
         <TableHeader>
           <TableRow v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
-            <TableHead v-for="header in headerGroup.headers" :key="header.id">
+            <TableHead
+              v-for="header in headerGroup.headers"
+              :key="header.id"
+              :sticky="(header.column.columnDef.meta as any)?.sticky"
+              :sticky-end="(header.column.columnDef.meta as any)?.stickyEnd"
+            >
               <FlexRender
                 v-if="!header.isPlaceholder" :render="header.column.columnDef.header"
                 :props="header.getContext()"
@@ -186,7 +191,13 @@ const table = useVueTable({
               v-for="row in table.getRowModel().rows" :key="row.id"
               :data-state="row.getIsSelected() ? 'selected' : undefined"
             >
-              <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
+              <TableCell
+                v-for="cell in row.getVisibleCells()"
+                :key="cell.id"
+                :sticky="(cell.column.columnDef.meta as any)?.sticky"
+                :sticky-end="(cell.column.columnDef.meta as any)?.stickyEnd"
+                :wrap="(cell.column.columnDef.meta as any)?.wrap"
+              >
                 <FlexRender :render="cell.column.columnDef.cell" :props="cell.getContext()" />
               </TableCell>
             </TableRow>

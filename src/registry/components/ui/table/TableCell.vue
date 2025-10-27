@@ -4,6 +4,9 @@ import { cn } from '@/lib/utils'
 
 const props = defineProps<{
   class?: HTMLAttributes['class']
+  sticky?: boolean
+  stickyEnd?: boolean
+  wrap?: boolean
 }>()
 </script>
 
@@ -12,10 +15,13 @@ const props = defineProps<{
     data-slot="table-cell"
     :class="cn(
       `
-        p-2 align-middle whitespace-nowrap
+        p-2 align-middle
         [&:has([role=checkbox])]:pr-0
-        [&>[role=checkbox]]:translate-y-[2px]
+        *:[[role=checkbox]]:translate-y-[2px]
       `,
+      sticky ? `sticky left-0 bg-background` : '',
+      stickyEnd ? `sticky right-0 bg-background` : '',
+      wrap ? 'wrap-break-words whitespace-normal' : 'whitespace-nowrap',
       props.class,
     )"
   >
