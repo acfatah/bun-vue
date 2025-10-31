@@ -79,7 +79,7 @@ provideSidebarContext({
       `, props.class)"
       v-bind="$attrs"
     >
-      <slot />
+      <slot v-bind="{ setOpenMobile }" />
     </div>
   </TooltipProvider>
 </template>

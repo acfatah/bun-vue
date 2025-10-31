@@ -51,6 +51,10 @@ function setActiveTeam(team: typeof sidebarMenu.teams[number]) {
 </script>
 
 <template>
+  <!--
+    Add v-slot="setOpenMobile" and use setOpenMobile(false) to close the sidebar
+    after clicking menu on mobile.
+  -->
   <SidebarProvider>
     <Sidebar variant="inset">
       <SidebarHeader>
