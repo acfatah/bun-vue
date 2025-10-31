@@ -13,7 +13,7 @@ const props = defineProps<{
     :class="cn(
       `
         relative border-b transition-colors
-        hover:bg-muted/50
+        has-[td]:hover:bg-muted/50
         data-[state=selected]:bg-muted
       `,
       props.class,
