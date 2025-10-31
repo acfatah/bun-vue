@@ -10,6 +10,7 @@ import DropdownAction from './components/DropdownAction.vue'
 
 export const actions = mitt<{
   view: UserRecord
+  create: void
   update: UserRecord
 }>()
 

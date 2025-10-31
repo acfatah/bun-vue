@@ -19,7 +19,10 @@ export const schema = z.object({
     message: 'A credit amount is required.',
   }),
 
-  expiry: z.date(),
+  expiry: z.date().optional(),
 })
 
 export type UserRecord = z.infer<typeof schema>
+export type UserUpdate = Partial<UserRecord> & { id: string }
+export type UserCreate = Omit<UserRecord, 'id'>
+export interface UserDelete { id: string }

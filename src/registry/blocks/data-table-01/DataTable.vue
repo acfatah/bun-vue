@@ -38,6 +38,7 @@ const isLoading = ref(false)
 const isSheetFormVisible = ref(false)
 const isViewDialogVisible = ref(false)
 const currentRow = ref<UserRecord | null>(null)
+const formMode = ref<'create' | 'update'>('create')
 
 async function fetchData() {
   isLoading.value = true
@@ -56,9 +57,16 @@ actions.on('view', (row) => {
   currentRow.value = row
 })
 
-actions.on('update', (row) => {
-  isViewDialogVisible.value = false
+actions.on('create', () => {
   isSheetFormVisible.value = true
+  formMode.value = 'create'
+  selectedRow.value = null
+})
+
+actions.on('update', (row) => {
+  isSheetFormVisible.value = true
+  formMode.value = 'update'
+  isViewDialogVisible.value = false
   selectedRow.value = row
 })
 
@@ -68,10 +76,17 @@ onMounted(async () => {
 </script>
 
 <template>
+  <div class="mb-4 flex w-full justify-end">
+    <Button @click="actions.emit('create')">
+      New User
+    </Button>
+  </div>
+
   <DataTable
     :columns="columns"
     :data="data"
     :loading="isLoading"
+    :pagination="data.length > 10"
   />
 
   <!-- View User -->
@@ -102,23 +117,31 @@ onMounted(async () => {
     </DialogContent>
   </Dialog>
 
-  <!-- Edit User -->
+  <!-- Create/Update User -->
   <Sheet
     v-model:open="isSheetFormVisible"
     @close="currentRow = null"
   >
     <SheetContent
-      :side="mdAndLarger ? 'right' : 'bottom'"
+      :side="mdAndLarger ? 'left' : 'bottom'"
       class="md:max-w-2xl"
     >
       <SheetHeader>
-        <SheetTitle>Edit User</SheetTitle>
+        <SheetTitle>
+          {{ formMode === 'create' ? 'Create User' : 'Update User' }}
+        </SheetTitle>
         <SheetDescription>
-          Make changes to user. Click save when you're done.
+          {{ formMode === 'create'
+            ? 'Fill the form and click create.'
+            : 'Make changes and click save.' }}
         </SheetDescription>
       </SheetHeader>
 
-      <DataForm v-if="selectedRow" :data="selectedRow" />
+      <DataForm
+        v-if="isSheetFormVisible"
+        :mode="formMode"
+        :data="selectedRow"
+      />
     </SheetContent>
   </Sheet>
 </template>

@@ -12,7 +12,7 @@ import {
 } from '@internationalized/date'
 import { toTypedSchema } from '@vee-validate/zod'
 import { toDate } from 'reka-ui/date'
-import { h, ref } from 'vue'
+import { computed, h, ref } from 'vue'
 
 import { Button } from '@/components/ui/button'
 import { Calendar } from '@/components/ui/calendar'
@@ -32,27 +32,38 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 import { Switch } from '@/components/ui/switch'
-// import { Textarea } from '@/components/ui/textarea'
 import { toast } from '@/components/ui/toast'
 import { cn } from '@/lib/utils'
 
 import { labels } from './columns'
 import { schema } from './schema'
 
-const props = defineProps<{
-  data: UserRecord
-}>()
-
-const userFormSchema = toTypedSchema(schema)
-
-const df = new DateFormatter('en-US', {
-  dateStyle: 'long',
+const props = withDefaults(defineProps<{
+  mode?: 'create' | 'update'
+  data?: UserRecord | null
+}>(), {
+  mode: 'create',
+  data: null,
 })
 
+const userFormSchema = toTypedSchema(schema)
+const df = new DateFormatter('en-US', { dateStyle: 'long' })
 const expiryPlaceholder = ref()
 
+const initialValues = computed(() => ({
+  ...{
+    username: '',
+    email: '',
+    active: false,
+    credit: 0,
+    // expiry: undefined // leave undefined if optional in schema
+  } as Partial<UserRecord>,
+
+  ...(props.data ?? {}),
+}))
+
 const onSubmit: SubmissionHandler<GenericObject> = function (values) {
-  const formValues = values as UserRecord
+  const formValues = values as unknown as UserRecord
 
   toast({
     title: 'You submitted the following values:',
@@ -69,7 +80,7 @@ const onSubmit: SubmissionHandler<GenericObject> = function (values) {
   <Form
     v-slot="{ meta }"
     :validation-schema="userFormSchema"
-    :initial-values="props.data"
+    :initial-values="initialValues"
     class="flex h-full flex-col space-y-8 p-4"
     @submit="onSubmit"
   >
@@ -89,7 +100,6 @@ const onSubmit: SubmissionHandler<GenericObject> = function (values) {
     <FormField v-slot="{ componentField }" name="email">
       <FormItem>
         <FormLabel>{{ labels.email }}</FormLabel>
-
         <FormControl>
           <Input type="email" placeholder="shadcn" v-bind="componentField" />
         </FormControl>
@@ -160,13 +170,14 @@ const onSubmit: SubmissionHandler<GenericObject> = function (values) {
           >
             <FormControl>
               <Button
-                variant="outline" :class="cn(
+                variant="outline"
+                :class="cn(
                   'w-[240px] ps-3 text-start font-normal',
                   !value && 'text-muted-foreground',
                 )"
                 :aria-invalid="fieldMeta.touched && !fieldMeta.valid"
               >
-                <span>{{ value ? df.format(value) : "Pick a date" }}</span>
+                <span>{{ value ? df.format(value) : 'Pick a date' }}</span>
                 <Icon icon="lucide:calendar" class="ms-auto size-4 opacity-50" />
               </Button>
               <input hidden>
@@ -176,7 +187,9 @@ const onSubmit: SubmissionHandler<GenericObject> = function (values) {
             <Calendar
               v-model:placeholder="expiryPlaceholder"
               :calendar-label="labels.expiry"
-              :model-value="value ? parseAbsoluteToLocal(value.toISOString()) : undefined"
+              :model-value="
+                value ? parseAbsoluteToLocal(value.toISOString()) : undefined
+              "
               :min-value="new CalendarDate(1800, 1, 1)"
               :max-value="today(getLocalTimeZone())"
               initial-focus
@@ -225,7 +238,7 @@ const onSubmit: SubmissionHandler<GenericObject> = function (values) {
           md:w-min
         "
       >
-        Save
+        {{ props.mode === 'create' ? 'Create' : 'Save' }}
       </Button>
     </div>
   </Form>
