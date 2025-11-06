@@ -220,7 +220,7 @@ const table = useVueTable({
           sm:flex-row
         "
       >
-        <div class="text-sm whitespace-nowrap text-muted-foreground">
+        <div v-if="props.checkboxSelection" class="text-sm whitespace-nowrap text-muted-foreground">
           {{ table.getFilteredSelectedRowModel().rows.length }} of
           {{ table.getFilteredRowModel().rows.length }} row(s) selected.
         </div>
